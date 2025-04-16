@@ -696,9 +696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35173059b6ceca247aaa77e696d6a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  timer2: 0
+  timerBase: 0
+  timerCritic: 0
   getHit: 0
+  canGetHit: 0
   meshRenderer: {fileID: 0}
   materialGreen: {fileID: 2100000, guid: b1a0969a5ab8c3a48ba8d0a5373663dd, type: 2}
   materialRed: {fileID: 2100000, guid: 8263a6bda260f85468ff11fbe7813c8b, type: 2}
@@ -750,12 +751,27 @@ MonoBehaviour:
     m_Actions: []
     m_Bindings: []
   playerInputAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  moveX: {fileID: -7655659637936118839, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  moveY: {fileID: 8311119487433951129, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  moveX: {fileID: -8009204961152168230, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  moveY: {fileID: -2888984972633616447, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  dash: {fileID: -4620805570641400120, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   moveXfloat: 0
   moveYfloat: 0
-  moveSpeed: 4
+  playerLife: {fileID: 0}
+  moveSpeed: 10
+  normalSpeed: 12.5
   maxSpeed: 7
+  desiredMoveSpeed: 0
+  lastDesiredMoveSpeed: 0
+  lastState: 0
+  keepMomentum: 0
+  dashForce: 50
+  dashSpeed: 50
+  dashSpeedChangeFactor: 70
+  dashTimer: 2
+  dashing: 0
+  dashDuration: 0.05
+  resetVel: 1
+  state: 0
 --- !u!1 &1661160727
 GameObject:
   m_ObjectHideFlags: 0
