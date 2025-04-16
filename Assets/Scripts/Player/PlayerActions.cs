@@ -11,18 +11,20 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private InputActionReference moveX;
     [SerializeField] private InputActionReference moveY;
     [SerializeField] private InputActionReference dash;
+    [SerializeField] private InputActionReference attack;
     /*[SerializeField] private InputActionReference dashUp;
     [SerializeField] private InputActionReference dashDown;
     [SerializeField] private InputActionReference dashRight;
     [SerializeField] private InputActionReference dashLeft;*/
-    private InputAction moveXAction, moveYAction, dashAction/*,
+    private InputAction moveXAction, moveYAction, dashAction, attackAction/*,
         dashActionUp, dashActionDown, dashActionRight, dashActionLeft*/;
     [Header("Input Values")]
     [SerializeField] public float moveXfloat;
     [SerializeField] public float moveYfloat;
+    [SerializeField] public float attackfloat;
 
     private Rigidbody rb;
-    [SerializeField] private PlayerLife playerLife;
+    private PlayerLife playerLife;
     [Header("Movement Variables")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float normalSpeed;
@@ -30,6 +32,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float desiredMoveSpeed;
     [SerializeField] private float lastDesiredMoveSpeed;
     [SerializeField] private MovementState lastState;
+    public MovementState state;
     [SerializeField] private bool keepMomentum;
 
     [Header("Dash Variables")]
@@ -39,16 +42,22 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float dashTimer;
     [SerializeField] private bool dashing;
     [SerializeField] private float dashDuration;
-
-    [Header("Dash Variables")]
     [SerializeField] private bool resetVel;
-    public MovementState state;
+
+    [Header("Attack Variables")]
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject shootPoint;
+    [SerializeField] private bool attacking;
+    [SerializeField] private float delayAttack;
+    private float lastAttackTime;
+
     public enum MovementState { moving, dashing}
     void Start()
     {
         dashTimer = 2f;
         rb = gameObject.GetComponent<Rigidbody>();
         playerLife = gameObject.GetComponent<PlayerLife>();
+        shootPoint = transform.Find("ShootPoint").gameObject;
         playerInputMap = playerInputAsset.FindActionMap("PlayerActions");
         moveXAction = moveX.ToInputAction();
         moveYAction = moveY.ToInputAction();
@@ -62,6 +71,7 @@ public class PlayerActions : MonoBehaviour
         dashActionDown.performed += DashingPerformed;
         dashActionRight.performed += DashingPerformed;
         dashActionLeft.performed += DashingPerformed;*/
+        attackAction = attack.ToInputAction();
     }
 
     void Update()
@@ -74,7 +84,7 @@ public class PlayerActions : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-
+        Attack();
     }
     private void State()
     {
@@ -164,7 +174,7 @@ public class PlayerActions : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0f);
 
-        if (dashTimer >= 2f /*&& flatVel.magnitude >= 3f*/)
+        if (dashTimer >= 2f && !attacking/*&& flatVel.magnitude >= 3f*/)
         {
             dashing = true;
             playerLife.canGetHit = false;
@@ -213,10 +223,49 @@ public class PlayerActions : MonoBehaviour
 
         return direction.normalized;
     }
+
+    private void Attack()
+    {
+        if(attackfloat > 0)
+        {
+            attacking = true;
+            if(Time.time - lastAttackTime > delayAttack)
+            {
+                if (attacking)
+                {
+                    StartCoroutine(ShootBullet());
+
+                }
+                lastAttackTime = Time.time;
+            }
+            //Invoke(nameof(SpawnBullet), 0.9f);
+        }
+        else
+        {
+            attacking = false;
+        }
+    }
+
+    private void SpawnBullet()
+    {
+        Instantiate(bullet, shootPoint.transform.position, shootPoint.transform.rotation);
+
+    }
+    private IEnumerator ShootBullet()
+    {
+        
+            for(int i = 0; i < 1; i++)
+            {
+                SpawnBullet();
+                yield return new WaitForSeconds(1f);
+            }
+        
+    }
     private void GetInput()
     {
         moveXfloat = moveXAction.ReadValue<float>();
         moveYfloat = moveYAction.ReadValue<float>();
+        attackfloat = attackAction.ReadValue<float>();
     }
     private void OnEnable()
     {
@@ -227,7 +276,10 @@ public class PlayerActions : MonoBehaviour
         moveYAction.Enable();
 
         dashAction = dash.ToInputAction();
-        dashAction.Enable();        
+        dashAction.Enable();
+
+        attackAction = attack.ToInputAction();
+        attackAction.Enable();
 
         /*dashActionUp = dashUp.ToInputAction();
         dashActionUp.Enable();
@@ -247,6 +299,7 @@ public class PlayerActions : MonoBehaviour
         moveXAction.Disable();
         moveYAction.Disable();
         dashAction.Disable();
+        attackAction.Disable();
         /*dashActionUp.Disable();
         dashActionDown.Disable();
         dashActionRight.Disable();
