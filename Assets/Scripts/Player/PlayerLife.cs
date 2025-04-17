@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] private float timer, timer2;
+    [SerializeField] private float timerBase, timerCritic;
     [SerializeField] private bool getHit;
+    [SerializeField] public bool canGetHit;
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] public Material materialGreen;
     [SerializeField] public Material materialRed;
@@ -37,8 +38,8 @@ public class PlayerLife : MonoBehaviour
         {
             case State.Base:
                 meshRenderer.sharedMaterial = InitialMaterial;
-                timer2 = 0;
-                if (getHit && timer >= 1)
+                timerCritic = 0;
+                if (getHit && timerBase >= 1)
                 {
                     state = State.Critic;
                     getHit = false;
@@ -46,18 +47,18 @@ public class PlayerLife : MonoBehaviour
                 break;
             case State.Critic:
                 meshRenderer.sharedMaterial = materialRed;
-                timer = 0;
+                timerBase = 0;
                 if (getHit)
                 {
                     Debug.Log("Game Over");
                     getHit = false;
                 }
-                if (timer2 >= 1 && !getHit)
+                if (timerCritic >= 1 && !getHit)
                 {
                     Debug.Log("Empieza a curarse");
                     meshRenderer.sharedMaterial = materialGreen;
                 }
-                if(timer2 >= 3 && !getHit)
+                if(timerCritic >= 3 && !getHit)
                 {
                     state = State.Base;
                 }
@@ -68,19 +69,22 @@ public class PlayerLife : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            getHit = true;
+            if (canGetHit)
+            {
+                getHit = true;
+            }
         }
     }
     private void Timer()
     {
         if(state == State.Base)
         {
-            timer += Time.deltaTime;
+            timerBase += Time.deltaTime;
 
         }
         if(state == State.Critic)
         {
-            timer2 += Time.deltaTime;
+            timerCritic += Time.deltaTime;
 
         }
 
