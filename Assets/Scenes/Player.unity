@@ -1324,11 +1324,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   haveShield: 0
+  getDamaged: 0
+  canGetDamage: 0
   shieldHUD: {fileID: 0}
   shieldBar: {fileID: 0}
   shieldTMP: {fileID: 0}
+  playerLife: {fileID: 0}
   shield: 0
   shieldMax: 100
+  timer: 0
 --- !u!1 &1661160727
 GameObject:
   m_ObjectHideFlags: 0

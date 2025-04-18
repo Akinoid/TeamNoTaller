@@ -7,15 +7,16 @@ using System;
 
 public class Shield : MonoBehaviour
 {
-    [SerializeField] private bool haveShield, getDamaged;
+    [SerializeField] private bool haveShield, getDamaged, canGetDamage;
     [SerializeField] private GameObject shieldHUD;
     [SerializeField] private Image shieldBar;
     [SerializeField] private TMP_Text shieldTMP;
-    [SerializeField] private PlayerLife playerLife;
     [SerializeField] private float shield, shieldMax, timer;
+    private PlayerLife playerLife;
     private GameObject canvas, shieldBarGameObject;
     void Start()
     {
+        canGetDamage = true;
         canvas = GameObject.Find("Canvas");
         shieldHUD = canvas.transform.Find("ShieldBorder").gameObject;
         shieldBar = shieldHUD.transform.Find("ShieldBar").GetComponent<Image>();
@@ -53,15 +54,16 @@ public class Shield : MonoBehaviour
     }
     public void GetDamage(float damage, bool getDamage)
     {
-        getDamaged = getDamage;
-        if (timer >= 1)
+        
+        if (canGetDamage && haveShield)
         {
             shield -= damage;
             shieldBar.fillAmount = shield / shieldMax;
             shieldTMP.text = $"Shield = {+shield}";
-            timer = 0;
-            getDamaged = false;
+            getDamaged = getDamage;
+            canGetDamage = false;
         }
+        
         
     }
     private void TimerDamage()
@@ -69,6 +71,10 @@ public class Shield : MonoBehaviour
         if (getDamaged)
         {
             timer += Time.deltaTime;
+        }
+        if (timer >= 1)
+        {
+            canGetDamage = true;
         }
     }
     private void ActivateShield()
