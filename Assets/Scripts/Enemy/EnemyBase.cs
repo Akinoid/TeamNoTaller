@@ -1,111 +1,112 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    public float health = 100f;
-    public float entrySpeed = 10f;
+    public enum State { Entering, Active, Exiting }
+
+    [Header("Entry / Exit Settings")]
+    public float entrySpeed = 5f;
+    public float entryZStart = 50f;
+    public float entryZTarget = 25f;
+    public float activeLifetime = 1000000f;
     public float exitSpeed = 5f;
-    public float lifeTime = 30f;
+
+    [Header("Health & Explosion")]
+    public float health = 100f;
     public float explosionRadius = 5f;
     public float explosionDamage = 50f;
-    protected enum State { Entering, Attacking, Exiting, WaitingToReEnter }
+
     protected State currentState = State.Entering;
+    private float activeTimer;
+    private Vector3 entryTargetPos;
 
-    protected float lifeTimer;
-    protected Vector3 targetEntryPosition;
-
-    void Start()
+    protected virtual void Start()
     {
-        lifeTimer = lifeTime;
-        SetEntryPosition();
+        // Spawn fuera de cámara en Z
+        Vector3 p = transform.position;
+        p.z = entryZStart;
+        transform.position = p;
+
+        // Destino de entrada
+        entryTargetPos = new Vector3(transform.position.x, transform.position.y, entryZTarget);
+
+        activeTimer = activeLifetime;
+        Debug.Log($"{name} START – state=Entering at {transform.position} → {entryTargetPos}");
     }
 
-    void Update()
+    protected virtual void Update()
     {
         switch (currentState)
         {
-            case State.Entering:
-                MoveIntoScene();
-                MoveIntoScene();
-                break;
-            case State.Exiting:
-                ExitScene();
-                break;
-        }
-
-        if (currentState == State.Attacking || currentState == State.Entering)
-        {
-            lifeTimer -= Time.deltaTime;
-            if (lifeTimer <= 0f)
-            {
-                StartExit();
-            }
+            case State.Entering: HandleEntering(); break;
+            case State.Active: HandleActive(); break;
+            case State.Exiting: HandleExiting(); break;
         }
     }
 
-    protected void SetEntryPosition()
+    private void HandleEntering()
     {
-        // Ajusta seg�n la direcci�n que desees
-        targetEntryPosition = new Vector3(Random.Range(-5f, 5f), Random.Range(-3f, 3f), 10f);
-    }
-
-    protected void MoveIntoScene()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, targetEntryPosition, entrySpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, targetEntryPosition) < 0.1f)
+        transform.position = Vector3.MoveTowards(transform.position, entryTargetPos, entrySpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, entryTargetPos) < 0.1f)
         {
-            currentState = State.Attacking;
+            currentState = State.Active;
+            Debug.Log($"{name} ENTER COMPLETE – now Active");
             OnEnterComplete();
         }
     }
 
-    protected void ExitScene()
+    private void HandleActive()
     {
-        transform.Translate(Vector3.up * Mathf.Sin(Time.time * 2f) * Time.deltaTime); // Movimiento en espiral
-        transform.Translate(Vector3.forward * exitSpeed * Time.deltaTime);
+        activeTimer -= Time.deltaTime;
+        if (activeTimer <= 0f)
+        {
+            Debug.Log($"{name} ACTIVE TIME UP – starting Exit");
+            currentState = State.Exiting;
+            OnExitStart();
+        }
     }
 
-    protected void StartExit()
+    private void HandleExiting()
     {
-        currentState = State.Exiting;
-        Invoke("StartReEntry", 3f);
+        transform.position += Vector3.forward * exitSpeed * Time.deltaTime;
     }
 
-    protected void StartReEntry()
+    protected virtual void OnExitStart()
     {
-        transform.position = new Vector3(Random.Range(-10f, 10f), Random.Range(-6f, 6f), 20f);
-        SetEntryPosition();
-        lifeTimer = lifeTime;
+        Invoke(nameof(ReEnter), 3f);
+    }
+
+    private void ReEnter()
+    {
+        activeTimer = activeLifetime;
+        Vector3 p = transform.position;
+        p.z = entryZStart;
+        transform.position = p;
+
         currentState = State.Entering;
+        Debug.Log($"{name} RE-ENTER – back to Entering");
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health <= 0)
-        {
-            Explode();
-        }
+        Debug.Log($"{name} took {amount} damage → health={health}");
+        if (health <= 0f) Explode();
     }
 
-    protected void Explode()
+    private void Explode()
     {
-        Collider[] hitObjects = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach (var obj in hitObjects)
+        Debug.Log($"{name} EXPLODED at {transform.position}");
+        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (var h in hits)
         {
-            EnemyBase otherEnemy = obj.GetComponent<EnemyBase>();
-            if (otherEnemy != null && otherEnemy != this)
-            {
-                otherEnemy.TakeDamage(explosionDamage);
-            }
+            var other = h.GetComponent<EnemyBase>();
+            if (other != null && other != this)
+                other.TakeDamage(explosionDamage);
         }
-
-        // Aqu� puedes instanciar un efecto de explosi�n
         Destroy(gameObject);
     }
 
     protected abstract void OnEnterComplete();
-    
-  
-
 }
