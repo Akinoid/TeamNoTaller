@@ -43,6 +43,9 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private bool dashing;
     [SerializeField] private float dashDuration;
     [SerializeField] private bool resetVel;
+    [SerializeField] private Renderer meshRenderer;    
+    [SerializeField] public Material materialYellow;
+    [SerializeField] public Material InitialMaterial;
 
     [Header("Attack Variables")]
     [SerializeField] private GameObject bullet;
@@ -56,6 +59,7 @@ public class PlayerActions : MonoBehaviour
     {
         dashTimer = 2f;
         rb = gameObject.GetComponent<Rigidbody>();
+        meshRenderer = gameObject.GetComponent<Renderer>();
         playerLife = gameObject.GetComponent<PlayerLife>();
         shootPoint = transform.Find("ShootPoint").gameObject;
         playerInputMap = playerInputAsset.FindActionMap("PlayerActions");
@@ -93,11 +97,15 @@ public class PlayerActions : MonoBehaviour
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
+            meshRenderer.sharedMaterial = materialYellow;
+
         }
         else
         {
             state = MovementState.moving;
             desiredMoveSpeed = normalSpeed;
+            meshRenderer.sharedMaterial = InitialMaterial;
+
         }
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
