@@ -1,0 +1,33 @@
+Como funciona el spawner:
+
+
+para crear un patron nuevo le das en una carpeta click derecho -> 
+create -> spawning -> spawnpattern
+
+esto crea un objeto scripteable que es el patron
+
+en este objeto puedes agregar los prefabs de enemigos 
+y el tiempo de espera entre cada spawn
+
+-------------------
+
+un spawner es un objeto vacio con un triger de box collider con el script
+spawnzone incluido.
+dentro de este script en la parte de pattern sequences puedes agregar
+los diferentes patrones: 
+
+En cada secuencia:
+
+Label: solo para organizar (ej: “Oleada 1”).
+
+Pattern: arrastra aquí el ScriptableObject  (ej: Pattern_1).
+
+Repetitions: cuántas veces se debe repetir ese patrón.
+
+DelayBetweenRepetitions: cuánto esperar entre repeticiones.
+
+
+---------
+
+finalmente agrega un spawnmanager en la escena y en su script coloca
+los spawns que tienes en el mapa
