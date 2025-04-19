@@ -18,7 +18,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float explosionDamage = 50f;
 
     protected State currentState = State.Entering;
-    private float activeTimer;
+    public float activeTimer;
     private Vector3 entryTargetPos;
 
     protected virtual void Start()
@@ -45,7 +45,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    private void HandleEntering()
+    protected virtual void HandleEntering()
     {
         transform.position = Vector3.MoveTowards(transform.position, entryTargetPos, entrySpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, entryTargetPos) < 0.1f)
@@ -56,7 +56,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    private void HandleActive()
+    protected virtual void HandleActive()
     {
         activeTimer -= Time.deltaTime;
         if (activeTimer <= 0f)
