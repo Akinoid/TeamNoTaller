@@ -4,6 +4,7 @@ public class ExplosionArea : MonoBehaviour
 {
     public float damage = 40f;
     public float duration = 0.5f;
+    private bool alreadyHit = false;
 
     private void Start()
     {
@@ -12,12 +13,11 @@ public class ExplosionArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!alreadyHit && other.CompareTag("Player"))
         {
+            alreadyHit = true;
             Debug.Log("Player hit by explosion!");
-            // Aquí puedes aplicar daño si tienes un sistema de salud en el jugador
-            // Ejemplo:
-            // other.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            DamageUtils.DamagePlayer(other.gameObject);
         }
     }
 }

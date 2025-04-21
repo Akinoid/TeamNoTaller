@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6239383350524641263}
   m_Layer: 0
   m_Name: Sniper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,9 +131,12 @@ MonoBehaviour:
   health: 100
   explosionRadius: 5
   explosionDamage: 50
+  activeTimer: 0
   markerPrefab: {fileID: 7496782539541728113, guid: deb384c77e5c5fa489d062558eaa58a9, type: 3}
   beamPrefab: {fileID: 7888827816995400695, guid: 9ec434881e267324ea12298f837bf0d9, type: 3}
   markerOffsetZ: 0
   damage: 10
   beamDuration: 0.5
   beamRange: 100
+  totalAimTime: 3
+  markerFollowTime: 2

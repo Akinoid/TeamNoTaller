@@ -81,7 +81,13 @@ public class BrawlerEnemy : EnemyBase
             Collider[] hits = Physics.OverlapBox(dzGO.transform.position, dzGO.transform.localScale / 2);
             foreach (var h in hits)
                 if (h.CompareTag("Player"))
+                {
                     Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
+
+                    DamageUtils.DamagePlayer(h.gameObject);
+                }
+                    
+
             Destroy(dzGO);
             done = true;
         });
