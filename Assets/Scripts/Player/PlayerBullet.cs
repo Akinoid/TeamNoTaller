@@ -30,6 +30,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            
             Invoke(nameof(BulletAutoDestroy), 0.05f);
         }
     }

@@ -14,6 +14,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Header("Health & Explosion")]
     public float health = 100f;
+    private float currentHealth;
     public float explosionRadius = 5f;
     public float explosionDamage = 50f;
 
@@ -23,6 +24,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
+        currentHealth = health;
         // Spawn fuera de cámara en Z
         Vector3 p = transform.position;
         p.z = entryZStart;
@@ -90,9 +92,13 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        Debug.Log($"{name} took {amount} damage → health={health}");
-        if (health <= 0f) Explode();
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            Die();
+            if (health <= 0f) Explode();
+        }
+        
     }
 
     private void Explode()
@@ -105,6 +111,26 @@ public abstract class EnemyBase : MonoBehaviour
             if (other != null && other != this)
                 other.TakeDamage(explosionDamage);
         }
+        Destroy(gameObject);
+    }
+    public void DamagePlayer(GameObject player)
+    {
+        PlayerLife life = player.GetComponent<PlayerLife>();
+        if (life != null && life.canGetHit)
+        {
+            life.getHit = true;
+            Debug.Log("Player got Hit");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(50f); 
+        }
+    }
+    protected virtual void Die()
+    {
         Destroy(gameObject);
     }
 

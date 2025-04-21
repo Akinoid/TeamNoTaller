@@ -64,6 +64,7 @@ public class AmbusherEnemy : EnemyBase
         if (Vector3.Distance(playerTransform.position, dangerPos) < attackHitRadius)
         {
             Debug.Log("AmbusherEnemy: Player HIT during entry charge!");
+            DamageUtils.DamagePlayer(playerTransform.gameObject);
         }
 
         Destroy(dangerSymbolInstance);
@@ -117,6 +118,8 @@ public class AmbusherEnemy : EnemyBase
         if (Vector3.Distance(playerPos, closestPoint) < attackHitRadius)
         {
             Debug.Log("AmbusherEnemy: Player HIT during exit charge!");
+            DamageUtils.DamagePlayer(playerTransform.gameObject);
+            
         }
 
         Destroy(gameObject); // Optionally destroy or call base.HandleExiting()

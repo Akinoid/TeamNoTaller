@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private float timerBase, timerCritic;
-    [SerializeField] private bool getHit;
+    [SerializeField] public bool getHit;
     [SerializeField] public bool canGetHit;
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] public Material materialGreen;
@@ -50,6 +51,7 @@ public class PlayerLife : MonoBehaviour
                 timerBase = 0;
                 if (getHit)
                 {
+                    SceneManager.LoadScene("Player");
                     Debug.Log("Game Over");
                     getHit = false;
                 }
@@ -75,6 +77,7 @@ public class PlayerLife : MonoBehaviour
             }
         }
     }
+    
     private void Timer()
     {
         if(state == State.Base)

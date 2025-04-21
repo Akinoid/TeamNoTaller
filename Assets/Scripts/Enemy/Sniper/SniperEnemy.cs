@@ -90,6 +90,7 @@ public class SniperEnemy : EnemyBase
             if (hit.collider.CompareTag("Player"))
             {
                 Debug.Log("SniperEnemy: Player HIT by beam!");
+                DamagePlayer(hit.collider.gameObject);
                 // Aquí puedes aplicar daño si tienes un sistema de salud
             }
         }
