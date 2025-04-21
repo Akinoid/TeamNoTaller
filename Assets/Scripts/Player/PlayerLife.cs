@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] private float timerBase, timerCritic, timerHit;
+    [SerializeField] public float timerBase, timerCritic, timerHit;
     [SerializeField] public bool getHit, canDied, unhit;
     [SerializeField] public bool canGetHit;
     [SerializeField] private Renderer meshRenderer;
@@ -49,7 +49,6 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
-                meshRenderer.sharedMaterial = materialRed;
                 if (timerHit >= 0.5f)
                 {
                     unhit = true;
@@ -78,7 +77,6 @@ public class PlayerLife : MonoBehaviour
                 if (timerCritic >= 1)
                 {
                     Debug.Log("Empieza a curarse");
-                    meshRenderer.sharedMaterial = materialGreen;
                 }
                 if(timerCritic >= 3)
                 {

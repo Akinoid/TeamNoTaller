@@ -104,7 +104,21 @@ public class PlayerActions : MonoBehaviour
         {
             state = MovementState.moving;
             desiredMoveSpeed = normalSpeed;
-            meshRenderer.sharedMaterial = InitialMaterial;
+            if(playerLife.state == PlayerLife.State.Base)
+            {
+                meshRenderer.sharedMaterial = InitialMaterial;
+            }
+            else if(playerLife.state == PlayerLife.State.Critic)
+            {
+                if(playerLife.timerCritic <= 1)
+                {
+                    meshRenderer.sharedMaterial = playerLife.materialRed;
+                }
+                if(playerLife.timerCritic >= 3)
+                {
+                    meshRenderer.sharedMaterial = playerLife.materialGreen;
+                }
+            }
 
         }
 
