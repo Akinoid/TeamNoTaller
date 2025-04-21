@@ -63,7 +63,7 @@ public class SpawnPowerUps : MonoBehaviour
     private void TimerToSpawn()
     {
         timerSpawn += Time.deltaTime;
-        if(timerSpawn >= 10f && !check1)
+        if(timerSpawn >= 8f && !check1)
         {
             canSpawn = Random.Range(0, 2);
             if(canSpawn == 0)
