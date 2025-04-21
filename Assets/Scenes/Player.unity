@@ -641,14 +641,13 @@ GameObject:
   m_Component:
   - component: {fileID: 683422535}
   - component: {fileID: 683422534}
-  - component: {fileID: 683422536}
   m_Layer: 0
   m_Name: SpawnPowerUps
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &683422534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUps:
   - {fileID: 2019991595}
-  - {fileID: 0}
+  - {fileID: 1327189629}
   objectToSpawn: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
   timeBetweenSpawn: 1
@@ -695,20 +694,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &683422536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683422533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a047a65afdcd446a450de8cc19461a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  speed: 3
 --- !u!1 &687704454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,11 +1515,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerBase: 0
   timerCritic: 0
+  timerHit: 0
   getHit: 0
+  canDied: 0
+  unhit: 0
   canGetHit: 0
   meshRenderer: {fileID: 0}
   materialGreen: {fileID: 2100000, guid: b1a0969a5ab8c3a48ba8d0a5373663dd, type: 2}
-  materialRed: {fileID: 2100000, guid: 8263a6bda260f85468ff11fbe7813c8b, type: 2}
+  materialRed: {fileID: 2100000, guid: 18870f0bfe67bf2409b7353878441161, type: 2}
   InitialMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   state: 0
 --- !u!54 &1433250101
@@ -2067,6 +2055,8 @@ GameObject:
   - component: {fileID: 2019991598}
   - component: {fileID: 2019991597}
   - component: {fileID: 2019991596}
+  - component: {fileID: 2019991600}
+  - component: {fileID: 2019991601}
   m_Layer: 0
   m_Name: ShieldObject
   m_TagString: Shield
@@ -2163,6 +2153,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2019991600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019991595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a047a65afdcd446a450de8cc19461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 1}
+  speed: 3
+--- !u!54 &2019991601
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019991595}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2182,3 +2213,4 @@ SceneRoots:
   - {fileID: 683422535}
   - {fileID: 1759356763}
   - {fileID: 101583807}
+  - {fileID: 1327189633}

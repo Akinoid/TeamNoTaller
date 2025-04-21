@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] private float timerBase, timerCritic;
-    [SerializeField] public bool getHit;
+    [SerializeField] private float timerBase, timerCritic, timerHit;
+    [SerializeField] public bool getHit, canDied, unhit;
     [SerializeField] public bool canGetHit;
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] public Material materialGreen;
@@ -40,28 +40,49 @@ public class PlayerLife : MonoBehaviour
             case State.Base:
                 meshRenderer.sharedMaterial = InitialMaterial;
                 timerCritic = 0;
-                if (getHit && timerBase >= 1)
+                timerHit = 0;
+                canDied = false;
+                if (getHit)
                 {
                     state = State.Critic;
-                    getHit = false;
+                    timerBase = 0;
                 }
                 break;
             case State.Critic:
                 meshRenderer.sharedMaterial = materialRed;
-                timerBase = 0;
-                if (getHit)
+                if (timerHit >= 0.5f)
+                {
+                    unhit = true;
+                }
+                if (unhit)
+                {
+                    getHit = false;
+                    timerHit = 0;
+                    unhit = false;
+                }
+                if(getHit && timerBase >= 1)
+                {
+                    canDied = true;
+                }
+                else
+                {
+                    canDied = false;
+                }
+
+                if (canDied && getHit)
                 {
                     SceneManager.LoadScene("Player");
                     Debug.Log("Game Over");
                     getHit = false;
                 }
-                if (timerCritic >= 1 && !getHit)
+                if (timerCritic >= 1)
                 {
                     Debug.Log("Empieza a curarse");
                     meshRenderer.sharedMaterial = materialGreen;
                 }
-                if(timerCritic >= 3 && !getHit)
+                if(timerCritic >= 3)
                 {
+                    timerBase = 0;
                     state = State.Base;
                 }
                 break;
@@ -80,7 +101,7 @@ public class PlayerLife : MonoBehaviour
     
     private void Timer()
     {
-        if(state == State.Base)
+        if(state == State.Base || state == State.Critic)
         {
             timerBase += Time.deltaTime;
 
@@ -88,7 +109,7 @@ public class PlayerLife : MonoBehaviour
         if(state == State.Critic)
         {
             timerCritic += Time.deltaTime;
-
+            timerHit += Time.deltaTime;
         }
 
     }
