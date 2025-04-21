@@ -119,8 +119,8 @@ public class SpawnPowerUps : MonoBehaviour
     {
         if (changePosition)
         {
-            posX = Random.Range(-20, 21);
-            posY = Random.Range(-20, 21);
+            posX = Random.Range(-15, 15);
+            posY = Random.Range(-14, 14);
             changePosition = false;
         }
         pos = new Vector3(posX, posY, spawnTransform.position.z);
