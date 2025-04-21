@@ -5,6 +5,7 @@ public class EnemySpawnEntry
 {
     public GameObject enemyPrefab;
     public float delayAfterPrevious = 1f;
+
 }
 
 [CreateAssetMenu(fileName = "SpawnPattern", menuName = "Spawning/Spawn Pattern")]
