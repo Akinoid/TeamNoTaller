@@ -45,16 +45,22 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private bool resetVel;
     [SerializeField] private Renderer meshRenderer;    
     [SerializeField] public Material materialYellow;
+    [SerializeField] public Material materialBlue;
     [SerializeField] public Material InitialMaterial;
 
     [Header("Attack Variables")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject shootPoint;
     [SerializeField] private bool attacking;
+    [SerializeField] private bool haveBlaster;
     [SerializeField] private float delayAttack;
+    [SerializeField] private float baseDelayAttack;
+    [SerializeField] private float blasterDelayAttack;
+    [SerializeField] private GunType gunType;
     private float lastAttackTime;
 
     public enum MovementState { moving, dashing}
+    public enum GunType { baseShoot, blasterShoot}
     void Start()
     {
         dashTimer = 2f;
@@ -89,6 +95,7 @@ public class PlayerActions : MonoBehaviour
     {
         Movement();
         Attack();
+        AttackType();
     }
     private void State()
     {
@@ -104,21 +111,35 @@ public class PlayerActions : MonoBehaviour
         {
             state = MovementState.moving;
             desiredMoveSpeed = normalSpeed;
-            if(playerLife.state == PlayerLife.State.Base)
+            if (playerLife.haveBubble)
             {
-                meshRenderer.sharedMaterial = InitialMaterial;
-            }
-            else if(playerLife.state == PlayerLife.State.Critic)
-            {
-                if(playerLife.timerCritic <= 1)
+                if (playerLife.state == PlayerLife.State.Base)
                 {
-                    meshRenderer.sharedMaterial = playerLife.materialRed;
-                }
-                if(playerLife.timerCritic >= 3)
-                {
-                    meshRenderer.sharedMaterial = playerLife.materialGreen;
+                    meshRenderer.sharedMaterial = materialBlue;
                 }
             }
+            else
+            {
+                if (playerLife.state == PlayerLife.State.Base)
+                {
+                    meshRenderer.sharedMaterial = InitialMaterial;
+                }
+                else if (playerLife.state == PlayerLife.State.Critic)
+                {
+                    if (playerLife.timerHit <= 0.3)
+                    {
+                        haveBlaster = false;
+                    }
+                    if (playerLife.timerCritic <= 1)
+                    {
+                        meshRenderer.sharedMaterial = playerLife.materialRed;
+                    }
+                    if (playerLife.timerCritic >= 3)
+                    {
+                        meshRenderer.sharedMaterial = playerLife.materialGreen;
+                    }
+                }
+            }           
 
         }
 
@@ -251,20 +272,51 @@ public class PlayerActions : MonoBehaviour
         if(attackfloat > 0)
         {
             attacking = true;
-            if(Time.time - lastAttackTime > delayAttack)
+            switch (gunType)
             {
-                if (attacking)
-                {
-                    StartCoroutine(ShootBullet());
+                case GunType.baseShoot:
+                    if (Time.time - lastAttackTime > delayAttack)
+                    {
+                        if (attacking)
+                        {
+                            StartCoroutine(ShootBullet());
 
-                }
-                lastAttackTime = Time.time;
+                        }
+                        lastAttackTime = Time.time;
+                        //Invoke(nameof(SpawnBullet), 0.9f);
+                    }
+                    break;
+                case GunType.blasterShoot:
+                    if (Time.time - lastAttackTime > delayAttack)
+                    {
+                        if (attacking)
+                        {
+                            StartCoroutine(ShootBullet());
+
+                        }
+                        lastAttackTime = Time.time;
+                        //Invoke(nameof(SpawnBullet), 0.9f);
+                    }
+                    break;
             }
-            //Invoke(nameof(SpawnBullet), 0.9f);
+            
         }
         else
         {
             attacking = false;
+        }
+    }
+    private void AttackType()
+    {
+        if (haveBlaster)
+        {
+            gunType = GunType.blasterShoot;
+            delayAttack = blasterDelayAttack;
+        }
+        else if(!haveBlaster || playerLife.state == PlayerLife.State.Critic)
+        {
+            gunType = GunType.baseShoot;
+            delayAttack = baseDelayAttack;
         }
     }
 
@@ -282,6 +334,14 @@ public class PlayerActions : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Blaster"))
+        {
+            haveBlaster = true;
+        }
     }
     private void GetInput()
     {

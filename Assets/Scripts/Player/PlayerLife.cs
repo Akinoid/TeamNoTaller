@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] public float timerBase, timerCritic, timerHit;
-    [SerializeField] public bool getHit, canDied, unhit;
-    [SerializeField] public bool canGetHit;
+    [SerializeField] public bool getHit, canDied, unhit, startTimerHit;
+    [SerializeField] public bool canGetHit, haveBubble;
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] public Material materialGreen;
     [SerializeField] public Material materialRed;
@@ -27,7 +27,7 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         GetInjured();
-        if(getHit || state == State.Critic)
+        if(getHit && !haveBubble || state == State.Critic && !haveBubble)
         {
             Timer();
         }
@@ -42,7 +42,9 @@ public class PlayerLife : MonoBehaviour
                 timerCritic = 0;
                 timerHit = 0;
                 canDied = false;
-                if (getHit)
+                unhit = false;
+                startTimerHit = true;
+                if (getHit && !haveBubble)
                 {
                     state = State.Critic;
                     timerBase = 0;
@@ -57,6 +59,7 @@ public class PlayerLife : MonoBehaviour
                 {
                     getHit = false;
                     timerHit = 0;
+                    startTimerHit = false;
                     unhit = false;
                 }
                 if(getHit && timerBase >= 1)
@@ -68,7 +71,7 @@ public class PlayerLife : MonoBehaviour
                     canDied = false;
                 }
 
-                if (canDied && getHit)
+                if (canDied && getHit && !haveBubble)
                 {
                     SceneManager.LoadScene("Player");
                     Debug.Log("Game Over");
@@ -79,6 +82,11 @@ public class PlayerLife : MonoBehaviour
                     Debug.Log("Empieza a curarse");
                 }
                 if(timerCritic >= 3)
+                {
+                    timerBase = 0;
+                    state = State.Base;
+                }
+                if (haveBubble)
                 {
                     timerBase = 0;
                     state = State.Base;
@@ -95,6 +103,10 @@ public class PlayerLife : MonoBehaviour
                 getHit = true;
             }
         }
+        if (other.CompareTag("Bubble"))
+        {
+            haveBubble = true;
+        }
     }
     
     private void Timer()
@@ -107,7 +119,11 @@ public class PlayerLife : MonoBehaviour
         if(state == State.Critic)
         {
             timerCritic += Time.deltaTime;
-            timerHit += Time.deltaTime;
+            if (startTimerHit)
+            {
+                timerHit += Time.deltaTime;
+            }
+
         }
 
     }

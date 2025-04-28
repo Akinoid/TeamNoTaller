@@ -55,8 +55,9 @@ public class Shield : MonoBehaviour
     public void GetDamage(float damage, bool getDamage)
     {
         
-        if (canGetDamage && haveShield)
+        if (canGetDamage && haveShield && !playerLife.haveBubble)
         {
+            timer = 0;
             shield -= damage;
             shieldBar.fillAmount = shield / shieldMax;
             shieldTMP.text = $"Shield = {+shield}";
