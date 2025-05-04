@@ -51,7 +51,7 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
-                if (timerHit >= 0.5f)
+                if (timerHit >= 0.2f)
                 {
                     unhit = true;
                 }
@@ -106,6 +106,7 @@ public class PlayerLife : MonoBehaviour
         if (other.CompareTag("Bubble"))
         {
             haveBubble = true;
+            Destroy(other.gameObject);
         }
     }
     

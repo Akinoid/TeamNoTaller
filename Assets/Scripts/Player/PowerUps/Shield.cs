@@ -94,6 +94,7 @@ public class Shield : MonoBehaviour
         {
             shield = shieldMax;
             haveShield = true;
+            Destroy(other.gameObject);
         }
     }
 }

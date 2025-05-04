@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 public class PlayerActions : MonoBehaviour
 {
     [Header("Input Variables")]
@@ -12,11 +13,12 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private InputActionReference moveY;
     [SerializeField] private InputActionReference dash;
     [SerializeField] private InputActionReference attack;
+    [SerializeField] private InputActionReference fireBall;
     /*[SerializeField] private InputActionReference dashUp;
     [SerializeField] private InputActionReference dashDown;
     [SerializeField] private InputActionReference dashRight;
     [SerializeField] private InputActionReference dashLeft;*/
-    private InputAction moveXAction, moveYAction, dashAction, attackAction/*,
+    private InputAction moveXAction, moveYAction, dashAction, attackAction, fireBallAction/*,
         dashActionUp, dashActionDown, dashActionRight, dashActionLeft*/;
     [Header("Input Values")]
     [SerializeField] public float moveXfloat;
@@ -25,6 +27,7 @@ public class PlayerActions : MonoBehaviour
 
     private Rigidbody rb;
     private PlayerLife playerLife;
+    private Invisible invisible;
     [Header("Movement Variables")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float normalSpeed;
@@ -43,9 +46,12 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private bool dashing;
     [SerializeField] private float dashDuration;
     [SerializeField] private bool resetVel;
+
+    [Header("Materials")]
     [SerializeField] private Renderer meshRenderer;    
     [SerializeField] public Material materialYellow;
     [SerializeField] public Material materialBlue;
+    [SerializeField] public Material materialInvisible;
     [SerializeField] public Material InitialMaterial;
 
     [Header("Attack Variables")]
@@ -58,6 +64,10 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float blasterDelayAttack;
     [SerializeField] public GunType gunType;
     private float lastAttackTime;
+    [SerializeField] private GameObject fireBallObject;
+    [SerializeField] private float missiles;
+    private GameObject missilesHUD;
+    private TMP_Text missilesTMP;
 
     public enum MovementState { moving, dashing}
     public enum GunType { baseShoot, blasterShoot}
@@ -67,6 +77,8 @@ public class PlayerActions : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         meshRenderer = gameObject.GetComponent<Renderer>();
         playerLife = gameObject.GetComponent<PlayerLife>();
+        invisible = gameObject.GetComponent<Invisible>();
+        missilesTMP = GameObject.Find("RocketTMP").GetComponent<TMP_Text>();
         shootPoint = transform.Find("ShootPoint").gameObject;
         playerInputMap = playerInputAsset.FindActionMap("PlayerActions");
         moveXAction = moveX.ToInputAction();
@@ -82,6 +94,8 @@ public class PlayerActions : MonoBehaviour
         dashActionRight.performed += DashingPerformed;
         dashActionLeft.performed += DashingPerformed;*/
         attackAction = attack.ToInputAction();
+        fireBallAction = fireBall.ToInputAction();
+        fireBallAction.performed += SpawnFireBall;
     }
 
     void Update()
@@ -90,6 +104,7 @@ public class PlayerActions : MonoBehaviour
         DashingTimer();
         SpeedLimit();
         State();
+        LimitMissiles();
     }
     private void FixedUpdate()
     {
@@ -115,14 +130,28 @@ public class PlayerActions : MonoBehaviour
             {
                 if (playerLife.state == PlayerLife.State.Base)
                 {
-                    meshRenderer.sharedMaterial = materialBlue;
+                    if (invisible.isInvisible)
+                    {
+                        meshRenderer.sharedMaterial = materialInvisible;
+                    }
+                    else
+                    {
+                        meshRenderer.sharedMaterial = materialBlue;
+                    }
                 }
             }
             else
             {
                 if (playerLife.state == PlayerLife.State.Base)
                 {
-                    meshRenderer.sharedMaterial = InitialMaterial;
+                    if (invisible.isInvisible)
+                    {
+                        meshRenderer.sharedMaterial = materialInvisible;
+                    }
+                    else
+                    {
+                        meshRenderer.sharedMaterial = InitialMaterial;
+                    }
                 }
                 else if (playerLife.state == PlayerLife.State.Critic)
                 {
@@ -217,7 +246,7 @@ public class PlayerActions : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0f);
 
-        if (dashTimer >= 2f && !attacking/*&& flatVel.magnitude >= 3f*/)
+        if (dashTimer >= 2f/*&& flatVel.magnitude >= 3f*/)
         {
             dashing = true;
             playerLife.canGetHit = false;
@@ -269,7 +298,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Attack()
     {
-        if(attackfloat > 0)
+        if(attackfloat > 0 && !dashing)
         {
             attacking = true;
             switch (gunType)
@@ -336,11 +365,41 @@ public class PlayerActions : MonoBehaviour
         
     }
 
+    private void SpawnFireBall(InputAction.CallbackContext context)
+    {
+        if(missiles > 0)
+        {
+            Instantiate(fireBallObject, shootPoint.transform.position, shootPoint.transform.rotation);
+            missiles -= 1;
+            missilesTMP.text = $"Missiles: {+missiles} / 3";
+        }
+    }
+    
+    private void LimitMissiles()
+    {
+        if(missiles > 3)
+        {
+            missiles = 3;
+        }
+        if(missiles < 0)
+        {
+            missiles = 0;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Blaster"))
         {
             haveBlaster = true;
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("FireBall"))
+        {
+            missiles += 1;
+            missilesTMP.text = $"Missiles: {+missiles} / 3";
+
+            Destroy(other.gameObject);
         }
     }
     private void GetInput()
@@ -363,6 +422,8 @@ public class PlayerActions : MonoBehaviour
         attackAction = attack.ToInputAction();
         attackAction.Enable();
 
+        fireBallAction = fireBall.ToInputAction();
+        fireBallAction.Enable();
         /*dashActionUp = dashUp.ToInputAction();
         dashActionUp.Enable();
 
@@ -382,6 +443,7 @@ public class PlayerActions : MonoBehaviour
         moveYAction.Disable();
         dashAction.Disable();
         attackAction.Disable();
+        fireBallAction.Disable();
         /*dashActionUp.Disable();
         dashActionDown.Disable();
         dashActionRight.Disable();

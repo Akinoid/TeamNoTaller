@@ -4,7 +4,7 @@ public class Invisible : MonoBehaviour
 {
     [SerializeField] private GameObject centerOfGame;
     [SerializeField] private PlayerLife playerLife;
-    [SerializeField] private bool isInvisible;
+    [SerializeField] public bool isInvisible;
     [SerializeField] private float timerInvisible;
     void Start()
     {
@@ -58,6 +58,7 @@ public class Invisible : MonoBehaviour
         {
             timerInvisible = 0;
             isInvisible = true;
+            Destroy(other.gameObject);
         }
     }
 }

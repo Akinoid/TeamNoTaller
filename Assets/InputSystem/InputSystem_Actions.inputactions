@@ -1236,6 +1236,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FireBall",
+                    "type": "Button",
+                    "id": "9d6d4e40-0715-4dd3-b7f7-b75b8b6bc42f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1324,6 +1333,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "PlayerAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5411f851-f7a2-4b38-895f-37918178b8fa",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "FireBall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

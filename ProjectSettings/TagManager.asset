@@ -11,6 +11,7 @@ TagManager:
   - Bubble
   - Invisible
   - InvisibleState
+  - FireBall
   layers:
   - Default
   - TransparentFX
