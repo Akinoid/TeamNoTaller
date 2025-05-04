@@ -22,6 +22,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float activeTimer;
     private Vector3 entryTargetPos;
 
+    private PlayerActions playerActions;
     protected virtual void Start()
     {
         currentHealth = health;
@@ -35,6 +36,8 @@ public abstract class EnemyBase : MonoBehaviour
 
         activeTimer = activeLifetime;
         Debug.Log($"{name} START – state=Entering at {transform.position} → {entryTargetPos}");
+
+        playerActions = GameObject.Find("Player").GetComponent<PlayerActions>();
     }
 
     protected virtual void Update()
@@ -124,9 +127,13 @@ public abstract class EnemyBase : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerBullet"))
+        if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.baseShoot)
         {
-            TakeDamage(50f); 
+            TakeDamage(20f); 
+        }
+        if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.blasterShoot)
+        {
+            TakeDamage(40f);
         }
     }
     protected virtual void Die()

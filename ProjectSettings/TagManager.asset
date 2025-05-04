@@ -9,6 +9,8 @@ TagManager:
   - PlayerBullet
   - Blaster
   - Bubble
+  - Invisible
+  - InvisibleState
   layers:
   - Default
   - TransparentFX

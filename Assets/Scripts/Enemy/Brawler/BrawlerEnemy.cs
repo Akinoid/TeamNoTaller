@@ -8,13 +8,14 @@ public class BrawlerEnemy : EnemyBase
     public float attackRange = 1f;
     public float attackDelay = 1f;
     public GameObject dangerZonePrefab;
+    private GameObject playerGO;
 
-    private Transform playerTransform;
+    [SerializeField]private Transform playerTransform;
     private bool isCharging;
 
     protected override void OnEnterComplete()
     {
-        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null)
         {
             playerTransform = playerGO.transform;
@@ -29,6 +30,8 @@ public class BrawlerEnemy : EnemyBase
     protected override void Update()
     {
         base.Update(); // maneja los estados Entering/Active/Exiting
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = playerGO.transform;
         if (currentState == State.Active && playerTransform != null)
         {
             FollowAndMaybeAttack();

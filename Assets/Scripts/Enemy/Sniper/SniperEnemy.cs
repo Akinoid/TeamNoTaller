@@ -18,11 +18,13 @@ public class SniperEnemy : EnemyBase
     private Vector3 lastPlayerPosition;
     private bool hasStartedAiming = false;
 
+    private GameObject pgo;
+
     protected override void Start()
     {
         base.Start();
 
-        var pgo = GameObject.FindGameObjectWithTag("Player");
+        pgo = GameObject.FindGameObjectWithTag("Player");
         if (pgo != null) playerTransform = pgo.transform;
         else Debug.LogError("SniperEnemy: No se encontró objeto con tag 'Player'");
 
@@ -36,7 +38,8 @@ public class SniperEnemy : EnemyBase
     protected override void Update()
     {
         base.Update();
-
+        pgo = GameObject.FindGameObjectWithTag("Player");
+        if (pgo != null) playerTransform = pgo.transform;
         if (currentState == State.Entering && playerTransform != null && !hasStartedAiming)
         {
             hasStartedAiming = true;

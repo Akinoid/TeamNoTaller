@@ -12,9 +12,11 @@ public class GranadeEnemy : EnemyBase
 
     private Transform playerTransform;
 
+    private GameObject playerGO;
+
     protected override void OnEnterComplete()
     {
-        var playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null)
         {
             playerTransform = playerGO.transform;
@@ -25,7 +27,11 @@ public class GranadeEnemy : EnemyBase
             Debug.LogError("GrenadeEnemy: Player not found!");
         }
     }
-
+    protected override void Update()
+    {
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = playerGO.transform;
+    }
     private IEnumerator AttackRoutine()
     {
         for (int i = 0; i < attackRepeats; i++)

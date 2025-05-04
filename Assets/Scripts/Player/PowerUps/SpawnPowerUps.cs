@@ -7,6 +7,11 @@ public class SpawnPowerUps : MonoBehaviour
     [SerializeField] private List<GameObject> powerUps;
     [SerializeField] private GameObject objectToSpawn;
     [SerializeField] private Vector3 pos;
+    [SerializeField] private Vector2 pos1;
+    [SerializeField] private Vector2 pos2;
+    [SerializeField] private Vector2 pos3;
+    [SerializeField] private Vector2 pos4;
+    [SerializeField] private Vector2 pos5;
     private Transform spawnTransform;
     [Header("Couroutine")]
     [SerializeField] private float timeBetweenSpawn;
@@ -17,6 +22,9 @@ public class SpawnPowerUps : MonoBehaviour
     [Header("Random Values")]
     [SerializeField] private int  index;
     [SerializeField] private int  canSpawn;
+    [SerializeField] private float changePos;
+    [SerializeField] private float changePosX;
+    [SerializeField] private float changePosY;
     [SerializeField] private float posX;
     [SerializeField] private float posY;
     [Header("Bools Checks")]
@@ -41,13 +49,17 @@ public class SpawnPowerUps : MonoBehaviour
 
     void Update()
     {
-        ChooseObjectToSpawn();
-        ChoosePositionToSpawn();
-        TimerToSpawn();
-        if (startSpawn)
+        if(powerUps.Count > 0)
         {
-            SpawnTime();
+            ChooseObjectToSpawn();
+            ChoosePositionToSpawn();
+            TimerToSpawn();
+            if (startSpawn)
+            {
+                SpawnTime();
+            }
         }
+        
     }
 
     private void SpawnTime()
@@ -117,13 +129,46 @@ public class SpawnPowerUps : MonoBehaviour
     }
     private void ChoosePositionToSpawn()
     {
+        pos1 = new Vector2(-6, 8);
+        pos2 = new Vector2(6, 8);
+        pos3 = new Vector2(0, 0);
+        pos4 = new Vector2(6, -8);
+        pos5 = new Vector2(-6, -8);
         if (changePosition)
         {
-            posX = Random.Range(-15, 15);
-            posY = Random.Range(-14, 14);
+            changePos = Random.Range(1, 6);
+            ChangePos();
+            posX = changePosX;
+            posY = changePosY;
             changePosition = false;
         }
         pos = new Vector3(posX, posY, spawnTransform.position.z);
+    }
+    private void ChangePos()
+    {
+        switch (changePos)
+        {
+            case 1:
+                changePosX = pos1.x;
+                changePosY = pos1.y;
+                break;
+            case 2:
+                changePosX = pos2.x;
+                changePosY = pos2.y;
+                break;
+            case 3:
+                changePosX = pos3.x;
+                changePosY = pos3.y;
+                break;
+            case 4:
+                changePosX = pos4.x;
+                changePosY = pos4.y;
+                break;
+            case 5:
+                changePosX = pos5.x;
+                changePosY = pos5.y;
+                break;
+        }
     }
     private void SpawnPUps()
     {

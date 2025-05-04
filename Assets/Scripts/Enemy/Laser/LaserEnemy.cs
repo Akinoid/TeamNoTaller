@@ -19,11 +19,13 @@ public class LaserEnemy : EnemyBase
     private Vector3 initialPosition;
     private float moveTimer;
 
+    private GameObject playerGO;
+
     protected override void Start()
     {
         base.Start();
 
-        var playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null) playerTransform = playerGO.transform;
         else Debug.LogError("LaserEnemy: No se encontró jugador");
 
@@ -66,10 +68,11 @@ public class LaserEnemy : EnemyBase
             laserRenderer.enabled = active;
     }
 
-    void Update()
+    protected override void Update()
     {
         base.Update();
-
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = playerGO.transform;
         if (currentState == State.Active)
         {
             MoveByPattern();

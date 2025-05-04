@@ -56,7 +56,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float delayAttack;
     [SerializeField] private float baseDelayAttack;
     [SerializeField] private float blasterDelayAttack;
-    [SerializeField] private GunType gunType;
+    [SerializeField] public GunType gunType;
     private float lastAttackTime;
 
     public enum MovementState { moving, dashing}

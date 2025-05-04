@@ -19,15 +19,21 @@ public class AmbusherEnemy : EnemyBase
     private Vector3 chargeTarget;
     private bool isExiting = false;
 
+    private GameObject playerGO;
+
     protected override void Start()
     {
         base.Start();
         health = 30f;
 
-        var playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null) playerTransform = playerGO.transform;
     }
-
+    protected override void Update()
+    {
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = playerGO.transform;
+    }
     protected override void HandleEntering()
     {
         if (dangerSymbolInstance == null && playerTransform != null)
