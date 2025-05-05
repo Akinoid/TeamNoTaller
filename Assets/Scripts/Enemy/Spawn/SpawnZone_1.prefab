@@ -66,9 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3bdd84a0ae291458c5b08b717083e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternSequences:
-  - label: 1st Spawns
-    pattern: {fileID: 11400000, guid: 7f826f6ba2aeec444a964af6fe55cbd5, type: 2}
-    repetitions: 2
-    delayBetweenRepetitions: 4
-  enemiesToSpawn: []
+  enemiesToSpawn:
+  - enemyPrefab: {fileID: 0}
+    spawnChance: 0

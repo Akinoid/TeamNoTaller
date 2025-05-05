@@ -13,6 +13,7 @@ public class Shield : MonoBehaviour
     [SerializeField] private TMP_Text shieldTMP;
     [SerializeField] private float shield, shieldMax, timer;
     private PlayerLife playerLife;
+    private PlayerActions playerActions;
     private GameObject canvas, shieldBarGameObject;
     void Start()
     {
@@ -23,6 +24,7 @@ public class Shield : MonoBehaviour
         shieldBarGameObject = shieldHUD.transform.Find("ShieldBar").gameObject;
         shieldTMP = shieldBarGameObject.transform.Find("ShieldTMP").GetComponent<TMP_Text>();
         playerLife = gameObject.GetComponent<PlayerLife>();
+        playerActions = gameObject.GetComponent<PlayerActions>();
     }
 
     void Update()
@@ -59,9 +61,11 @@ public class Shield : MonoBehaviour
         {
             timer = 0;
             shield -= damage;
+            Money.startRest = true;
             shieldBar.fillAmount = shield / shieldMax;
             shieldTMP.text = $"Shield = {+shield}";
             getDamaged = getDamage;
+            Money.startRest = false;
             canGetDamage = false;
         }
         
@@ -73,9 +77,13 @@ public class Shield : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if (timer >= 1)
+        if (timer >= 1 && playerActions.state != PlayerActions.MovementState.dashing)
         {
             canGetDamage = true;
+        }
+        if(playerActions.state == PlayerActions.MovementState.dashing)
+        {
+            canGetDamage = false;
         }
     }
     private void ActivateShield()
@@ -94,6 +102,7 @@ public class Shield : MonoBehaviour
         {
             shield = shieldMax;
             haveShield = true;
+            Money.score += 150 * Money.multiplier;
             Destroy(other.gameObject);
         }
     }

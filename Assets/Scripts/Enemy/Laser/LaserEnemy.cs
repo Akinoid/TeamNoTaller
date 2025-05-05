@@ -116,5 +116,9 @@ public class LaserEnemy : EnemyBase
 
         transform.position = initialPosition + offset;
     }
-   
+    protected override void Die()
+    {
+        Money.score += 150 * Money.multiplier;
+        base.Die();
+    }
 }

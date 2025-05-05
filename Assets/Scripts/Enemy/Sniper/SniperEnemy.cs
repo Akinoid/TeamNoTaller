@@ -112,4 +112,9 @@ public class SniperEnemy : EnemyBase
     {
         // Nada aquí, ya que ahora el disparo lo controla la corrutina
     }
+    protected override void Die()
+    {
+        Money.score += 50 * Money.multiplier;
+        base.Die();
+    }
 }
