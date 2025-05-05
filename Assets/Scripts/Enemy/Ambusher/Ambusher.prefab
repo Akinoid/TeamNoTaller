@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entrySpeed: 5
   entryZStart: -25
-  entryZTarget: 0
+  entryZTarget: 25
   activeLifetime: 1000000
   exitSpeed: 5
   health: 100
@@ -138,8 +138,8 @@ MonoBehaviour:
   dangerSymbolPrefab: {fileID: 8676825446193495824, guid: a42f0b0a2f68afc48ae999a4fed792d6, type: 3}
   exitFlashDuration: 1
   flashColor: {r: 1, g: 0, b: 0, a: 1}
-  chargeDistanceBehind: 10
-  positionInFrontOfPlayer: 5
+  chargeDistanceBehind: 0
+  positionInFrontOfPlayer: 25
   attackHitRadius: 1
   activeTimeBeforeExit: 10
 --- !u!114 &-9186074706519897937

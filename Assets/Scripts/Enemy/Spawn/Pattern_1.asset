@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a79d2e472ea66ba4e89bcd79a376d1ad, type: 3}
   m_Name: Pattern_1
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPattern
+  spawnZones:
+  - {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
   spawnSequence:
+  - enemyPrefab: {fileID: 3153654091589772060, guid: 7cdd43c27eac34e45b75507bb7c38f1b, type: 3}
+    delayAfterPrevious: 1
   - enemyPrefab: {fileID: 7297745183364200619, guid: 5fe8fe5bdf591a54ca59d09e4479cbcd, type: 3}
-    delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 403333670997202337, guid: 2463c94a1268c9f4f93afdf46cb1a503, type: 3}
-    delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 403333670997202337, guid: 2463c94a1268c9f4f93afdf46cb1a503, type: 3}
-    delayAfterPrevious: 0
+    delayAfterPrevious: 5
+  - enemyPrefab: {fileID: 7297745183364200619, guid: 5fe8fe5bdf591a54ca59d09e4479cbcd, type: 3}
+    delayAfterPrevious: 5

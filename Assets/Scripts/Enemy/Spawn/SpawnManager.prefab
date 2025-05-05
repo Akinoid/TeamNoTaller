@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0a750ac26be93438a1f735969e03a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnZones:
-  - {fileID: 0}
+  patternSequences:
+  - label: Spawn 1
+    pattern: {fileID: 11400000, guid: 766ae11e71b8e464e8b04aaabe382737, type: 2}
+    repetitions: 2
+    delayBetweenRepetitions: 0
