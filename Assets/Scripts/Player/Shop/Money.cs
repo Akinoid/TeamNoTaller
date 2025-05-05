@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 public class Money : MonoBehaviour
 {
     public static float money;
@@ -12,8 +13,9 @@ public class Money : MonoBehaviour
    [SerializeField] public static bool startRest;
    [SerializeField] private bool test;
     private Coroutine coroutine;
+    [SerializeField] private TMP_Text scoreTMP;
 
-    public List<Money> combo = new List<Money>();
+    public static List<int> combo = new List<int>();
     private PlayerLife playerLife;
 
     void Start()
@@ -26,6 +28,7 @@ public class Money : MonoBehaviour
     void Update()
     {
         ComboScore();
+        ScoreText();
         if (test)
         {
             Test();
@@ -108,6 +111,15 @@ public class Money : MonoBehaviour
         }
     }
 
+
+    private void ScoreText()
+    {
+        if(scoreTMP != null)
+        {
+            scoreTMP.text = $"Score: {score}";
+        }
+        
+    }
     private void Test()
     {
         Debug.Log(multiplier);

@@ -98,4 +98,9 @@ public class BrawlerEnemy : EnemyBase
         while (!done) yield return null;
         isCharging = false;
     }
+    protected override void Die()
+    {
+        Money.score += 100 * Money.multiplier;
+        base.Die();
+    }
 }

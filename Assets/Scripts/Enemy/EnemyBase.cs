@@ -95,6 +95,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        Money.combo.Add(1);
         currentHealth -= amount;
         if (currentHealth <= 0)
         {

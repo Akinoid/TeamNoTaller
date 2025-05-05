@@ -94,6 +94,7 @@ public class Shield : MonoBehaviour
         {
             shield = shieldMax;
             haveShield = true;
+            Money.score += 150 * Money.multiplier;
             Destroy(other.gameObject);
         }
     }

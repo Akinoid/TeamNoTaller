@@ -133,5 +133,9 @@ public class AmbusherEnemy : EnemyBase
     }
 
     protected override void OnEnterComplete() { /* Entry is handled with coroutine */ }
-
+    protected override void Die()
+    {
+        Money.score += 200 * Money.multiplier;
+        base.Die();
+    }
 }
