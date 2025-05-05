@@ -32,8 +32,8 @@ public class LaserBomb : MonoBehaviour
     void Explode()
     {
         exploded = true;
-        SpawnLaser(Vector3.forward);
-        SpawnLaser(Vector3.back);
+        SpawnLaser(Vector3.down);
+        SpawnLaser(Vector3.up);
         SpawnLaser(Vector3.left);
         SpawnLaser(Vector3.right);
         Destroy(gameObject); 
