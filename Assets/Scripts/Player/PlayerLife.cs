@@ -46,6 +46,7 @@ public class PlayerLife : MonoBehaviour
                 startTimerHit = true;
                 if (getHit && !haveBubble)
                 {
+                    Money.startRest = true;
                     state = State.Critic;
                     timerBase = 0;
                 }
@@ -53,6 +54,7 @@ public class PlayerLife : MonoBehaviour
             case State.Critic:
                 if (timerHit >= 0.2f)
                 {
+                    Money.startRest = false;
                     unhit = true;
                 }
                 if (unhit)
