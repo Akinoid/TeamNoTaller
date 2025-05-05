@@ -1,14 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class SpawnZone : MonoBehaviour
 {
-    public SpawnPatternSequence[] patternSequences;
-
-    private int currentPatternIndex = 0;
-    private int currentRepetition = 0;
-
     public EnemySpawnData[] enemiesToSpawn;
 
     public Vector3 GetRandomPointInZone()
@@ -42,42 +36,11 @@ public class SpawnZone : MonoBehaviour
         return null;
     }
 
-    public void StartPatternSequence()
+    public void SpawnEnemy(GameObject enemyPrefab)
     {
-        if (patternSequences.Length > 0)
-            StartCoroutine(RunSequence());
-    }
-
-    private IEnumerator RunSequence()
-    {
-        while (currentPatternIndex < patternSequences.Length)
-        {
-            var current = patternSequences[currentPatternIndex];
-            for (int i = 0; i < current.repetitions; i++)
-            {
-                yield return StartCoroutine(RunSpawnPattern(current.pattern));
-                yield return new WaitForSeconds(current.delayBetweenRepetitions);
-            }
-
-            currentPatternIndex++;
-        }
-
-        Debug.Log($"{gameObject.name}: Finished all pattern sequences.");
-    }
-
-    private IEnumerator RunSpawnPattern(SpawnPattern pattern)
-    {
-        foreach (var entry in pattern.spawnSequence)
-        {
-            if (entry.enemyPrefab != null)
-            {
-                Vector3 spawnPoint = GetRandomPointInZone();
-                Instantiate(entry.enemyPrefab, spawnPoint, Quaternion.identity);
-                Debug.Log($"Pattern spawn: {entry.enemyPrefab.name} at {spawnPoint}");
-            }
-
-            yield return new WaitForSeconds(entry.delayAfterPrevious);
-        }
+        Vector3 spawnPoint = GetRandomPointInZone();
+        Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        Debug.Log($"Spawned {enemyPrefab.name} at {spawnPoint}");
     }
 
     void OnDrawGizmos()
