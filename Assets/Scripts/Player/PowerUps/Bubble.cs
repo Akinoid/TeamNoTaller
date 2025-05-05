@@ -3,9 +3,10 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     private PlayerLife playerLife;
-    [SerializeField] public float timerBase, timerCritic, timerHit, timerGetHit;
-    [SerializeField] public bool canDied, unhit, startTimerHit;
-    [SerializeField] public bool getHitBubble, haveElectricBuff;
+    [SerializeField] private float timerBase, timerCritic, timerHit, timerGetHit;
+    [SerializeField] private bool unhit, startTimerHit;
+    [SerializeField] public bool getHitBubble;
+    [SerializeField] public static bool haveElectricBuff;
     [SerializeField] public State state;
     public enum State
     {
@@ -39,7 +40,6 @@ public class Bubble : MonoBehaviour
                 timerHit = 0;
                 timerGetHit = 0;
                 unhit = false;
-                canDied = false;
                 startTimerHit = true;
                 if (getHitBubble && !haveElectricBuff)
                 {

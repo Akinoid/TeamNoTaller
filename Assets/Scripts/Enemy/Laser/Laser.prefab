@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 8251533997986252774}
   - component: {fileID: 2364810598864925386}
   - component: {fileID: 3617753046619147821}
+  - component: {fileID: -8436084659203150123}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -273,9 +274,19 @@ MonoBehaviour:
   explosionDamage: 50
   activeTimer: 0
   laserRenderer: {fileID: 4333003990786433718}
-  laserCollider: {fileID: 3828141177277362820, guid: 72779f1727c3a7d4aa495fa0b1dfe1fc, type: 3}
-  activeTime: 10
-  inactiveTime: 10
-  moveSpeed: 2
-  patternAmplitude: 3
-  patternFrequency: 1
+  laserOnDuration: 10
+  laserOffDuration: 10
+  movementSpeed: 2
+  movementRadius: 3
+--- !u!114 &-8436084659203150123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369791018788437812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

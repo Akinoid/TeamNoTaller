@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1852738873882089015}
   - component: {fileID: 9133937819541286560}
   - component: {fileID: 3882044159455989562}
+  - component: {fileID: 4916233935175404630}
   m_Layer: 0
   m_Name: Enemy Melee
   m_TagString: Enemy
@@ -134,3 +135,16 @@ MonoBehaviour:
   attackRange: 1
   attackDelay: 1
   dangerZonePrefab: {fileID: 1027311699457903532, guid: 0814f2d19a19f95488b96f703a239b3a, type: 3}
+  playerTransform: {fileID: 0}
+--- !u!114 &4916233935175404630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403333670997202337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

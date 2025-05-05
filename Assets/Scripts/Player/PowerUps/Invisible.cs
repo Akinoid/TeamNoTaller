@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Invisible : MonoBehaviour
 {
+    private PlayerLife playerLife;
     [SerializeField] private GameObject centerOfGame;
-    [SerializeField] private PlayerLife playerLife;
     [SerializeField] public bool isInvisible;
-    [SerializeField] private float timerInvisible;
+    [SerializeField] private float timerInvisible, maxTimerInvisible;
     void Start()
     {
         isInvisible = false;
@@ -42,7 +42,7 @@ public class Invisible : MonoBehaviour
     private void TimeInvisible()
     {
         timerInvisible += Time.deltaTime;
-        if(timerInvisible >= 10f)
+        if(timerInvisible >= maxTimerInvisible)
         {
             isInvisible = false;
         }

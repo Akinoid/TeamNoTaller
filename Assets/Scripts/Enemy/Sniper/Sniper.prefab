@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4734030814404797247}
   - component: {fileID: 1740120755373280398}
   - component: {fileID: 6239383350524641263}
+  - component: {fileID: 1192825416715516284}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Enemy
@@ -140,3 +141,15 @@ MonoBehaviour:
   beamRange: 100
   totalAimTime: 3
   markerFollowTime: 2
+--- !u!114 &1192825416715516284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7297745183364200619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -129,11 +129,27 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.baseShoot)
         {
-            TakeDamage(20f); 
+            TakeDamage(playerActions.baseShootDmg); 
         }
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.blasterShoot)
         {
-            TakeDamage(40f);
+            TakeDamage(playerActions.blasterShootDmg);
+        }
+        if (other.CompareTag("Missile"))
+        {
+            TakeDamage(currentHealth);
+        }
+        if (other.CompareTag("Explosion"))
+        {
+            TakeDamage(playerActions.missileExplosionDmg);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && playerActions.playerLife.haveBubble && Bubble.haveElectricBuff)
+        {
+            TakeDamage(playerActions.electricBubbleDmg);
         }
     }
     protected virtual void Die()

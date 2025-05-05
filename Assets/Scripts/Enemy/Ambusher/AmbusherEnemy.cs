@@ -31,6 +31,7 @@ public class AmbusherEnemy : EnemyBase
     }
     protected override void Update()
     {
+        base.Update();
         playerGO = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerGO.transform;
     }

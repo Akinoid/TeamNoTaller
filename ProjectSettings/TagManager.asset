@@ -12,6 +12,8 @@ TagManager:
   - Invisible
   - InvisibleState
   - FireBall
+  - Missile
+  - Explosion
   layers:
   - Default
   - TransparentFX

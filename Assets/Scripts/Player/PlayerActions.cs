@@ -26,7 +26,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] public float attackfloat;
 
     private Rigidbody rb;
-    private PlayerLife playerLife;
+    public PlayerLife playerLife;
     private Invisible invisible;
     [Header("Movement Variables")]
     [SerializeField] private float moveSpeed;
@@ -64,10 +64,19 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float blasterDelayAttack;
     [SerializeField] public GunType gunType;
     private float lastAttackTime;
-    [SerializeField] private GameObject fireBallObject;
+
+    [Header("Missiles Variables")]
+    [SerializeField] private GameObject fireBallAttack;
     [SerializeField] private float missiles;
+    [SerializeField] private float maxMissiles;
     private GameObject missilesHUD;
     private TMP_Text missilesTMP;
+
+    [Header("Damage Variables")]
+    public float baseShootDmg;
+    public float blasterShootDmg;
+    public float missileExplosionDmg;
+    public float electricBubbleDmg;
 
     public enum MovementState { moving, dashing}
     public enum GunType { baseShoot, blasterShoot}
@@ -78,6 +87,7 @@ public class PlayerActions : MonoBehaviour
         meshRenderer = gameObject.GetComponent<Renderer>();
         playerLife = gameObject.GetComponent<PlayerLife>();
         invisible = gameObject.GetComponent<Invisible>();
+
         missilesTMP = GameObject.Find("RocketTMP").GetComponent<TMP_Text>();
         shootPoint = transform.Find("ShootPoint").gameObject;
         playerInputMap = playerInputAsset.FindActionMap("PlayerActions");
@@ -96,6 +106,8 @@ public class PlayerActions : MonoBehaviour
         attackAction = attack.ToInputAction();
         fireBallAction = fireBall.ToInputAction();
         fireBallAction.performed += SpawnFireBall;
+        missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+
     }
 
     void Update()
@@ -369,21 +381,23 @@ public class PlayerActions : MonoBehaviour
     {
         if(missiles > 0)
         {
-            Instantiate(fireBallObject, shootPoint.transform.position, shootPoint.transform.rotation);
+            Instantiate(fireBallAttack, shootPoint.transform.position, fireBallAttack.transform.rotation);
             missiles -= 1;
-            missilesTMP.text = $"Missiles: {+missiles} / 3";
+            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
         }
     }
     
     private void LimitMissiles()
     {
-        if(missiles > 3)
+        if(missiles > maxMissiles)
         {
-            missiles = 3;
+            missiles = maxMissiles;
+            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
         }
         if(missiles < 0)
         {
             missiles = 0;
+            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
         }
     }
 
