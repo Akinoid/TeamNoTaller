@@ -16,13 +16,11 @@ public class Money : MonoBehaviour
     [SerializeField] private TMP_Text scoreTMP;
 
     public static List<int> combo = new List<int>();
-    private PlayerLife playerLife;
 
     void Start()
     {
         multiplier = 1;
         coroutine = StartCoroutine(IESpawnPowerUps(combo.Count, timeBetweenRest));
-        playerLife = GameObject.Find("Player").GetComponent<PlayerLife>();
     }
 
     void Update()
