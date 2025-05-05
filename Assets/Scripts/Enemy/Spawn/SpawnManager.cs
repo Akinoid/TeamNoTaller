@@ -13,19 +13,37 @@ public class SpawnManager : MonoBehaviour
     {
         foreach (var sequence in patternSequences)
         {
+            Debug.Log("check 1");
             for (int i = 0; i < sequence.repetitions; i++)
             {
-
+                Debug.Log("Check2");
+                
                 foreach (var zone in sequence.pattern.spawnZones)
                 {
+                    Debug.Log("check3");
                     if (zone != null)
                     {
-
-                        GameObject enemy = zone.GetRandomEnemy();
-                        if (enemy != null)
+                        foreach (var e in sequence.pattern.spawnSequence)
                         {
-                            zone.SpawnEnemy(enemy);
-                        }
+                            Debug.Log("check4");
+
+                            GameObject enemy = e.enemyPrefab;
+                            if (enemy != null)
+                            {
+                                Debug.Log("check5");
+                                zone.SpawnEnemy(enemy);
+                            }
+                            else
+                            {
+                                Debug.Log("enemy = null");
+                            }
+                            
+                        }                       
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("zone = null");
                     }
                 }
 

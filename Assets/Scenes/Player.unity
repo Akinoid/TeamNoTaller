@@ -207,9 +207,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2041725146486686, guid: e6989ab542d60eb4eb86d69d45f39e64, type: 3}
-      propertyPath: 'spawnZones.Array.data[0]'
-      value: 
-      objectReference: {fileID: 837259008}
+      propertyPath: patternSequences.Array.data[0].delayBetweenRepetitions
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3892773462251057322, guid: e6989ab542d60eb4eb86d69d45f39e64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.866847
@@ -1101,17 +1101,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833445617}
   m_CullTransparentMesh: 1
---- !u!114 &837259008 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
-  m_PrefabInstance: {fileID: 1759356763}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3bdd84a0ae291458c5b08b717083e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1112685370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,6 +1911,10 @@ PrefabInstance:
       value: SpawnZone_1
       objectReference: {fileID: 0}
     - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: enemiesToSpawn.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: patternSequences.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1938,8 +1931,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0aaebb313bdf75f4c9c9c86714fe1a24, type: 2}
     - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].enemyPrefab
+      value: 
+      objectReference: {fileID: 3153654091589772060, guid: 7cdd43c27eac34e45b75507bb7c38f1b, type: 3}
+    - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].spawnChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[1].enemyPrefab
+      value: 
+      objectReference: {fileID: 7297745183364200619, guid: 5fe8fe5bdf591a54ca59d09e4479cbcd, type: 3}
+    - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[2].enemyPrefab
+      value: 
+      objectReference: {fileID: 7297745183364200619, guid: 5fe8fe5bdf591a54ca59d09e4479cbcd, type: 3}
+    - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: patternSequences.Array.data[1].repetitions
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].delayAfterPrevious
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: patternSequences.Array.data[0].delayBetweenRepetitions
@@ -1967,7 +1980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4728269636582463172, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4728269636582463172, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: m_LocalRotation.w
