@@ -14,6 +14,7 @@ public class Money : MonoBehaviour
    [SerializeField] private bool test;
     private Coroutine coroutine;
     [SerializeField] private TMP_Text scoreTMP;
+    [SerializeField] private TMP_Text moneyTMP;
 
     public static List<int> combo = new List<int>();
 
@@ -115,6 +116,10 @@ public class Money : MonoBehaviour
         if(scoreTMP != null)
         {
             scoreTMP.text = $"Score: {score}";
+        }
+        if(moneyTMP != null)
+        {
+            moneyTMP.text = $"Money: {money}";
         }
         
     }

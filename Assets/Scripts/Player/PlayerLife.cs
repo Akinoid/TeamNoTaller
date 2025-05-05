@@ -75,7 +75,7 @@ public class PlayerLife : MonoBehaviour
 
                 if (canDied && getHit && !haveBubble)
                 {
-                    Money.money = Money.score;
+                    Money.money += Money.score;
                     Money.score = 0;
                     SceneManager.LoadScene("Player");
                     Debug.Log("Game Over");
