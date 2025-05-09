@@ -77,7 +77,7 @@ public class PlayerLife : MonoBehaviour
                 {
                     Money.money += Money.score;
                     Money.score = 0;
-                    SceneManager.LoadScene("Player");
+                    SceneManager.LoadScene("StartMenu");
                     Debug.Log("Game Over");
                     getHit = false;
                 }
