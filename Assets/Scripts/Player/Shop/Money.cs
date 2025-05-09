@@ -15,6 +15,7 @@ public class Money : MonoBehaviour
     private Coroutine coroutine;
     [SerializeField] private TMP_Text scoreTMP;
     [SerializeField] private TMP_Text moneyTMP;
+    [SerializeField] private TMP_Text multiplierTMP;
 
     public static List<int> combo = new List<int>();
 
@@ -121,11 +122,16 @@ public class Money : MonoBehaviour
         {
             moneyTMP.text = $"Money: {money}";
         }
+        if(multiplierTMP != null)
+        {
+            multiplierTMP.text = $"Score x{multiplier}";
+        }
         
     }
     private void Test()
     {
         Debug.Log(multiplier);
+        Debug.Log(combo.Count);
         test = false;
     }
 }

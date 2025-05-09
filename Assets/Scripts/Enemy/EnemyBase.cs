@@ -95,7 +95,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        Money.combo.Add(1);
+        
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -155,6 +155,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Die()
     {
+        Money.combo.Add(+1);
         Destroy(gameObject);
     }
 
