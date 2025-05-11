@@ -120,7 +120,7 @@ public class Money : MonoBehaviour
         }
         if(moneyTMP != null)
         {
-            moneyTMP.text = $"Money: {money}";
+            moneyTMP.text = $"Money: ${money}";
         }
         if(multiplierTMP != null)
         {
