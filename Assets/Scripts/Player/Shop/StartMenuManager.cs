@@ -8,9 +8,9 @@ public class StartMenuManager : MonoBehaviour
 
     private void Start()
     {
-        startMenuPanel = GameObject.Find("StartMenuPanel");
-        shopPanel = GameObject.Find("ShopPanel");
-        controlsPanel = GameObject.Find("ControlsPanel");
+        startMenuPanel = transform.Find("StartMenuPanel").gameObject;
+        shopPanel = transform.Find("ShopPanel").gameObject;
+        controlsPanel = transform.Find("ControlsPanel").gameObject;
         shopPanel.SetActive(false);
         controlsPanel.SetActive(false);
         startMenuPanel.SetActive(true);

@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 public class Money : MonoBehaviour
 {
+
+    [SerializeField] private bool hackMoney;
     public static float money;
     public static float score;
     public static float multiplier;
@@ -32,6 +34,12 @@ public class Money : MonoBehaviour
         if (test)
         {
             Test();
+        }
+        if (hackMoney && Input.GetKeyDown(KeyCode.M))
+        {
+            HackMoney();
+            ScoreText();
+
         }
     }
 
@@ -130,8 +138,14 @@ public class Money : MonoBehaviour
     }
     private void Test()
     {
-        Debug.Log(multiplier);
-        Debug.Log(combo.Count);
+        //Debug.Log(multiplier);
+        //Debug.Log(combo.Count);
+        Debug.Log(money);
         test = false;
+    }
+
+    private void HackMoney()
+    {
+        money += 5000;
     }
 }

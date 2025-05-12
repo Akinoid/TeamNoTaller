@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 public class SpawnPowerUps : MonoBehaviour
 {
+    [Header("ObjectsToAdd")]
+    [SerializeField] private GameObject fireball;
+    [SerializeField] private GameObject shield;
+    [SerializeField] private GameObject bubble;
+    [SerializeField] private GameObject sigil;
+    [SerializeField] private GameObject blaster;
     [Header("Object Features")]
     [SerializeField] private List<GameObject> powerUps;
     [SerializeField] private GameObject objectToSpawn;
@@ -37,6 +43,33 @@ public class SpawnPowerUps : MonoBehaviour
     [SerializeField] private float timerSpawn;
     [SerializeField] private float timer;
 
+    private void Awake()
+    {
+        AddObjectsToList();
+    }
+    private void AddObjectsToList()
+    {
+        if (Shop.fireballBuyed)
+        {
+            powerUps.Add(fireball);
+        }
+        if (Shop.shieldBuyed)
+        {
+            powerUps.Add(shield);
+        }
+        if (Shop.bubbleBuyed)
+        {
+            powerUps.Add(bubble);
+        }
+        if (Shop.sigilBuyed)
+        {
+            powerUps.Add(sigil);
+        }
+        if (Shop.blasterBuyed)
+        {
+            powerUps.Add(blaster);
+        }
+    }
     void Start()
     {
         coroutine = StartCoroutine(IESpawnPowerUps(PUpsAmount, timeBetweenSpawn));
