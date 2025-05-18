@@ -23,6 +23,8 @@ public class SniperEnemy : EnemyBase
     protected override void Start()
     {
         base.Start();
+        health = 40f;
+        base.currentHealth = health;
 
         pgo = GameObject.FindGameObjectWithTag("Player");
         if (pgo != null) playerTransform = pgo.transform;
@@ -94,7 +96,7 @@ public class SniperEnemy : EnemyBase
             {
                 Debug.Log("SniperEnemy: Player HIT by beam!");
                 DamagePlayer(hit.collider.gameObject);
-                // Aquí puedes aplicar daño si tienes un sistema de salud
+                
             }
         }
 
@@ -106,6 +108,21 @@ public class SniperEnemy : EnemyBase
         }
 
         Debug.Log("SniperEnemy: Fired beam towards " + targetPos);
+    }
+    protected override void DamagePlayer(GameObject player)
+    {
+        PlayerLife life = player.GetComponent<PlayerLife>();
+
+        Shield shield = player.GetComponent<Shield>();
+        if (shield.haveShield)
+        {
+            shield.GetDamage(50, true);
+        }
+        else if (life != null && life.canGetHit && !shield.haveShield)
+        {
+            life.getHit = true;
+            Debug.Log("Player got Hit");
+        }
     }
 
     protected override void OnEnterComplete()

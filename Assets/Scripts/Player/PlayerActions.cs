@@ -406,14 +406,14 @@ public class PlayerActions : MonoBehaviour
         {
             haveBlaster = true;
             Money.score += 150 * Money.multiplier;
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
         if (other.CompareTag("FireBall"))
         {
             missiles += 1;
             missilesTMP.text = $"Missiles: {+missiles} / 3";
             Money.score += 150 * Money.multiplier;
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
     }
     private void GetInput()

@@ -17,7 +17,7 @@ public class ExplosionArea : MonoBehaviour
         {
             alreadyHit = true;
             Debug.Log("Player hit by explosion!");
-            DamageUtils.DamagePlayer(other.gameObject);
+           
         }
     }
 }

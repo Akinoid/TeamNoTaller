@@ -52,7 +52,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 32, y: 32, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2770978893828549091
 MonoBehaviour:
@@ -66,6 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3bdd84a0ae291458c5b08b717083e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToSpawn:
-  - enemyPrefab: {fileID: 0}
-    spawnChance: 0
+  enemiesToSpawn: []

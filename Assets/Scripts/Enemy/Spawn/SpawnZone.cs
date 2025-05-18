@@ -11,6 +11,7 @@ public class SpawnZone : MonoBehaviour
         var box = GetComponent<BoxCollider>();
         Vector3 center = transform.position + box.center;
         Vector3 size = box.size;
+        Debug.Log(box.size);
 
         float x = Random.Range(center.x - size.x / 2, center.x + size.x / 2);
         float y = Random.Range(center.y - size.y / 2, center.y + size.y / 2);

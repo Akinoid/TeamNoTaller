@@ -37,11 +37,11 @@ public class LaserEnemy : EnemyBase
     {
         initialPosition = transform.position;
 
-        // Elegimos un patrón de movimiento aleatorio
+        
         currentPattern = (MovementPattern)Random.Range(0, System.Enum.GetValues(typeof(MovementPattern)).Length);
         Debug.Log("LaserEnemy: Patrón seleccionado -> " + currentPattern);
 
-        // Comienza el láser
+       
         if (laserRoutine == null)
             laserRoutine = StartCoroutine(LaserCycle());
     }

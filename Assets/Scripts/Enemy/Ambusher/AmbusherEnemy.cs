@@ -25,9 +25,11 @@ public class AmbusherEnemy : EnemyBase
     {
         base.Start();
         health = 30f;
+        base.currentHealth = health;
 
         playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null) playerTransform = playerGO.transform;
+        
     }
     protected override void Update()
     {
@@ -71,7 +73,7 @@ public class AmbusherEnemy : EnemyBase
         if (Vector3.Distance(playerTransform.position, dangerPos) < attackHitRadius)
         {
             Debug.Log("AmbusherEnemy: Player HIT during entry charge!");
-            DamageUtils.DamagePlayer(playerTransform.gameObject);
+            DamagePlayer(playerTransform.gameObject);
         }
 
         Destroy(dangerSymbolInstance);
@@ -125,12 +127,31 @@ public class AmbusherEnemy : EnemyBase
         if (Vector3.Distance(playerPos, closestPoint) < attackHitRadius)
         {
             Debug.Log("AmbusherEnemy: Player HIT during exit charge!");
-            DamageUtils.DamagePlayer(playerTransform.gameObject);
+            DamagePlayer(playerTransform.gameObject);
+            
             
         }
 
-        Destroy(gameObject); // Optionally destroy or call base.HandleExiting()
+        currentState = State.Entering;  // Optionally destroy or call base.HandleExiting()
     }
+    
+    protected override void DamagePlayer(GameObject player)
+    {
+        PlayerLife life = player.GetComponent<PlayerLife>();
+
+        Shield shield = playerGO.GetComponent<Shield>();
+        if (shield.haveShield)
+        {
+            shield.GetDamage(30,true);
+        }
+        else  if (life != null && life.canGetHit&& !shield.haveShield)
+        {
+            life.getHit = true;
+            Debug.Log("Player got Hit");
+        }
+       
+    }
+   
 
     protected override void OnEnterComplete() { /* Entry is handled with coroutine */ }
     protected override void Die()

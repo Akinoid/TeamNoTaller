@@ -14,7 +14,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Header("Health & Explosion")]
     public float health = 100f;
-    private float currentHealth;
+    public float currentHealth;
     public float explosionRadius = 5f;
     public float explosionDamage = 50f;
 
@@ -117,9 +117,10 @@ public abstract class EnemyBase : MonoBehaviour
         }
         Destroy(gameObject);
     }
-    public void DamagePlayer(GameObject player)
+    protected virtual void DamagePlayer(GameObject player)
     {
         PlayerLife life = player.GetComponent<PlayerLife>();
+        
         if (life != null && life.canGetHit)
         {
             life.getHit = true;
@@ -130,7 +131,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.baseShoot)
         {
-            TakeDamage(playerActions.baseShootDmg); 
+            TakeDamage(playerActions.baseShootDmg);
         }
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.blasterShoot)
         {

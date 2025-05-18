@@ -13,6 +13,14 @@ public class BrawlerEnemy : EnemyBase
     [SerializeField]private Transform playerTransform;
     private bool isCharging;
 
+    protected override void Start()
+    {
+        base.Start();
+        health = 40f;
+        base.currentHealth = health;
+    }
+
+
     protected override void OnEnterComplete()
     {
         playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -87,7 +95,7 @@ public class BrawlerEnemy : EnemyBase
                 {
                     Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
 
-                    DamageUtils.DamagePlayer(h.gameObject);
+                    DamagePlayer(h.gameObject);
                 }
                     
 
@@ -97,6 +105,22 @@ public class BrawlerEnemy : EnemyBase
 
         while (!done) yield return null;
         isCharging = false;
+    }
+
+    protected override void DamagePlayer(GameObject player)
+    {
+        PlayerLife life = player.GetComponent<PlayerLife>();
+
+        Shield shield = playerGO.GetComponent<Shield>();
+        if (shield.haveShield)
+        {
+            shield.GetDamage(20, true);
+        }
+        else if (life != null && life.canGetHit && !shield.haveShield)
+        {
+            life.getHit = true;
+            Debug.Log("Player got Hit");
+        }
     }
     protected override void Die()
     {

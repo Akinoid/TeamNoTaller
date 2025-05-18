@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Pattern_2
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPattern
   spawnZones:
-  - {fileID: 0}
+  - {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
   spawnSequence:
-  - enemyPrefab: {fileID: 0}
+  - enemyPrefab: {fileID: 403333670997202337, guid: 2463c94a1268c9f4f93afdf46cb1a503, type: 3}
+    delayAfterPrevious: 0
+  - enemyPrefab: {fileID: 403333670997202337, guid: 2463c94a1268c9f4f93afdf46cb1a503, type: 3}
+    delayAfterPrevious: 0
+  - enemyPrefab: {fileID: 403333670997202337, guid: 2463c94a1268c9f4f93afdf46cb1a503, type: 3}
     delayAfterPrevious: 0

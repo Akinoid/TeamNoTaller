@@ -48,4 +48,12 @@ MonoBehaviour:
   - label: Spawn 1
     pattern: {fileID: 11400000, guid: 766ae11e71b8e464e8b04aaabe382737, type: 2}
     repetitions: 2
-    delayBetweenRepetitions: 0
+    delayBetweenRepetitions: 15
+  - label: Spawn 2
+    pattern: {fileID: 11400000, guid: 0aaebb313bdf75f4c9c9c86714fe1a24, type: 2}
+    repetitions: 2
+    delayBetweenRepetitions: 15
+  - label: Spawn 3
+    pattern: {fileID: 11400000, guid: ebec1a7d494f8d54493130a4503ffcc9, type: 2}
+    repetitions: 2
+    delayBetweenRepetitions: 15

@@ -7,7 +7,7 @@ using System;
 
 public class Shield : MonoBehaviour
 {
-    [SerializeField] private bool haveShield, getDamaged, canGetDamage;
+    [SerializeField] public bool haveShield, getDamaged, canGetDamage;
     [SerializeField] private GameObject shieldHUD;
     [SerializeField] private Image shieldBar;
     [SerializeField] private TMP_Text shieldTMP;

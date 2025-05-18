@@ -127,9 +127,10 @@ MonoBehaviour:
   entrySpeed: 5
   entryZStart: -25
   entryZTarget: 25
-  activeLifetime: 1000000
+  activeLifetime: 1e+9
   exitSpeed: 5
   health: 100
+  currentHealth: 0
   explosionRadius: 5
   explosionDamage: 50
   activeTimer: 0
