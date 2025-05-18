@@ -51,5 +51,9 @@ public class GranadeEnemy : EnemyBase
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
     }
-
+    protected override void Die()
+    {
+        Money.score += 250 * Money.multiplier;
+        base.Die();
+    }
 }

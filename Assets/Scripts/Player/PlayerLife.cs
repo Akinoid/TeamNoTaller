@@ -46,6 +46,7 @@ public class PlayerLife : MonoBehaviour
                 startTimerHit = true;
                 if (getHit && !haveBubble)
                 {
+                    Money.startRest = true;
                     state = State.Critic;
                     timerBase = 0;
                 }
@@ -53,6 +54,7 @@ public class PlayerLife : MonoBehaviour
             case State.Critic:
                 if (timerHit >= 0.2f)
                 {
+                    Money.startRest = false;
                     unhit = true;
                 }
                 if (unhit)
@@ -73,7 +75,9 @@ public class PlayerLife : MonoBehaviour
 
                 if (canDied && getHit && !haveBubble)
                 {
-                    SceneManager.LoadScene("Player");
+                    Money.money += Money.score;
+                    Money.score = 0;
+                    SceneManager.LoadScene("StartMenu");
                     Debug.Log("Game Over");
                     getHit = false;
                 }
@@ -106,6 +110,7 @@ public class PlayerLife : MonoBehaviour
         if (other.CompareTag("Bubble"))
         {
             haveBubble = true;
+            Money.score += 150 * Money.multiplier;
             Destroy(other.gameObject);
         }
     }

@@ -1,8 +1,9 @@
 using UnityEngine;
 [System.Serializable]
 
-[CreateAssetMenu(fileName = "SpawnPattern", menuName = "Spawning/Spawn Pattern")]
+    [CreateAssetMenu(fileName = "SpawnPattern", menuName = "Spawning/Spawn Pattern")]
 public class SpawnPattern : ScriptableObject
-{
-    public EnemySpawnEntry[] spawnSequence;
+{ 
+    public SpawnZone[] spawnZones;
+    public EnemySpawnEntry[] spawnSequence;    
 }

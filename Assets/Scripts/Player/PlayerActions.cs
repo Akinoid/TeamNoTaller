@@ -69,7 +69,6 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject fireBallAttack;
     [SerializeField] private float missiles;
     [SerializeField] private float maxMissiles;
-    private GameObject missilesHUD;
     private TMP_Text missilesTMP;
 
     [Header("Damage Variables")]
@@ -406,13 +405,14 @@ public class PlayerActions : MonoBehaviour
         if (other.CompareTag("Blaster"))
         {
             haveBlaster = true;
+            Money.score += 150 * Money.multiplier;
             Destroy(other.gameObject);
         }
         if (other.CompareTag("FireBall"))
         {
             missiles += 1;
             missilesTMP.text = $"Missiles: {+missiles} / 3";
-
+            Money.score += 150 * Money.multiplier;
             Destroy(other.gameObject);
         }
     }

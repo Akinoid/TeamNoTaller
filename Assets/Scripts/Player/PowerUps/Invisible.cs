@@ -58,6 +58,7 @@ public class Invisible : MonoBehaviour
         {
             timerInvisible = 0;
             isInvisible = true;
+            Money.score += 150 * Money.multiplier;
             Destroy(other.gameObject);
         }
     }
