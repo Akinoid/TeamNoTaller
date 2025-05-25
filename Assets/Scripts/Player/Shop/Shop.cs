@@ -2,61 +2,160 @@ using UnityEngine;
 using TMPro;
 public class Shop : MonoBehaviour
 {
+    public bool saveFireballBuyed, saveShieldBuyed, saveBubbleBuyed, saveSigilBuyed, saveBlasterBuyed, saveHaveEletricBuff;
     public static bool fireballBuyed, shieldBuyed, bubbleBuyed, sigilBuyed, blasterBuyed;
     [SerializeField] private TMP_Text bubbleTMP, bubbleDescriptionTMP, bubbleBuyTMP;
+    [SerializeField] private TMP_Text fireBallTMP, fireBallDescriptionTMP, fireBallBuyTMP;
+    [SerializeField] private TMP_Text shieldTMP, shieldDescriptionTMP, shieldBuyTMP;
+    [SerializeField] private TMP_Text sigilTMP, sigilDescriptionTMP, sigilBuyTMP;
+    [SerializeField] private TMP_Text blasterTMP, blasterDescriptionTMP, blasterBuyTMP;
+    [SerializeField] private Money money;
+    [SerializeField] private LoadManager load;
 
     private void Start()
     {
+        ChangesBools();
+        TMPS();
+        ChangeBuyButtonTMP();
+        money = GameObject.Find("MoneyManager").GetComponent<Money>();
+
+    }
+    private void TMPS()
+    {
+        fireBallTMP = transform.Find("FireBallTMP").GetComponent<TMP_Text>();
+        fireBallDescriptionTMP = fireBallTMP.transform.Find("FireBallDescriptionTMP").GetComponent<TMP_Text>();
+        fireBallBuyTMP = fireBallTMP.transform.Find("FireBallBuyButton").Find("FireBallBuyTMP").GetComponent<TMP_Text>();
+
         bubbleTMP = transform.Find("BubbleTMP").GetComponent<TMP_Text>();
         bubbleDescriptionTMP = bubbleTMP.transform.Find("BubbleDescriptionTMP").GetComponent<TMP_Text>();
         bubbleBuyTMP = bubbleTMP.transform.Find("BubbleBuyButton").Find("BubbleBuyTMP").GetComponent<TMP_Text>();
+
+        shieldTMP = transform.Find("ShieldTMP").GetComponent<TMP_Text>();
+        shieldDescriptionTMP = shieldTMP.transform.Find("ShieldDescriptionTMP").GetComponent<TMP_Text>();
+        shieldBuyTMP = shieldTMP.transform.Find("ShieldBuyButton").Find("ShieldBuyTMP").GetComponent<TMP_Text>();
+
+        sigilTMP = transform.Find("SigilTMP").GetComponent<TMP_Text>();
+        sigilDescriptionTMP = sigilTMP.transform.Find("SigilDescriptionTMP").GetComponent<TMP_Text>();
+        sigilBuyTMP = sigilTMP.transform.Find("SigilBuyButton").Find("SigilBuyTMP").GetComponent<TMP_Text>();
+
+        blasterTMP = transform.Find("BlasterTMP").GetComponent<TMP_Text>();
+        blasterDescriptionTMP = blasterTMP.transform.Find("BlasterDescriptionTMP").GetComponent<TMP_Text>();
+        blasterBuyTMP = blasterTMP.transform.Find("BlasterBuyButton").Find("BlasterBuyTMP").GetComponent<TMP_Text>();
+    }
+    private void ChangesBools()
+    {
+        fireballBuyed = saveFireballBuyed;
+        shieldBuyed = saveShieldBuyed;
+        bubbleBuyed = saveBubbleBuyed;
+        sigilBuyed = saveSigilBuyed;
+        blasterBuyed = saveBlasterBuyed;
+        Bubble.haveElectricBuff = saveHaveEletricBuff;
+
+    }
+    private void ChangeBuyButtonTMP()
+    {
+        if (fireballBuyed)
+        {
+            fireBallBuyTMP.text = $"Already buyed";
+        }
+        if (shieldBuyed)
+        {
+            shieldBuyTMP.text = $"Already buyed";
+        }
+        if (Bubble.haveElectricBuff)
+        {
+            bubbleBuyTMP.text = $"Already buyed";
+        }
+        if (sigilBuyed)
+        {
+            sigilBuyTMP.text = $"Already buyed";
+        }
+        if (blasterBuyed)
+        {
+            blasterBuyTMP.text = $"Already buyed";
+        }
     }
     public void FireballBuyButton()
     {
-        if (!fireballBuyed && Money.money >= 200)
+        if (!fireballBuyed && money.money >= 200)
         {
-            Money.money -= 200;
-            fireballBuyed = true;
+            money.money -= 200;
+            saveFireballBuyed = true;
+            load.Save();
+            ChangesBools();
+        }
+        if (fireballBuyed)
+        {
+            fireBallBuyTMP.text = $"Already buyed";
         }
     }
     public void ShieldBuyButton()
     {
-        if (!shieldBuyed && Money.money >= 1000)
+        if (!shieldBuyed && money.money >= 1000)
         {
-            Money.money -= 1000;
-            shieldBuyed = true;
+            money.money -= 1000;
+            saveShieldBuyed = true;
+            load.Save();
+            ChangesBools();
+        }
+        if (shieldBuyed)
+        {
+            shieldBuyTMP.text = $"Already buyed";
         }
     }
     public void BubbleBuyButton()
     {
-        if (!bubbleBuyed && Money.money >= 10000)
+        if (!bubbleBuyed && money.money >= 10000)
         {
-            Money.money -= 10000;
+            money.money -= 10000;
+            saveBubbleBuyed = true;
+            load.Save();
+            ChangesBools();
+        }
+        if (saveBubbleBuyed)
+        {
             bubbleTMP.text = $"Electric Bubble";
             bubbleBuyTMP.text = $"Buy $20000";
             bubbleDescriptionTMP.text = $"When you catch a Electric Bubble, block all the incoming damage and if you collision with an enemy, him receive 50 points of damage. Last 15 seconds after you receive a hit.";
-            bubbleBuyed = true;
         }
-        if (bubbleBuyed && !Bubble.haveElectricBuff && Money.money >= 20000)
+        if (bubbleBuyed && !Bubble.haveElectricBuff && money.money >= 20000)
         {
-            Money.money -= 20000;
-            Bubble.haveElectricBuff = true;
+            money.money -= 20000;
+            saveHaveEletricBuff = true;
+            load.Save();
+            ChangesBools();
+        }
+        if (Bubble.haveElectricBuff)
+        {
+            bubbleBuyTMP.text = $"Already buyed";
         }
     }
     public void SigilBuyButton()
     {
-        if (!sigilBuyed && Money.money >= 10000)
+        if (!sigilBuyed && money.money >= 10000)
         {
-            Money.money -= 10000;
-            sigilBuyed = true;
+            money.money -= 10000;
+            saveSigilBuyed = true;
+            load.Save();
+            ChangesBools();
+        }
+        if (sigilBuyed)
+        {
+            sigilBuyTMP.text = $"Already buyed";
         }
     }
     public void BlasterBuyButton()
     {
-        if (!blasterBuyed && Money.money >= 25000)
+        if (!blasterBuyed && money.money >= 25000)
         {
-            Money.money -= 25000;
-            blasterBuyed = true;
+            money.money -= 25000;
+            saveBlasterBuyed = true;
+            load.Save();
+            ChangesBools();
+        }
+        if (blasterBuyed)
+        {
+            blasterBuyTMP.text = $"Already buyed";
         }
     }
 }

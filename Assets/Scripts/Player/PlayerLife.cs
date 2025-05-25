@@ -10,6 +10,8 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] public Material materialGreen;
     [SerializeField] public Material materialRed;
     [SerializeField] public Material InitialMaterial;
+    [SerializeField] public Money money;
+    [SerializeField] private LoadManager load;
     [SerializeField] public State state;
     public enum State
     {
@@ -21,6 +23,7 @@ public class PlayerLife : MonoBehaviour
         state = State.Base;
         getHit = false;
         meshRenderer = gameObject.GetComponent<Renderer>();
+        money = GameObject.Find("MoneyManager").GetComponent<Money>();
     }
 
     // Update is called once per frame
@@ -75,8 +78,10 @@ public class PlayerLife : MonoBehaviour
 
                 if (canDied && getHit && !haveBubble)
                 {
-                    Money.money += Money.score;
+                    money.money += Money.score;
                     Money.score = 0;
+                    load.Save();
+                    Money.combo.Clear();
                     SceneManager.LoadScene("StartMenu");
                     Debug.Log("Game Over");
                     getHit = false;

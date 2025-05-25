@@ -1507,6 +1507,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135206253}
   m_CullTransparentMesh: 1
+--- !u!1 &1153048306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153048308}
+  - component: {fileID: 1153048307}
+  m_Layer: 0
+  m_Name: LoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1153048307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153048306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62e7280983fa154ab0edca67cfca0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: {fileID: 1237547734}
+  shop: {fileID: 0}
+--- !u!4 &1153048308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153048306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.728233, y: 2.793349, z: 89.514465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237547733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hackMoney: 0
+  money: 0
   test: 0
   scoreTMP: {fileID: 1460148494}
   moneyTMP: {fileID: 623536585}
@@ -1698,6 +1745,8 @@ MonoBehaviour:
   materialGreen: {fileID: 2100000, guid: b1a0969a5ab8c3a48ba8d0a5373663dd, type: 2}
   materialRed: {fileID: 2100000, guid: 8263a6bda260f85468ff11fbe7813c8b, type: 2}
   InitialMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  money: {fileID: 0}
+  load: {fileID: 1153048307}
   state: 0
 --- !u!54 &1433250101
 Rigidbody:
@@ -2555,3 +2604,4 @@ SceneRoots:
   - {fileID: 1759356763}
   - {fileID: 101583807}
   - {fileID: 1237547735}
+  - {fileID: 1153048308}
