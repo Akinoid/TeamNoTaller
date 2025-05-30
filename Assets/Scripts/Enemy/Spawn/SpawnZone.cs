@@ -10,8 +10,8 @@ public class SpawnZone : MonoBehaviour
     {
         var box = GetComponent<BoxCollider>();
         Vector3 center = transform.position + box.center;
-        Vector3 size = box.size;
-        Debug.Log(box.size);
+        Vector3 size = new Vector3(20,20,2);
+        Debug.Log(size);
 
         float x = Random.Range(center.x - size.x / 2, center.x + size.x / 2);
         float y = Random.Range(center.y - size.y / 2, center.y + size.y / 2);
@@ -40,11 +40,12 @@ public class SpawnZone : MonoBehaviour
     }
     
     
-    public void SpawnEnemy(GameObject enemyPrefab)
+    public GameObject SpawnEnemy(GameObject enemyPrefab)
     {
         Vector3 spawnPoint = GetRandomPointInZone();
-        Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        GameObject instance = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         Debug.Log($"Spawned {enemyPrefab.name} at {spawnPoint}");
+        return instance;
     }
     
 
