@@ -8,11 +8,11 @@ public class SpawnManager : MonoBehaviour
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private bool waitingForEnemiesToDie = false;
     public string nextSceneName;
-
+    Money money;
     private void Start()
     {
+         money = GameObject.Find("MoneyManager").GetComponent<Money>();
         StartCoroutine(RunPatterns());
-        
     }
     private void Update()
     {
@@ -24,7 +24,8 @@ public class SpawnManager : MonoBehaviour
             if (spawnedEnemies.Count == 0)
             {
                 waitingForEnemiesToDie = false;
-                Money.money += Money.score;
+                
+                money.money += Money.score;
                 Money.score = 0;
                 SceneManager.LoadScene(nextSceneName);
             }
