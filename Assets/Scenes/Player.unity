@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4819511292058567621, guid: e6989ab542d60eb4eb86d69d45f39e64, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2182,6 +2186,10 @@ PrefabInstance:
     - target: {fileID: 648507458747525567, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: m_Name
       value: SpawnZone_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 648507458747525567, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4728269636582463172, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
       propertyPath: m_LocalPosition.x
