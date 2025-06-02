@@ -10,6 +10,7 @@ public static class SaveManager
         FileStream fileStream = new FileStream(dataPath, FileMode.Create);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         binaryFormatter.Serialize(fileStream, playerData);
+        PlayerPrefs.SetInt("FirstSave", 1);
         fileStream.Close();
     }
     public static void SaveMoneyData(Money money)

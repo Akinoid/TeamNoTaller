@@ -18,7 +18,6 @@ public class Shop : MonoBehaviour
         TMPS();
         ChangeBuyButtonTMP();
         money = GameObject.Find("MoneyManager").GetComponent<Money>();
-
     }
     private void TMPS()
     {
