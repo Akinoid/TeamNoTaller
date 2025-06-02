@@ -801,6 +801,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164792548}
   m_CullTransparentMesh: 1
+--- !u!1 &170068619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 170068621}
+  - component: {fileID: 170068620}
+  m_Layer: 0
+  m_Name: LoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &170068620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170068619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62e7280983fa154ab0edca67cfca0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: {fileID: 2128831970}
+  shop: {fileID: 404900539}
+--- !u!4 &170068621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170068619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.728233, y: 2.793349, z: 89.514465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &184258404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,9 +2310,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c742e5270fec6043b82b01130501e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveFireballBuyed: 0
+  saveShieldBuyed: 0
+  saveBubbleBuyed: 0
+  saveSigilBuyed: 0
+  saveBlasterBuyed: 0
+  saveHaveEletricBuff: 0
   bubbleTMP: {fileID: 0}
   bubbleDescriptionTMP: {fileID: 0}
   bubbleBuyTMP: {fileID: 0}
+  money: {fileID: 0}
+  load: {fileID: 170068620}
 --- !u!1 &414911519
 GameObject:
   m_ObjectHideFlags: 0
@@ -6221,6 +6275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hackMoney: 1
+  money: 0
   test: 0
   scoreTMP: {fileID: 0}
   moneyTMP: {fileID: 1080523332}
@@ -6249,3 +6304,4 @@ SceneRoots:
   - {fileID: 2128831971}
   - {fileID: 1336910258}
   - {fileID: 472772734}
+  - {fileID: 170068621}
