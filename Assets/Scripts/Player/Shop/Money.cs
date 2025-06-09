@@ -7,7 +7,7 @@ public class Money : MonoBehaviour
 {
 
     [SerializeField] private bool hackMoney;
-    public static float money;
+    public float money;
     public static float score;
     public static float multiplier;
     public static float timeBetweenRest;
@@ -25,6 +25,7 @@ public class Money : MonoBehaviour
     {
         multiplier = 1;
         coroutine = StartCoroutine(IESpawnPowerUps(combo.Count, timeBetweenRest));
+        ScoreText();
     }
 
     void Update()

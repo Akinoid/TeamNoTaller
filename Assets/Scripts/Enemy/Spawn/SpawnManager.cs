@@ -1,12 +1,35 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour
 {
     public SpawnPatternSequence[] patternSequences;
-
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private bool waitingForEnemiesToDie = false;
+    public string nextSceneName;
+    Money money;
     private void Start()
     {
+         money = GameObject.Find("MoneyManager").GetComponent<Money>();
         StartCoroutine(RunPatterns());
+    }
+    private void Update()
+    {
+        if (waitingForEnemiesToDie)
+        {
+            
+            spawnedEnemies.RemoveAll(e => e == null);
+
+            if (spawnedEnemies.Count == 0)
+            {
+                waitingForEnemiesToDie = false;
+                
+                money.money += Money.score;
+                Money.score = 0;
+                SceneManager.LoadScene(nextSceneName);
+            }
+        }
     }
 
     private System.Collections.IEnumerator RunPatterns()
@@ -30,8 +53,11 @@ public class SpawnManager : MonoBehaviour
                             GameObject enemy = e.enemyPrefab;
                             if (enemy != null)
                             {
-                                
-                                zone.SpawnEnemy(enemy);
+                                GameObject spawned = zone.SpawnEnemy(enemy);
+                                if (spawned != null)
+                                {
+                                    spawnedEnemies.Add(spawned);
+                                }
                             }
                             else
                             {
@@ -50,5 +76,6 @@ public class SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(sequence.delayBetweenRepetitions);
             }
         }
+        waitingForEnemiesToDie = true;
     }
 }
