@@ -10,6 +10,7 @@ public class FireBall : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
     [SerializeField] private Vector3 direction;
+    public static bool noEnemies;
     private void Awake()
     {
         Rb();
@@ -68,6 +69,7 @@ public class FireBall : MonoBehaviour
             enemyFound = null;
             obstacleFound = null;
             target = null;
+            noEnemies = true;
         }
     }
 
@@ -83,6 +85,7 @@ public class FireBall : MonoBehaviour
         }
         else
         {
+            AutoDestroy();
             rb.linearVelocity = new Vector3(0, 0, speed);
         }
     }
@@ -92,8 +95,13 @@ public class FireBall : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(gameObject);
+            AutoDestroy();
         }
+    }
+
+    void AutoDestroy()
+    {
+        Destroy(gameObject);
     }
 
 }

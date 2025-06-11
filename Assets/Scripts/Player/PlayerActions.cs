@@ -398,6 +398,12 @@ public class PlayerActions : MonoBehaviour
             missiles = 0;
             missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
         }
+        if (FireBall.noEnemies)
+        {
+            missiles += 1;
+            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+            FireBall.noEnemies = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
