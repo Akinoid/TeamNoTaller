@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class FistBarrage : MonoBehaviour,IBossAttack
 {
-    public GameObject warningPrefab;     // Área de peligro
-    public GameObject fistImpactPrefab;  // Impacto del puño
+    public GameObject warningPrefab;     
+    public GameObject fistImpactPrefab;  
     public int numberOfPunches = 5;
     public float delayBetweenPunches = 0.1f;
     public float warningDuration = 1.5f;
     public float destroyDelay = 2f;
-    public float attackRadius = 4f;      // Radio alrededor del jugador donde puede caer el puño
+    public float attackRadius = 4f;      
 
     public IEnumerator Execute(Boss boss)
     {

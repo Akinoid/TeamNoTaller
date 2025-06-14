@@ -1,69 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3640725891261248296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4491963198981555867}
-  - component: {fileID: 4994626830549496844}
-  - component: {fileID: 7119152154086480040}
-  m_Layer: 0
-  m_Name: BossAttacks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4491963198981555867
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3640725891261248296}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3676618017345599617}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4994626830549496844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3640725891261248296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9655516fbe93c04985b8b05c3610182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  warningPrefab: {fileID: 1027311699457903532, guid: 0814f2d19a19f95488b96f703a239b3a, type: 3}
-  fistImpactPrefab: {fileID: 5006277001223292766, guid: a47af48fb2173004a805307d9a607508, type: 3}
-  numberOfPunches: 5
-  delayBetweenPunches: 0.5
-  warningDuration: 1
-  destroyDelay: 1.4
-  attackRadius: 4
---- !u!114 &7119152154086480040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3640725891261248296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19cfd5776f210c4288554c53b98e8e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8921262945940949544
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,13 +252,98 @@ MonoBehaviour:
   - name: Phase 1
     minHealth: 2000
     attackBehaviours:
-    - {fileID: 4994626830549496844}
-  - name: Phase 2
-    minHealth: 1500
-    attackBehaviours:
-    - {fileID: 4994626830549496844}
+    - {fileID: 704379995070415814}
   currentPhase:
     name: 
     minHealth: 0
     attackBehaviours: []
   weakPoint: {fileID: 8921262945940949544}
+--- !u!1001 &2791512066231217032
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3676618017345599617}
+    m_Modifications:
+    - target: {fileID: 1457764983992228000, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_Name
+      value: BossAttacks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1457764983992228000, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 704379995070415814}
+  m_SourcePrefab: {fileID: 100100000, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+--- !u!1 &3640725891261248296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1457764983992228000, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+  m_PrefabInstance: {fileID: 2791512066231217032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &704379995070415814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3640725891261248296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f2e8315157a954187309b1098808ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warningAreaPrefab: {fileID: 9181727357714555581, guid: 4f0a0c04d4ad9a44aa5816962442b6ec, type: 3}
+  explosionPrefab: {fileID: 3256980919810269584, guid: f647a1bd831f587458d5ba0f1114d5ba, type: 3}
+  warningDuration: 2
+  explosionDelay: 0.2
+  attackRepeats: 5
+  timeBetweenAttacks: 2
+  areaRadius: 3
+--- !u!4 &4491963198981555867 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1795768388618939667, guid: 95fd6d7623889414a9bfd301a7aca7c7, type: 3}
+  m_PrefabInstance: {fileID: 2791512066231217032}
+  m_PrefabAsset: {fileID: 0}
