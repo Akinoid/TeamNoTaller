@@ -27,7 +27,11 @@ public class SpawnManager : MonoBehaviour
                 
                 money.money += Money.score;
                 Money.score = 0;
-                SceneManager.LoadScene(nextSceneName);
+                if(StartMenuManager.tutorial == 1)
+                {
+                    SceneManager.LoadScene(nextSceneName);
+                }
+                
             }
         }
     }
@@ -58,6 +62,7 @@ public class SpawnManager : MonoBehaviour
                                 {
                                     spawnedEnemies.Add(spawned);
                                 }
+                                
                             }
                             else
                             {

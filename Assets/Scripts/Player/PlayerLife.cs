@@ -55,6 +55,10 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
+                if(StartMenuManager.tutorial == 0)
+                {
+
+                }
                 if (timerHit >= 0.2f)
                 {
                     Money.startRest = false;
@@ -78,13 +82,20 @@ public class PlayerLife : MonoBehaviour
 
                 if (canDied && getHit && !haveBubble)
                 {
-                    money.money += Money.score;
-                    Money.score = 0;
-                    load.Save();
-                    Money.combo.Clear();
-                    SceneManager.LoadScene("StartMenu");
-                    Debug.Log("Game Over");
-                    getHit = false;
+                    if(StartMenuManager.tutorial == 1)
+                    {
+                        money.money += Money.score;
+                        Money.score = 0;
+                        load.Save();
+                        Money.combo.Clear();
+                        SceneManager.LoadScene("StartMenu");
+                        Debug.Log("Game Over");
+                        getHit = false;
+                    }
+                    else if(StartMenuManager.tutorial == 0)
+                    {
+                        getHit = false;
+                    }
                 }
                 if (timerCritic >= 1)
                 {

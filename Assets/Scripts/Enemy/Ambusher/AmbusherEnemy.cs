@@ -157,6 +157,10 @@ public class AmbusherEnemy : EnemyBase
     protected override void Die()
     {
         Money.score += 200 * Money.multiplier;
+        if(StartMenuManager.tutorial == 0)
+        {
+            ActualDialogueTutorial.startChangeLines = true;
+        }
         base.Die();
     }
 }

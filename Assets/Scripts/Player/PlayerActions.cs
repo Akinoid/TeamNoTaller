@@ -77,6 +77,13 @@ public class PlayerActions : MonoBehaviour
     public float missileExplosionDmg;
     public float electricBubbleDmg;
 
+    [Header("Tutorial Variables")]
+    public bool startTimer;
+    public float timer;
+    public bool tutorialStart;
+    public bool tutorialMove;
+    public bool tutorialDash;
+
     public enum MovementState { moving, dashing}
     public enum GunType { baseShoot, blasterShoot}
     void Start()
@@ -106,7 +113,10 @@ public class PlayerActions : MonoBehaviour
         fireBallAction = fireBall.ToInputAction();
         fireBallAction.performed += SpawnFireBall;
         missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
-
+        if (!tutorialStart)
+        {
+            PlayerPrefs.SetInt("Tutorial", 1);
+        }
     }
 
     void Update()
@@ -213,10 +223,20 @@ public class PlayerActions : MonoBehaviour
         Vector3 moveDirection = transform.up * moveYfloat + transform.right * moveXfloat;
         //rb.AddRelativeForce(new Vector3(moveXfloat * moveSpeed, moveYfloat * moveSpeed, 0), ForceMode.Impulse);
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        
+
         //rb.AddForceAtPosition(new Vector3(moveXfloat * moveSpeed, moveYfloat * moveSpeed, 0) ,
         //new Vector3(transform.position.x, transform.position.y, transform.position.z), ForceMode.Impulse);
-
+        if (tutorialStart)
+        {
+            if(moveXfloat != 0 || moveYfloat != 0)
+            {
+                if (DialoguesController.tutorialMove && !ActualDialogueTutorial.tutorial)
+                {
+                    ActualDialogueTutorial.startTimer = true;
+                }
+                
+            }
+        }
         
     }
     private void SpeedLimit()
@@ -279,6 +299,13 @@ public class PlayerActions : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
         }
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
+        if (tutorialStart)
+        {
+            if (DialoguesController.tutorialDash && !ActualDialogueTutorial.tutorial)
+            {
+                ActualDialogueTutorial.startTimer = true;
+            }         
+        }
     }
     private void DashingTimer()
     {
@@ -320,7 +347,13 @@ public class PlayerActions : MonoBehaviour
                         if (attacking)
                         {
                             StartCoroutine(ShootBullet());
-
+                            if (tutorialStart)
+                            {
+                                if (DialoguesController.tutorialShoot && !ActualDialogueTutorial.tutorial)
+                                {
+                                    ActualDialogueTutorial.startTimer = true;
+                                }
+                            }
                         }
                         lastAttackTime = Time.time;
                         //Invoke(nameof(SpawnBullet), 0.9f);

@@ -125,6 +125,10 @@ public class BrawlerEnemy : EnemyBase
     protected override void Die()
     {
         Money.score += 100 * Money.multiplier;
+        if (StartMenuManager.tutorial == 0)
+        {
+            ActualDialogueTutorial.startChangeLines = true;
+        }
         base.Die();
     }
 }

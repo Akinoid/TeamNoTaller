@@ -54,6 +54,10 @@ public class GranadeEnemy : EnemyBase
     protected override void Die()
     {
         Money.score += 250 * Money.multiplier;
+        if (StartMenuManager.tutorial == 0)
+        {
+            ActualDialogueTutorial.startChangeLines = true;
+        }
         base.Die();
     }
 }
