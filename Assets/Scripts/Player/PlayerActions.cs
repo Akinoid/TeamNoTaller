@@ -220,7 +220,8 @@ public class PlayerActions : MonoBehaviour
         Vector3 moveDirection = transform.up * moveYfloat + transform.right * moveXfloat;
         //rb.AddRelativeForce(new Vector3(moveXfloat * moveSpeed, moveYfloat * moveSpeed, 0), ForceMode.Impulse);
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
+        anim.SetFloat("moveX", moveXfloat);
+        
         //rb.AddForceAtPosition(new Vector3(moveXfloat * moveSpeed, moveYfloat * moveSpeed, 0) ,
         //new Vector3(transform.position.x, transform.position.y, transform.position.z), ForceMode.Impulse);
         if (tutorialStart)
