@@ -64,7 +64,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float blasterDelayAttack;
     [SerializeField] public GunType gunType;
     private float lastAttackTime;
-
+    private Animator anim;
     [Header("Missiles Variables")]
     [SerializeField] private GameObject fireBallAttack;
     [SerializeField] private float missiles;
@@ -78,11 +78,7 @@ public class PlayerActions : MonoBehaviour
     public float electricBubbleDmg;
 
     [Header("Tutorial Variables")]
-    public bool startTimer;
-    public float timer;
     public bool tutorialStart;
-    public bool tutorialMove;
-    public bool tutorialDash;
 
     public enum MovementState { moving, dashing}
     public enum GunType { baseShoot, blasterShoot}
@@ -94,8 +90,9 @@ public class PlayerActions : MonoBehaviour
         playerLife = gameObject.GetComponent<PlayerLife>();
         invisible = gameObject.GetComponent<Invisible>();
 
+        anim = GetComponent<Animator>();
         missilesTMP = GameObject.Find("RocketTMP").GetComponent<TMP_Text>();
-        shootPoint = transform.Find("ShootPoint").gameObject;
+        shootPoint = transform.Find("Arma").Find("ShootPoint").gameObject;
         playerInputMap = playerInputAsset.FindActionMap("PlayerActions");
         moveXAction = moveX.ToInputAction();
         moveYAction = moveY.ToInputAction();
@@ -339,6 +336,7 @@ public class PlayerActions : MonoBehaviour
         if(attackfloat > 0 && !dashing)
         {
             attacking = true;
+            anim.SetBool("Attacking", attacking);
             switch (gunType)
             {
                 case GunType.baseShoot:
@@ -377,6 +375,7 @@ public class PlayerActions : MonoBehaviour
         else
         {
             attacking = false;
+            anim.SetBool("Attacking", attacking);
         }
     }
     private void AttackType()

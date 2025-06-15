@@ -12,7 +12,7 @@ public class DialoguesController : MonoBehaviour
     public static int tutorial;
     void Start()
     {
-        tutorial = 4;
+        tutorial = 1;
         ChangeBools();
         ChangeLines();
     }
