@@ -22,41 +22,46 @@ public class ActualDialogueTutorial : MonoBehaviour
     }
     public void Update()
     {
-        if (!didDialogueStart)
+        if (Time.timeScale == 0f || Time.timeScale == 1f)
         {
-            StartDialogue();
-        }
-        else if (dialogueText.text == actualLines[index])
-        {
-            NextDialogueLine();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopAllCoroutines();
-            dialogueText.text = actualLines[index];
+            if (!didDialogueStart)
+            {
+                StartDialogue();
+            }
+            else if (dialogueText.text == actualLines[index])
+            {
+                NextDialogueLine();
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                dialogueText.text = actualLines[index];
 
-        }
+            }
 
-        if (!tutorial && startTimer)
-        {
-            ChangeLines();
-        }
-        if (!tutorial && startChangeLines)
-        {
-            ChangeLinesWithOutTimer();
-        }
-        if (tutorial)
-        {
-            startTimer = false;
-            startChangeLines = false;
+            if (!tutorial && startTimer)
+            {
+                ChangeLines();
+            }
+            if (!tutorial && startChangeLines)
+            {
+                ChangeLinesWithOutTimer();
+            }
+            if (tutorial)
+            {
+                startTimer = false;
+                startChangeLines = false;
+            }
         }
     }
 
     public void StartDialogue()
     {
         didDialogueStart = true;
-
-        StartCoroutine(WriteLine());
+        if(Time.timeScale == 0f || Time.timeScale == 1f)
+        {
+            StartCoroutine(WriteLine());
+        }
     }
     public void NextDialogueLine()
     {
@@ -89,6 +94,7 @@ public class ActualDialogueTutorial : MonoBehaviour
             Invoke("StartDialogue", 0.02f);
             tutorial = true;
             timer = 0;
+            
         }
     }
 
@@ -97,15 +103,19 @@ public class ActualDialogueTutorial : MonoBehaviour
         DialoguesController.tutorial += 1;
         dialoguesController.ChangeBools();
         Invoke("StartDialogue", 0.02f);
-        tutorial = true;        
+        tutorial = true;
+
     }
     private IEnumerator WriteLine()
     {
-        dialogueText.text = string.Empty;
-        foreach (char letter in actualLines[index].ToCharArray())
+        if (Time.timeScale == 0f || Time.timeScale == 1f)
         {
-            dialogueText.text += letter;
-            yield return new WaitForSecondsRealtime(textSpeed);
+            dialogueText.text = string.Empty;
+            foreach (char letter in actualLines[index].ToCharArray())
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSecondsRealtime(textSpeed);
+            }
         }
     }
 }
