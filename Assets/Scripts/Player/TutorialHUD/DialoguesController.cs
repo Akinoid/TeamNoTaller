@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class DialoguesController : MonoBehaviour
 {
@@ -118,6 +119,10 @@ public class DialoguesController : MonoBehaviour
             case 10:
                 tutorialGranade = false;
                 tutorialObstacles = true;
+                break;
+            case 11:
+                tutorialObstacles = false;
+                SceneManager.LoadScene("Player");
                 break;
             default:
                 break;
