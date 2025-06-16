@@ -15,6 +15,12 @@ public class FistBarrage : MonoBehaviour,IBossAttack
     {
         Debug.Log("Fist Barrage iniciado");
 
+        Animator animator = boss.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetBool("Golpe", true); 
+        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
@@ -25,18 +31,18 @@ public class FistBarrage : MonoBehaviour,IBossAttack
 
         for (int i = 0; i < numberOfPunches; i++)
         {
-            // Elegimos una posición aleatoria alrededor del jugador
+            
             Vector2 offset = Random.insideUnitCircle.normalized * Random.Range(1f, attackRadius);
             Vector3 targetPos = new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, 0);
 
-            // Instancia del área de peligro
+            
             GameObject warning = Instantiate(warningPrefab, targetPos, Quaternion.identity);
             Destroy(warning, destroyDelay);
 
-            // Espera del telégrafo
+            
             yield return new WaitForSeconds(warningDuration);
 
-            // Instancia del impacto del puño
+           
             GameObject fist=Instantiate(fistImpactPrefab, targetPos, Quaternion.identity);
             Collider[] hits = Physics.OverlapBox(warning.transform.position, warning.transform.localScale / 2);
             foreach (var h in hits)
@@ -48,13 +54,13 @@ public class FistBarrage : MonoBehaviour,IBossAttack
             Destroy(warning, destroyDelay);
             Destroy(fist, destroyDelay);
            
-            // Espera antes del siguiente golpe
             yield return new WaitForSeconds(delayBetweenPunches);
 
             
         }
 
         Debug.Log("Fist Barrage terminado");
+        animator.SetBool("Golpe", false);
     }
 }
 

@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
 {
     [Header("Vida")]
     public int maxHealth = 2000;
-    [SerializeField]private float currentHealth;
+    [SerializeField] private float currentHealth;
     public Slider healthBar;
 
     [Header("Fases")]
@@ -21,6 +21,8 @@ public class Boss : MonoBehaviour
     private bool isAttacking = false;
 
     public Action OnBossDeath;
+
+    [SerializeField] private Animator animator;
 
     void Start()
     {

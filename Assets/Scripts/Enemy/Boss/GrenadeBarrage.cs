@@ -16,6 +16,12 @@ public class GrenadeBarrage : MonoBehaviour, IBossAttack
     {
         Debug.Log("Grenade Barrage iniciado");
 
+        Animator animator = boss.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetBool("Explosion", true);
+        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
@@ -49,5 +55,6 @@ public class GrenadeBarrage : MonoBehaviour, IBossAttack
         }
 
         Debug.Log("Grenade Barrage terminado");
+        animator.SetBool("Explosion", false);
     }
 }

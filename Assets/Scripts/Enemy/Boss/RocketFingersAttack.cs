@@ -15,6 +15,11 @@ public class RocketFingersAttack : MonoBehaviour, IBossAttack
     {
         Debug.Log("RocketFingersAttack iniciado");
 
+        Animator animator = boss.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetBool("Finger", true);
+        }
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO == null)
         {
@@ -67,6 +72,7 @@ public class RocketFingersAttack : MonoBehaviour, IBossAttack
 
         yield return new WaitForSeconds(3f);
         Debug.Log("RocketFingersAttack terminado");
+        animator.SetBool("Finger", false);
         foreach (GameObject finger in spawnedFingers)
         {
             Destroy(finger);
