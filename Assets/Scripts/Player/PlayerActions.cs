@@ -47,12 +47,25 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private bool resetVel;
 
+    [Header("Trail Variables")]
+    [SerializeField] private float refreshRate;
+    [SerializeField] private float timerTrail;
+    [SerializeField] private int trailAmount;
+    [SerializeField] private bool startTrailCoroutine;
+    [SerializeField] private bool startTrail;
+    [SerializeField] private string shaderVarRef;
+    [SerializeField] private float shaderVarRate;
+    [SerializeField] private float shaderVarRefreshRate;
+    [SerializeField] private SkinnedMeshRenderer[] skinnedMeshRenderers;
+    [SerializeField] private GameObject[] gameObjects;
+
     [Header("Materials")]
     [SerializeField] private Renderer meshRenderer;    
     [SerializeField] public Material materialYellow;
     [SerializeField] public Material materialBlue;
     [SerializeField] public Material materialInvisible;
     [SerializeField] public Material InitialMaterial;
+    [SerializeField] public Material shaderMaterial;
 
     [Header("Attack Variables")]
     [SerializeField] private GameObject bullet;
@@ -110,6 +123,7 @@ public class PlayerActions : MonoBehaviour
         fireBallAction = fireBall.ToInputAction();
         fireBallAction.performed += SpawnFireBall;
         missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+        StartCoroutine(ActiveTrail(trailAmount, refreshRate));
         if (!tutorialStart)
         {
             PlayerPrefs.SetInt("Tutorial", 1);
@@ -123,6 +137,10 @@ public class PlayerActions : MonoBehaviour
         SpeedLimit();
         State();
         LimitMissiles();
+        if (startTrail)
+        {
+            TrailEffect();
+        }
     }
     private void FixedUpdate()
     {
@@ -200,12 +218,12 @@ public class PlayerActions : MonoBehaviour
         {
             if (keepMomentum)
             {
-                StopAllCoroutines();
+                StopCoroutine(SmoothlyLerpMoveSpeed());
                 StartCoroutine(SmoothlyLerpMoveSpeed());
             }
             else
             {
-                StopAllCoroutines();
+                StopCoroutine(SmoothlyLerpMoveSpeed());
                 moveSpeed = desiredMoveSpeed;
             }
         }
@@ -283,6 +301,7 @@ public class PlayerActions : MonoBehaviour
             Vector3 direction = GetDirection(transform);
             Vector3 forceToApply = direction * dashForce;
             delayedForceToApply = forceToApply;
+            startTrail = true;            
             Invoke(nameof(DelayedDashForce), 0.005f);
             Invoke(nameof(ResetDash), dashDuration);
             dashTimer = 0;
@@ -303,6 +322,59 @@ public class PlayerActions : MonoBehaviour
             {
                 ActualDialogueTutorial.startTimer = true;
             }         
+        }
+    }
+    void TrailEffect()
+    {
+        timerTrail += Time.deltaTime;
+        if (timerTrail >= dashDuration+0.45f)
+        {
+            startTrail = false;
+
+            timerTrail = 0;
+        }
+    }
+    IEnumerator ActiveTrail(int effectAmount, float timeBetweenTrail)
+    {
+        while(!startTrailCoroutine)
+        {
+            if (startTrail)
+            {
+                for(int i1 = 0; i1< effectAmount; i1++)
+                {
+                    for (int i = 0; i < skinnedMeshRenderers.Length; i++)
+                    {
+                        GameObject gObj = new GameObject();
+                        gObj.transform.SetPositionAndRotation(gameObjects[i].transform.position, gameObjects[i].transform.rotation);
+                        MeshRenderer mr = gObj.AddComponent<MeshRenderer>();
+                        MeshFilter mf = gObj.AddComponent<MeshFilter>();
+
+                        Mesh mesh = new Mesh();
+                        skinnedMeshRenderers[i].BakeMesh(mesh);
+
+                        mf.mesh = mesh;
+                        mr.material = shaderMaterial;
+
+                        StartCoroutine(AnimateMaterialFloat(mr.material, 0, shaderVarRate, shaderVarRefreshRate));
+                        Destroy(gObj, dashDuration+0.1f);
+                    }
+                }
+                
+            }
+            
+            yield return new WaitForSeconds(timeBetweenTrail);
+        }
+    }
+
+    IEnumerator AnimateMaterialFloat(Material mat, float goal, float rate, float refreshRate)
+    {
+        float valueToAnimate = mat.GetFloat(shaderVarRef);
+
+        while(valueToAnimate > goal)
+        {
+            valueToAnimate -= rate;
+            mat.SetFloat(shaderVarRef, valueToAnimate);
+            yield return new WaitForSeconds(refreshRate);
         }
     }
     private void DashingTimer()
