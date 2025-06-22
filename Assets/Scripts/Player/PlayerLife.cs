@@ -88,7 +88,7 @@ public class PlayerLife : MonoBehaviour
                 }
                 if (timerCritic >= 1)
                 {
-                    Debug.Log("Empieza a curarse");
+                    //Debug.Log("Empieza a curarse");
                 }
                 if(timerCritic >= 3)
                 {

@@ -2758,58 +2758,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 173809992}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.data[1].name
-      value: Phase 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.data[2].name
-      value: Phase 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.data[0].minHealth
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.data[1].minHealth
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.data[2].minHealth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: phases.Array.data[1].attackBehaviours.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: 'phases.Array.data[2].attackBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: 'phases.Array.data[2].attackBehaviours.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: 'phases.Array.data[2].attackBehaviours.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964999560308255249, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: 'phases.Array.data[2].attackBehaviours.Array.data[3]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4994626830549496844, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: warningPrefab
-      value: 
-      objectReference: {fileID: 1027311699457903532, guid: 0814f2d19a19f95488b96f703a239b3a, type: 3}
-    - target: {fileID: 4994626830549496844, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
-      propertyPath: fistImpactPrefab
-      value: 
-      objectReference: {fileID: 5006277001223292766, guid: a47af48fb2173004a805307d9a607508, type: 3}
     - target: {fileID: 9068638302385287916, guid: ff378b64de1d75c4683c8317f3100db9, type: 3}
       propertyPath: m_Name
       value: Boss

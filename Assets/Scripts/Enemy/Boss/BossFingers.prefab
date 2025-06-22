@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &403333670997202337
+--- !u!1 &8240323809894760552
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6244240189643596048}
-  - component: {fileID: 4168087942411197537}
-  - component: {fileID: 1852738873882089015}
-  - component: {fileID: 9133937819541286560}
-  - component: {fileID: 3882044159455989562}
-  - component: {fileID: 4916233935175404630}
+  - component: {fileID: 6016550659908601727}
+  - component: {fileID: 1629634539493045889}
+  - component: {fileID: 7729288503066510745}
+  - component: {fileID: 6760585653124291920}
+  - component: {fileID: 7832868992147560027}
   m_Layer: 0
-  m_Name: Enemy Melee
-  m_TagString: Enemy
+  m_Name: BossFingers
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6244240189643596048
+--- !u!4 &6016550659908601727
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403333670997202337}
+  m_GameObject: {fileID: 8240323809894760552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3795342, y: 0.23896402, z: 4.586467}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.63}
+  m_LocalScale: {x: 0.71716, y: 0.71716, z: 2.27017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4168087942411197537
+--- !u!33 &1629634539493045889
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403333670997202337}
+  m_GameObject: {fileID: 8240323809894760552}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1852738873882089015
+--- !u!23 &7729288503066510745
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403333670997202337}
+  m_GameObject: {fileID: 8240323809894760552}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -67,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,13 +88,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9133937819541286560
+--- !u!65 &6760585653124291920
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403333670997202337}
+  m_GameObject: {fileID: 8240323809894760552}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -104,47 +103,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3882044159455989562
+--- !u!114 &7832868992147560027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403333670997202337}
+  m_GameObject: {fileID: 8240323809894760552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73298eda2daee7d4b959c66471b74705, type: 3}
+  m_Script: {fileID: 11500000, guid: e0206b18565cd0041995127a8a91e854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entrySpeed: 10
-  entryZStart: 50
-  entryZTarget: 25
-  activeLifetime: 1000000
-  exitSpeed: 5
-  health: 100
-  explosionRadius: 5
-  explosionDamage: 50
-  activeTimer: 0
-  followSpeed: 2
-  attackRange: 1
-  attackDelay: 1
-  dangerZonePrefab: {fileID: 1027311699457903532, guid: 0814f2d19a19f95488b96f703a239b3a, type: 3}
-  playerTransform: {fileID: 0}
---- !u!114 &4916233935175404630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403333670997202337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  chargeSpeed: 20
+  attackHitRadius: 0
+  dangerSymbolPrefab: {fileID: 8676825446193495824, guid: a42f0b0a2f68afc48ae999a4fed792d6, type: 3}
+  warningDuration: 1.5

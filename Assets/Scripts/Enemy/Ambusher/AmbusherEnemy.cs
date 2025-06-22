@@ -21,6 +21,8 @@ public class AmbusherEnemy : EnemyBase
 
     private GameObject playerGO;
 
+    [SerializeField] private Animator animator;
+
     protected override void Start()
     {
         base.Start();
@@ -65,6 +67,7 @@ public class AmbusherEnemy : EnemyBase
 
         while (Vector3.Distance(transform.position, dangerPos) > 0.1f)
         {
+            animator.SetBool("Golpe", true);
             transform.position = Vector3.MoveTowards(transform.position, dangerPos, chargeSpeed * Time.deltaTime);
             yield return null;
         }
@@ -81,6 +84,7 @@ public class AmbusherEnemy : EnemyBase
         transform.position = playerTransform.position + playerTransform.forward * positionInFrontOfPlayer;
         currentState = State.Active;
         activeTimer = activeTimeBeforeExit;
+        animator.SetBool("Golpe", false);
     }
 
     protected override void HandleActive()

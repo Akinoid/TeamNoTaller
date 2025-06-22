@@ -20,6 +20,8 @@ public class SniperEnemy : EnemyBase
 
     private GameObject pgo;
 
+    [SerializeField] private Animator animator;
+
     protected override void Start()
     {
         base.Start();
@@ -51,6 +53,7 @@ public class SniperEnemy : EnemyBase
 
     private IEnumerator AimAndFireRoutine()
     {
+        animator.SetBool("Golpe", true);
         if (markerInstance != null)
         {
             markerInstance.SetActive(true);
@@ -108,6 +111,8 @@ public class SniperEnemy : EnemyBase
         }
 
         Debug.Log("SniperEnemy: Fired beam towards " + targetPos);
+
+        animator.SetBool("Golpe", false);
     }
     protected override void DamagePlayer(GameObject player)
     {
