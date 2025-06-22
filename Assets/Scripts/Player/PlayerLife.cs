@@ -13,6 +13,10 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] public Money money;
     [SerializeField] private LoadManager load;
     [SerializeField] public State state;
+    bool tutorialLife, tutorialLife2, tutorialDead;
+    public GameObject dialogues1, dialogues2;
+    [SerializeField] private LifeDialogueTutorial lifeDialogue;
+    [SerializeField] private DialoguesTutorial dialogues;
     public enum State
     {
         Base,
@@ -47,6 +51,13 @@ public class PlayerLife : MonoBehaviour
                 canDied = false;
                 unhit = false;
                 startTimerHit = true;
+                if (StartMenuManager.tutorial == 0 && !tutorialLife2 && DialoguesController.tutorial == 10)
+                {
+                    lifeDialogue.actualLines = dialogues.linesNoHit;
+                    dialogues1.SetActive(false);
+                    dialogues2.SetActive(true);
+                    tutorialLife2 = true;
+                }
                 if (getHit && !haveBubble)
                 {
                     Money.startRest = true;
@@ -55,6 +66,13 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
+                if(StartMenuManager.tutorial == 0 && !tutorialLife)
+                {
+                    lifeDialogue.actualLines = dialogues.linesCriticState;
+                    dialogues1.SetActive(false);
+                    dialogues2.SetActive(true);
+                    tutorialLife = true;
+                }
                 if (timerHit >= 0.2f)
                 {
                     Money.startRest = false;
@@ -78,13 +96,26 @@ public class PlayerLife : MonoBehaviour
 
                 if (canDied && getHit && !haveBubble)
                 {
-                    money.money += Money.score;
-                    Money.score = 0;
-                    load.Save();
-                    Money.combo.Clear();
-                    SceneManager.LoadScene("StartMenu");
-                    Debug.Log("Game Over");
-                    getHit = false;
+                    if(StartMenuManager.tutorial == 1)
+                    {
+                        money.money += Money.score;
+                        Money.score = 0;
+                        load.Save();
+                        Money.combo.Clear();
+                        SceneManager.LoadScene("StartMenu");
+                        Debug.Log("Game Over");
+                        getHit = false;
+                    }
+                    else if(StartMenuManager.tutorial == 0 && !tutorialDead) 
+                    {
+                        dialogues1.SetActive(false);
+                        dialogues2.SetActive(true);
+                        lifeDialogue.StopAllCoroutines();
+                        lifeDialogue.actualLines = dialogues.linesDeath;
+                        lifeDialogue.StartDialogue();
+                        getHit = false;
+                        tutorialDead = true;
+                    }
                 }
                 if (timerCritic >= 1)
                 {

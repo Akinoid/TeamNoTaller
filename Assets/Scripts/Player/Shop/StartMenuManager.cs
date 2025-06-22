@@ -6,7 +6,7 @@ public class StartMenuManager : MonoBehaviour
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject controlsPanel;
     [SerializeField] GameObject optionsPanel;
-
+    public static int tutorial;
     private void Start()
     {
         startMenuPanel = transform.Find("StartMenuPanel").gameObject;
@@ -17,10 +17,18 @@ public class StartMenuManager : MonoBehaviour
         controlsPanel.SetActive(false);
         startMenuPanel.SetActive(true);
         optionsPanel.SetActive(false);
+        tutorial = PlayerPrefs.GetInt("Tutorial", 0);
     }
     public void PlayButton()
     {
-        SceneManager.LoadScene("Player");
+        if(tutorial == 0)
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+        else
+        {
+            SceneManager.LoadScene("Player");
+        }
     }
 
     public void ShopButton()

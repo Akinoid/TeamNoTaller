@@ -137,6 +137,10 @@ public class SniperEnemy : EnemyBase
     protected override void Die()
     {
         Money.score += 50 * Money.multiplier;
+        if (StartMenuManager.tutorial == 0)
+        {
+            ActualDialogueTutorial.startChangeLines = true;
+        }
         base.Die();
     }
 }

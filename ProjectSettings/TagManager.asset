@@ -14,6 +14,7 @@ TagManager:
   - FireBall
   - Missile
   - Explosion
+  - PlayerComponents
   layers:
   - Default
   - TransparentFX
