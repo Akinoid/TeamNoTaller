@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 5364102655583807162}
   - component: {fileID: 212383642234528991}
   - component: {fileID: 6753771441667535596}
+  - component: {fileID: -4697626019953552802}
   m_Layer: 0
   m_Name: Boss con arte 1
   m_TagString: Enemy
@@ -660,6 +661,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4697626019953552802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499491746675078257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511942138015012062
 GameObject:
   m_ObjectHideFlags: 0

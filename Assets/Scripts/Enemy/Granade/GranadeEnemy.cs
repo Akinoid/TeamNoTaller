@@ -14,6 +14,8 @@ public class GranadeEnemy : EnemyBase
 
     private GameObject playerGO;
 
+    [SerializeField] private Animator animator;
+
     protected override void OnEnterComplete()
     {
         playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -21,6 +23,8 @@ public class GranadeEnemy : EnemyBase
         {
             playerTransform = playerGO.transform;
             StartCoroutine(AttackRoutine());
+
+            animator.SetBool("Golpe", false);
         }
         else
         {
@@ -37,6 +41,7 @@ public class GranadeEnemy : EnemyBase
     {
         for (int i = 0; i < attackRepeats; i++)
         {
+            animator.SetBool("Golpe", true);
             Vector3 areaPos = new Vector3(playerTransform.position.x, playerTransform.position.y, 0);
 
             GameObject warning = Instantiate(warningAreaPrefab, areaPos, Quaternion.identity);

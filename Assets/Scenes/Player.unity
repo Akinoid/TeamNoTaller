@@ -2732,6 +2732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss con arte 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1499491746675078257, guid: a8a70724613c0874b82c59c69b242fa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5364102655583807162, guid: a8a70724613c0874b82c59c69b242fa1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
