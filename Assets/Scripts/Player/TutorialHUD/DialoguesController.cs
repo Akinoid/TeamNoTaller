@@ -14,6 +14,7 @@ public class DialoguesController : MonoBehaviour
     void Start()
     {
         tutorial = 1;
+        PlayerPrefs.SetInt("Tutorial", 0);
         ChangeBools();
         ChangeLines();
     }
