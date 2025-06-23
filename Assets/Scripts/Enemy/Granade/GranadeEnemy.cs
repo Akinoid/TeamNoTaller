@@ -53,6 +53,8 @@ public class GranadeEnemy : EnemyBase
 
             Instantiate(explosionPrefab, areaPos, Quaternion.identity);
             animator.SetBool("Golpe", false);
+            RegisterAssociatedObject(explosionPrefab);
+            RegisterAssociatedObject(warning);
             yield return new WaitForSeconds(timeBetweenAttacks);
             
         }

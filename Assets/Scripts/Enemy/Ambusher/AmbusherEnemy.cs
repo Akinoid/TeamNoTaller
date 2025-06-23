@@ -49,6 +49,7 @@ public class AmbusherEnemy : EnemyBase
             Vector3 dangerPos = playerTransform.position - playerTransform.forward * chargeDistanceBehind;
             dangerSymbolInstance = Instantiate(dangerSymbolPrefab, dangerPos, Quaternion.identity);
             StartCoroutine(EntryChargeRoutine(dangerPos));
+            RegisterAssociatedObject(dangerSymbolInstance);
         }
     }
 

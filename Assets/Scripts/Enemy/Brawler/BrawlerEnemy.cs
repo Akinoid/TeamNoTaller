@@ -92,7 +92,7 @@ public class BrawlerEnemy : EnemyBase
 
             GameObject dzGO = Instantiate(dangerZonePrefab, dzPos, Quaternion.identity);
             DangerZone dz = dzGO.GetComponent<DangerZone>();
-
+            RegisterAssociatedObject(dzGO);
             if (dz == null)
             {
                 Debug.LogError("DangerZone prefab missing DangerZone script!");

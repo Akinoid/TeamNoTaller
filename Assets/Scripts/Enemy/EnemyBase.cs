@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public abstract class EnemyBase : MonoBehaviour
 {
@@ -21,7 +22,11 @@ public abstract class EnemyBase : MonoBehaviour
     protected State currentState = State.Entering;
     public float activeTimer;
     private Vector3 entryTargetPos;
-    
+
+    private List<GameObject> associatedObjects = new List<GameObject>();
+
+    protected bool isDying = false;
+
 
     private PlayerActions playerActions;
     protected virtual void Start()
@@ -49,6 +54,22 @@ public abstract class EnemyBase : MonoBehaviour
             case State.Active: HandleActive(); break;
             case State.Exiting: HandleExiting(); break;
         }
+    }
+
+    protected void RegisterAssociatedObject(GameObject obj)
+    {
+        if (obj != null)
+            associatedObjects.Add(obj);
+    }
+    protected GameObject InstantiateAssociated(GameObject prefab, Vector3 pos, Quaternion rot, Transform parent = null)
+    {
+        GameObject go;
+        if (parent != null)
+            go = Instantiate(prefab, pos, rot, parent);
+        else
+            go = Instantiate(prefab, pos, rot);
+        RegisterAssociatedObject(go);
+        return go;
     }
 
     protected virtual void HandleEntering()
@@ -161,6 +182,16 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Money.combo.Add(+1);
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var obj in associatedObjects)
+        {
+            if (obj != null)
+                Destroy(obj);
+        }
+        associatedObjects.Clear();
     }
 
     protected abstract void OnEnterComplete();

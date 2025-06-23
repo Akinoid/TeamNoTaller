@@ -73,6 +73,7 @@ public class SniperEnemy : EnemyBase
 
         markerInstance = Instantiate(markerPrefab, Vector3.zero, Quaternion.identity);
 
+        RegisterAssociatedObject(markerInstance);
         float timer = 0f;
 
         while (timer < markerFollowTime)
@@ -247,7 +248,9 @@ public class SniperEnemy : EnemyBase
     {
         Money.score += 50 * Money.multiplier;
         if (StartMenuManager.tutorial == 0)
+        {
             ActualDialogueTutorial.startChangeLines = true;
+        }
 
         base.Die();
     }
