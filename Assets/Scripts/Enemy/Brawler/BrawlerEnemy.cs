@@ -10,8 +10,14 @@ public class BrawlerEnemy : EnemyBase
     public GameObject dangerZonePrefab;
     private GameObject playerGO;
 
+    public float attackRadius = 3f;
+
     [SerializeField]private Transform playerTransform;
     private bool isCharging;
+
+    [SerializeField] private Transform ataque;
+
+    [SerializeField] private Animator animator;
 
     protected override void Start()
     {
@@ -49,11 +55,11 @@ public class BrawlerEnemy : EnemyBase
     private void FollowAndMaybeAttack()
     {
         // Seguir al jugador en X/Y, manteniendo Z fijo
-        Vector3 target = new Vector3(playerTransform.position.x, playerTransform.position.y, transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, target, followSpeed * Time.deltaTime);
+        Vector3 target = new Vector3(playerTransform.position.x, playerTransform.position.y, ataque.position.z);
+        ataque.position = Vector3.MoveTowards(ataque.position, target, followSpeed * Time.deltaTime);
 
         float dist = Vector2.Distance(
-            new Vector2(transform.position.x, transform.position.y),
+            new Vector2(ataque.position.x, ataque.position.y),
             new Vector2(playerTransform.position.x, playerTransform.position.y)
         );
 
@@ -68,43 +74,56 @@ public class BrawlerEnemy : EnemyBase
         isCharging = true;
         Debug.Log("BrawlerEnemy: Start charging attack");
 
-        
-        Vector3 dzPos = new Vector3(
-            playerTransform.position.x,
-            playerTransform.position.y,
-            0f
-        );
-        Debug.DrawLine(transform.position, dzPos, Color.red, 1f);
+        animator.SetBool("Golpe", true);
 
-        GameObject dzGO = Instantiate(dangerZonePrefab, dzPos, Quaternion.identity);
-        DangerZone dz = dzGO.GetComponent<DangerZone>();
-        if (dz == null)
+        // Lista para controlar los dos ataques
+        int numberOfAttacks = 2;
+        int completedAttacks = 0;
+
+        for (int i = 0; i < numberOfAttacks; i++)
         {
-            Debug.LogError("DangerZone prefab missing DangerZone script!");
-            isCharging = false;
-            yield break;
+            Vector2 offset = Random.insideUnitCircle.normalized * Random.Range(1f, attackRadius);
+
+            Vector3 dzPos = new Vector3(
+                playerTransform.position.x + offset.x,
+                playerTransform.position.y + offset.y,
+                0f
+            );
+
+            GameObject dzGO = Instantiate(dangerZonePrefab, dzPos, Quaternion.identity);
+            DangerZone dz = dzGO.GetComponent<DangerZone>();
+
+            if (dz == null)
+            {
+                Debug.LogError("DangerZone prefab missing DangerZone script!");
+                continue;
+            }
+
+            // Lanza cada zona y espera su callback
+            dz.StartCharging(attackDelay, () =>
+            {
+                Debug.Log("BrawlerEnemy: Attack triggered!");
+                Collider[] hits = Physics.OverlapBox(dzGO.transform.position, dzGO.transform.localScale / 2);
+                foreach (var h in hits)
+                {
+                    if (h.CompareTag("Player"))
+                    {
+                        Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
+                        DamagePlayer(h.gameObject);
+                    }
+                }
+
+                Destroy(dzGO);
+                completedAttacks++;
+            });
         }
 
-        bool done = false;
-        dz.StartCharging(attackDelay, () =>
-        {
-            Debug.Log("BrawlerEnemy: Attack triggered!");
-            Collider[] hits = Physics.OverlapBox(dzGO.transform.position, dzGO.transform.localScale / 2);
-            foreach (var h in hits)
-                if (h.CompareTag("Player"))
-                {
-                    Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
+        // Espera hasta que ambas zonas terminen
+        while (completedAttacks < numberOfAttacks)
+            yield return null;
 
-                    DamagePlayer(h.gameObject);
-                }
-                    
-
-            Destroy(dzGO);
-            done = true;
-        });
-
-        while (!done) yield return null;
         isCharging = false;
+        animator.SetBool("Golpe", false);
     }
 
     protected override void DamagePlayer(GameObject player)

@@ -574,6 +574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3596777994734859228}
+  - component: {fileID: 6994159307764520578}
   m_Layer: 0
   m_Name: EnemyAmbusherArt
   m_TagString: Enemy
@@ -589,7 +590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912383316603445555}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -611,7 +612,29 @@ Transform:
   - {fileID: 8180709215992422610}
   - {fileID: 3823644069270939090}
   m_Father: {fileID: 615462495331047070}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6994159307764520578
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912383316603445555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e223ed0d640e9b4bbe2a48f04570e2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1995981451126592102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1335,6 @@ GameObject:
   - component: {fileID: 615462495331047070}
   - component: {fileID: 8575153815117530895}
   - component: {fileID: 7549154399018495181}
-  - component: {fileID: 4281254295885101188}
   - component: {fileID: 3184955956846594206}
   m_Layer: 0
   m_Name: AmbusherEnemy
@@ -1351,24 +1373,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entrySpeed: 5
   entryZStart: -25
-  entryZTarget: 25
+  entryZTarget: 0
   activeLifetime: 1e+9
   exitSpeed: 5
   health: 100
   currentHealth: 0
   explosionRadius: 5
   explosionDamage: 50
-  activeTimer: 0
+  activeTimer: 10
   chargeSpeed: 20
   warningDuration: 2
   dangerSymbolPrefab: {fileID: 8676825446193495824, guid: a42f0b0a2f68afc48ae999a4fed792d6, type: 3}
-  exitFlashDuration: 1
+  exitFlashDuration: 0
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   chargeDistanceBehind: 0
-  positionInFrontOfPlayer: 25
+  positionInFrontOfPlayer: 10
   attackHitRadius: 1
-  activeTimeBeforeExit: 10
-  animator: {fileID: 4281254295885101188}
+  activeTimeBeforeExit: 15
+  visual: {fileID: 3596777994734859228}
+  animator: {fileID: 6994159307764520578}
 --- !u!114 &7549154399018495181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,28 +1404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &4281254295885101188
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5983413888037806392}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2e223ed0d640e9b4bbe2a48f04570e2d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &3184955956846594206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1422,8 +1423,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7375175, y: 1.6134894, z: 1}
-  m_Center: {x: 0.1398583, y: 0.9337026, z: 0}
+  m_Size: {x: 1.7375175, y: 1.6134894, z: 2.3710299}
+  m_Center: {x: 0.1398583, y: 0.9337026, z: -0.39309746}
 --- !u!1 &6047929091249319296
 GameObject:
   m_ObjectHideFlags: 0

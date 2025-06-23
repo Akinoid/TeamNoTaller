@@ -21,6 +21,8 @@ public class AmbusherEnemy : EnemyBase
 
     private GameObject playerGO;
 
+    [SerializeField] private Transform visual;
+
     [SerializeField] private Animator animator;
 
     protected override void Start()
@@ -43,6 +45,7 @@ public class AmbusherEnemy : EnemyBase
     {
         if (dangerSymbolInstance == null && playerTransform != null)
         {
+           
             Vector3 dangerPos = playerTransform.position - playerTransform.forward * chargeDistanceBehind;
             dangerSymbolInstance = Instantiate(dangerSymbolPrefab, dangerPos, Quaternion.identity);
             StartCoroutine(EntryChargeRoutine(dangerPos));
@@ -51,7 +54,9 @@ public class AmbusherEnemy : EnemyBase
 
     private IEnumerator EntryChargeRoutine(Vector3 dangerPos)
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -25);
         float timer = 0f;
+        
         Renderer symbolRenderer = dangerSymbolInstance.GetComponentInChildren<Renderer>();
         while (timer < warningDuration)
         {
@@ -65,10 +70,11 @@ public class AmbusherEnemy : EnemyBase
         transform.position = start - Vector3.forward * chargeDistanceBehind; // start behind
         transform.LookAt(dangerPos);
 
-        while (Vector3.Distance(transform.position, dangerPos) > 0.1f)
+        while (Vector3.Distance(transform.position, new Vector3(dangerPos.x, dangerPos.y, positionInFrontOfPlayer)) > 0.1f)
         {
             animator.SetBool("Golpe", true);
-            transform.position = Vector3.MoveTowards(transform.position, dangerPos, chargeSpeed * Time.deltaTime);
+            
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dangerPos.x,dangerPos.y, positionInFrontOfPlayer), chargeSpeed * Time.deltaTime);
             yield return null;
         }
 
@@ -81,7 +87,9 @@ public class AmbusherEnemy : EnemyBase
 
         Destroy(dangerSymbolInstance);
         // Move in front of player
-        transform.position = playerTransform.position + playerTransform.forward * positionInFrontOfPlayer;
+        
+        //transform.position = playerTransform.position + playerTransform.forward * positionInFrontOfPlayer;
+        visual.localRotation = Quaternion.Euler(0, 180, 0);
         currentState = State.Active;
         activeTimer = activeTimeBeforeExit;
         animator.SetBool("Golpe", false);
@@ -105,19 +113,12 @@ public class AmbusherEnemy : EnemyBase
     {
         isExiting = true;
 
-        Renderer rend = GetComponentInChildren<Renderer>();
-        float timer = 0f;
-        while (timer < exitFlashDuration)
-        {
-            if (rend != null)
-                rend.material.color = rend.material.color == flashColor ? Color.white : flashColor;
-            yield return new WaitForSeconds(0.2f);
-            timer += 0.2f;
-        }
+        animator.SetBool("Golpe", true);
 
-        Vector3 target = transform.position - Vector3.forward * chargeDistanceBehind;
+        Vector3 target = new Vector3(transform.position.x, transform.position.y, -25);
         transform.LookAt(target);
-
+        visual.localRotation = Quaternion.Euler(0, 0, 0);
+        
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, chargeSpeed * Time.deltaTime);
@@ -135,8 +136,10 @@ public class AmbusherEnemy : EnemyBase
             
             
         }
+        animator.SetBool("Golpe", false);
+        currentState = State.Entering;
+        isExiting = false;
 
-        currentState = State.Entering;  // Optionally destroy or call base.HandleExiting()
     }
     
     protected override void DamagePlayer(GameObject player)
