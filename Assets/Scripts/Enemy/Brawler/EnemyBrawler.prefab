@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5069849407262348460}
   - component: {fileID: 8508534057570891937}
   - component: {fileID: 3988560679607580989}
+  - component: {fileID: 3048799258066615225}
   m_Layer: 0
   m_Name: EnemyBrawler
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259426990888837599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 1.3060472, y: 0, z: 11.614715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48,7 +49,7 @@ Transform:
   - {fileID: 6614619690693941155}
   - {fileID: 7017555123040067225}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &8508534057570891937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,12 +92,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.4655713, y: 1.5740597, z: 1}
   m_Center: {x: -0.1320706, y: 0.9322103, z: 0}
+--- !u!114 &3048799258066615225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259426990888837599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336560609583192895
 GameObject:
   m_ObjectHideFlags: 0

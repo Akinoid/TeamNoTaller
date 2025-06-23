@@ -131,6 +131,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.baseShoot)
         {
+            Debug.Log("blaster hizo " + playerActions.baseShootDmg);
             TakeDamage(playerActions.baseShootDmg);
         }
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.blasterShoot)
