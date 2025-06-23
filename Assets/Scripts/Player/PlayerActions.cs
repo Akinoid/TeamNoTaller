@@ -77,7 +77,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float blasterDelayAttack;
     [SerializeField] public GunType gunType;
     private float lastAttackTime;
-    private Animator anim;
+    [SerializeField]private Animator anim;
     [Header("Missiles Variables")]
     [SerializeField] private GameObject fireBallAttack;
     [SerializeField] private float missiles;
@@ -103,9 +103,9 @@ public class PlayerActions : MonoBehaviour
         playerLife = gameObject.GetComponent<PlayerLife>();
         invisible = gameObject.GetComponent<Invisible>();
 
-        anim = GetComponent<Animator>();
+        
         missilesTMP = GameObject.Find("RocketTMP").GetComponent<TMP_Text>();
-        shootPoint = transform.Find("Arma").Find("ShootPoint").gameObject;
+        shootPoint = transform.Find("PlayerArt").Find("Arma").Find("ShootPoint").gameObject;
         playerInputMap = playerInputAsset.FindActionMap("PlayerActions");
         moveXAction = moveX.ToInputAction();
         moveYAction = moveY.ToInputAction();

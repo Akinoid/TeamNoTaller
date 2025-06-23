@@ -5,10 +5,12 @@ public class LaserEnemy : EnemyBase
 {
     [Header("Laser Settings")]
     public LineRenderer laserRenderer;
+    public Transform gunPoint;          // empty donde sale el láser
     public float laserOnDuration = 10f;
     public float laserOffDuration = 10f;
     public float movementSpeed = 2f;
     public float movementRadius = 3f;
+    float moveTimer;
 
     private Transform playerTransform;
     private bool laserActive;
@@ -17,31 +19,28 @@ public class LaserEnemy : EnemyBase
     private enum MovementPattern { Horizontal, Vertical, Circular, Zigzag }
     private MovementPattern currentPattern;
     private Vector3 initialPosition;
-    private float moveTimer;
 
     private GameObject playerGO;
 
     protected override void Start()
     {
         base.Start();
-
         playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null) playerTransform = playerGO.transform;
         else Debug.LogError("LaserEnemy: No se encontró jugador");
 
         if (laserRenderer != null)
+        {
             laserRenderer.enabled = false;
+            laserRenderer.useWorldSpace = true;
+        }
     }
 
     protected override void OnEnterComplete()
     {
         initialPosition = transform.position;
-
-        
         currentPattern = (MovementPattern)Random.Range(0, System.Enum.GetValues(typeof(MovementPattern)).Length);
         Debug.Log("LaserEnemy: Patrón seleccionado -> " + currentPattern);
-
-       
         if (laserRoutine == null)
             laserRoutine = StartCoroutine(LaserCycle());
     }
@@ -56,14 +55,12 @@ public class LaserEnemy : EnemyBase
             ActivateLaser(false);
             yield return new WaitForSeconds(laserOffDuration);
         }
-
         ActivateLaser(false);
     }
 
     private void ActivateLaser(bool active)
     {
         laserActive = active;
-
         if (laserRenderer != null)
             laserRenderer.enabled = active;
     }
@@ -71,23 +68,57 @@ public class LaserEnemy : EnemyBase
     protected override void Update()
     {
         base.Update();
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = playerGO.transform;
+
+        // actualizar playerTransform si es nulo
+        if (playerTransform == null && GameObject.FindGameObjectWithTag("Player") != null)
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
         if (currentState == State.Active)
         {
             MoveByPattern();
         }
 
-        if (laserActive && laserRenderer != null && playerTransform != null)
+        if (laserActive && laserRenderer != null)
         {
-            Vector3 start = transform.position;
-            Vector3 end = playerTransform.position;
-
+            Vector3 start = gunPoint != null ? gunPoint.position : transform.position;
+            Vector3 end = new Vector3(start.x, start.y, -1f); // Extiende hasta Z=-1
             laserRenderer.SetPosition(0, start);
             laserRenderer.SetPosition(1, end);
+
+            // Raycast para daño (opcional, si manejas daño aquí)
+            Vector3 dir = (end - start).normalized;
+            float dist = Vector3.Distance(start, end);
+            if (Physics.Raycast(start, dir, out var hit, dist))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    DamagePlayer(hit.collider.gameObject);
+                }
+            }
         }
     }
 
+    protected override void DamagePlayer(GameObject player)
+    {
+        if (player == null) return;
+
+        PlayerLife life = player.GetComponent<PlayerLife>();
+        Shield shield = player.GetComponent<Shield>();
+
+        if (shield != null && shield.haveShield)
+        {
+            shield.GetDamage(50, true);
+        }
+        else if (life != null && life.canGetHit)
+        {
+            life.getHit = true;
+            Debug.Log("Hit = True");
+        }
+        else
+        {
+            Debug.Log("SniperLaser: No se encontró PlayerLife o canGetHit es false");
+        }
+    }
     private void MoveByPattern()
     {
         moveTimer += Time.deltaTime;

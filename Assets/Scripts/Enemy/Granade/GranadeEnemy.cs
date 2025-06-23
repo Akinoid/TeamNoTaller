@@ -24,7 +24,7 @@ public class GranadeEnemy : EnemyBase
             playerTransform = playerGO.transform;
             StartCoroutine(AttackRoutine());
 
-            animator.SetBool("Golpe", false);
+            
         }
         else
         {
@@ -52,8 +52,9 @@ public class GranadeEnemy : EnemyBase
             }
 
             Instantiate(explosionPrefab, areaPos, Quaternion.identity);
-
+            animator.SetBool("Golpe", false);
             yield return new WaitForSeconds(timeBetweenAttacks);
+            
         }
     }
     protected override void Die()

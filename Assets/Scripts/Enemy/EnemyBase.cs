@@ -9,7 +9,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float entrySpeed = 5f;
     public float entryZStart = 50f;
     public float entryZTarget = 25f;
-    public float activeLifetime = 1000000f;
+    public float activeLifetime = 10f;
     public float exitSpeed = 5f;
 
     [Header("Health & Explosion")]
@@ -21,6 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected State currentState = State.Entering;
     public float activeTimer;
     private Vector3 entryTargetPos;
+    
 
     private PlayerActions playerActions;
     protected virtual void Start()
@@ -72,7 +73,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    private void HandleExiting()
+    protected virtual void HandleExiting()
     {
         transform.position += Vector3.forward * exitSpeed * Time.deltaTime;
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78b39bc953a0bed439eb7e5878c885cc
+guid: 61dbd1b825a8e0c4ca6a1e21aa37b4f4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,9 +31,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: "Esqueleto.003|Acci\xF3n"
-      takeName: "Esqueleto.003|Acci\xF3n"
-      internalID: -2384551817240240717
+      name: "Esqueleto.004|Acci\xF3n"
+      takeName: "Esqueleto.004|Acci\xF3n"
+      internalID: -5216103951155346228
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
@@ -60,11 +60,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Esqueleto.003|atake/enemigo_Rango
-      takeName: Esqueleto.003|atake/enemigo_Rango
-      internalID: -7783518355283097504
+      name: Esqueleto.004|ataque/enemigoBombardero
+      takeName: Esqueleto.004|ataque/enemigoBombardero
+      internalID: -6603663534897949117
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -89,9 +89,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Esqueleto.003|idle/enemigo_Rango
-      takeName: Esqueleto.003|idle/enemigo_Rango
-      internalID: 8131819853923805976
+      name: Esqueleto.004|idle/enemigoBombardero
+      takeName: Esqueleto.004|idle/enemigoBombardero
+      internalID: 9219561441771773807
       firstFrame: 0
       lastFrame: 48
       wrapMode: 0
@@ -118,9 +118,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Esqueleto.003|M.Abajo
-      takeName: Esqueleto.003|M.Abajo
-      internalID: -4774078666332616182
+      name: Esqueleto.004|M.Abajo
+      takeName: Esqueleto.004|M.Abajo
+      internalID: 4209670490719058602
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
@@ -147,9 +147,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Esqueleto.003|M.Arriba
-      takeName: Esqueleto.003|M.Arriba
-      internalID: 2265358717142304109
+      name: Esqueleto.004|M.Arriba
+      takeName: Esqueleto.004|M.Arriba
+      internalID: -2095777053735035527
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
@@ -176,9 +176,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Esqueleto.003|Moddle
-      takeName: Esqueleto.003|Moddle
-      internalID: -8207159690286411658
+      name: Esqueleto.004|Moddle
+      takeName: Esqueleto.004|Moddle
+      internalID: 574228225574640001
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
