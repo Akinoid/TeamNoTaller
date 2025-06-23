@@ -1964,10 +1964,10 @@ MonoBehaviour:
   money: {fileID: 0}
   load: {fileID: 0}
   state: 0
-  dialogues1: {fileID: 720504413}
-  dialogues2: {fileID: 1023767451}
-  lifeDialogue: {fileID: 1023767453}
-  dialogues: {fileID: 1834182733}
+  dialogues1: {fileID: 0}
+  dialogues2: {fileID: 0}
+  lifeDialogue: {fileID: 0}
+  dialogues: {fileID: 0}
 --- !u!54 &1433250101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   blasterShootDmg: 40
   missileExplosionDmg: 50
   electricBubbleDmg: 50
-  tutorialStart: 1
+  tutorialStart: 0
 --- !u!114 &1433250103
 MonoBehaviour:
   m_ObjectHideFlags: 0
