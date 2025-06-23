@@ -48,25 +48,25 @@ MonoBehaviour:
   - label: Spawn 1
     pattern: {fileID: 11400000, guid: 766ae11e71b8e464e8b04aaabe382737, type: 2}
     repetitions: 2
-    delayBetweenRepetitions: 15
+    delayBetweenRepetitions: 10
   - label: Spawn 2
     pattern: {fileID: 11400000, guid: 0aaebb313bdf75f4c9c9c86714fe1a24, type: 2}
     repetitions: 2
-    delayBetweenRepetitions: 15
+    delayBetweenRepetitions: 10
   - label: Spawn 3
     pattern: {fileID: 11400000, guid: cb03cd53026474c469143443e356c509, type: 2}
     repetitions: 2
-    delayBetweenRepetitions: 15
+    delayBetweenRepetitions: 10
   - label: Spawn 3
     pattern: {fileID: 11400000, guid: f2aa8427217d51b4f9bd0c64aea61c4c, type: 2}
     repetitions: 1
-    delayBetweenRepetitions: 15
+    delayBetweenRepetitions: 10
   - label: Spawn 3
     pattern: {fileID: 11400000, guid: a6cc19a600097324f9e3ef4d21b15125, type: 2}
     repetitions: 1
-    delayBetweenRepetitions: 15
+    delayBetweenRepetitions: 10
   - label: Spawn 3
     pattern: {fileID: 11400000, guid: 05b9bbb65bf16b5438a24e2392cf3530, type: 2}
     repetitions: 2
-    delayBetweenRepetitions: 15
+    delayBetweenRepetitions: 10
   nextSceneName: StartMenu

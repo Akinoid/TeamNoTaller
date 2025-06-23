@@ -33,7 +33,7 @@ public class PlayerLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(StartMenuManager.tutorial);
+        
         GetInjured();
         if(getHit && !haveBubble || state == State.Critic && !haveBubble)
         {
@@ -68,7 +68,7 @@ public class PlayerLife : MonoBehaviour
                 break;
             case State.Critic:
                 tutorialLife2 = true;
-                if(StartMenuManager.tutorial == 0 && !tutorialLife)
+                if(StartMenuManager.tutorial == 0 && !tutorialLife&&lifeDialogue!=null)
                 {
                     lifeDialogue.actualLines = dialogues.linesCriticState;
                     dialogues1.SetActive(false);
@@ -108,7 +108,7 @@ public class PlayerLife : MonoBehaviour
                         Debug.Log("Game Over");
                         getHit = false;
                     }
-                    else if(StartMenuManager.tutorial == 0 && !tutorialDead) 
+                    else if(StartMenuManager.tutorial == 0 && !tutorialDead && lifeDialogue != null) 
                     {
                         dialogues1.SetActive(false);
                         dialogues2.SetActive(true);

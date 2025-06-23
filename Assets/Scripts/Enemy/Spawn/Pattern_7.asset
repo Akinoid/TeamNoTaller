@@ -15,9 +15,9 @@ MonoBehaviour:
   spawnZones:
   - {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
   spawnSequence:
-  - enemyPrefab: {fileID: 6369791018788437812, guid: 3d6427b6ce586704bbaeef999238670b, type: 3}
+  - enemyPrefab: {fileID: 5256404237355458017, guid: 757d031cff4f2454faf05e8baf513710, type: 3}
     delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 6369791018788437812, guid: 3d6427b6ce586704bbaeef999238670b, type: 3}
+  - enemyPrefab: {fileID: 13436388076803524, guid: 24cfd8ce527ba0544ae5c5869e327d8c, type: 3}
     delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 129492466148002467, guid: f4f779b4ca960c249af92614786e5ea1, type: 3}
+  - enemyPrefab: {fileID: 13436388076803524, guid: 24cfd8ce527ba0544ae5c5869e327d8c, type: 3}
     delayAfterPrevious: 0

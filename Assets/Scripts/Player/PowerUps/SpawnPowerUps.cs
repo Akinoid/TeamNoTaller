@@ -47,6 +47,7 @@ public class SpawnPowerUps : MonoBehaviour
     {
         AddObjectsToList();
         PlayerPrefs.SetInt("Tutorial", 1);
+        StartMenuManager.tutorial = 1;
     }
     private void AddObjectsToList()
     {

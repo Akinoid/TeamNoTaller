@@ -1955,8 +1955,8 @@ MonoBehaviour:
     en el menor tiempo posible. Comencemos por lo b\xE1sico, pruebe moverse usando
     *teclas WASD*."
   linesDash:
-  - "Bien, ahora vamos con una maniobra m\xE1s avanzada. Utilice alguno de los comandos
-    *teclas WASD* dos veces para realizar un desplazamiento r\xE1pido."
+  - "Bien, ahora vamos con una maniobra m\xE1s avanzada. Utilice *shift* para realizar
+    un desplazamiento r\xE1pido."
   linesFinishMovement:
   - Buen trabajo. Utilice esta maniobra cuando te encuentres en situaciones de extremo
     peligro ya que esta demora un tiempo para volver a usarse.

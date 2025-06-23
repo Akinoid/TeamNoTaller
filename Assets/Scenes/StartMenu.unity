@@ -1066,9 +1066,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When you catch a Blaster, change your normal shoot for another wich shoot
-    dobble of faster and have dobble of damage. You lose it if receive a hit without
-    a shield or a bubble.
+  m_text: Grab the powerup to increase your normal attack damage and velocity. This
+    can be lost by getting hit while you dont have a shield or bubble equiped
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
