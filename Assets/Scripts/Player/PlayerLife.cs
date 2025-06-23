@@ -67,6 +67,7 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
+                tutorialLife2 = true;
                 if(StartMenuManager.tutorial == 0 && !tutorialLife)
                 {
                     lifeDialogue.actualLines = dialogues.linesCriticState;

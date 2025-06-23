@@ -119,9 +119,12 @@ public class DialoguesController : MonoBehaviour
                 break;
             case 10:
                 tutorialGranade = false;
-                tutorialObstacles = true;
+                
                 break;
             case 11:
+                tutorialObstacles = true;
+                break;
+            case 12:
                 tutorialObstacles = false;
                 SceneManager.LoadScene("Player");
                 break;

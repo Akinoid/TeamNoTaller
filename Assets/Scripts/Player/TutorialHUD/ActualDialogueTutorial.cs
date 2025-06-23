@@ -50,7 +50,6 @@ public class ActualDialogueTutorial : MonoBehaviour
             if (tutorial)
             {
                 startTimer = false;
-                startChangeLines = false;
             }
         }
     }
@@ -76,7 +75,7 @@ public class ActualDialogueTutorial : MonoBehaviour
             index = 0;
             StopAllCoroutines();
             tutorial = false;
-            if(DialoguesController.tutorial == 3)
+            if(DialoguesController.tutorial == 3 || DialoguesController.tutorial == 10 || DialoguesController.tutorial == 11)
             {
                 startTimer = true;
             }
@@ -103,6 +102,7 @@ public class ActualDialogueTutorial : MonoBehaviour
         DialoguesController.tutorial += 1;
         dialoguesController.ChangeBools();
         Invoke("StartDialogue", 0.02f);
+        startChangeLines = false;
         tutorial = true;
 
     }
