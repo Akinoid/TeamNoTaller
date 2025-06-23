@@ -46,6 +46,7 @@ public class SpawnPowerUps : MonoBehaviour
     private void Awake()
     {
         AddObjectsToList();
+        PlayerPrefs.SetInt("Tutorial", 1);
     }
     private void AddObjectsToList()
     {
