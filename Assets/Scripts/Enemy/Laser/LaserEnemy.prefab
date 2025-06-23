@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7025106030247468380}
   m_Layer: 0
   m_Name: LaserEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entrySpeed: 5
   entryZStart: 50
-  entryZTarget: 25
+  entryZTarget: 15
   activeLifetime: 1000000
   exitSpeed: 5
   health: 100
@@ -63,6 +63,7 @@ MonoBehaviour:
   laserOffDuration: 10
   movementSpeed: 2
   movementRadius: 3
+  animator: {fileID: 5889849887874113673}
 --- !u!65 &1954098253893009601
 BoxCollider:
   m_ObjectHideFlags: 0

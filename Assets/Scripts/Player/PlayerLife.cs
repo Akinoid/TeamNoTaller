@@ -33,6 +33,7 @@ public class PlayerLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(StartMenuManager.tutorial);
         GetInjured();
         if(getHit && !haveBubble || state == State.Critic && !haveBubble)
         {

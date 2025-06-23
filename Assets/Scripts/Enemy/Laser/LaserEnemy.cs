@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LaserEnemy : EnemyBase
 {
@@ -21,6 +22,8 @@ public class LaserEnemy : EnemyBase
     private Vector3 initialPosition;
 
     private GameObject playerGO;
+
+    [SerializeField] private Animator animator;
 
     protected override void Start()
     {
@@ -49,11 +52,21 @@ public class LaserEnemy : EnemyBase
     {
         while (currentState == State.Active)
         {
+            // Antes de encender láser, asignamos un patrón nuevo distinto al anterior:
+            currentPattern = ChooseRandomPatternExcept(currentPattern);
+            Debug.Log("LaserEnemy: Nuevo patrón  " + currentPattern);
+
+            animator.SetBool("Golpe", true);
             ActivateLaser(true);
             yield return new WaitForSeconds(laserOnDuration);
 
+            animator.SetBool("Golpe", false);
             ActivateLaser(false);
+
+            
             yield return new WaitForSeconds(laserOffDuration);
+            currentPattern = ChooseRandomPatternExcept(currentPattern);
+            Debug.Log("LaserEnemy: Patrón cambiado tras ciclo completo  " + currentPattern);
         }
         ActivateLaser(false);
     }
@@ -128,6 +141,7 @@ public class LaserEnemy : EnemyBase
         switch (currentPattern)
         {
             case MovementPattern.Horizontal:
+                // Oscilación suave en X alrededor de initialPosition.x
                 offset = Vector3.right * Mathf.Sin(moveTimer * movementSpeed) * movementRadius;
                 break;
 
@@ -136,16 +150,40 @@ public class LaserEnemy : EnemyBase
                 break;
 
             case MovementPattern.Circular:
-                offset = new Vector3(Mathf.Cos(moveTimer * movementSpeed), Mathf.Sin(moveTimer * movementSpeed), 0f) * movementRadius;
+                offset = new Vector3(
+                    Mathf.Cos(moveTimer * movementSpeed),
+                    Mathf.Sin(moveTimer * movementSpeed),
+                    0f
+                ) * movementRadius;
                 break;
 
             case MovementPattern.Zigzag:
-                float zig = Mathf.Sin(moveTimer * movementSpeed) > 0 ? 1f : -1f;
-                offset = new Vector3(zig, Mathf.Sin(moveTimer * movementSpeed * 2f), 0f) * movementRadius * 0.5f;
+                // Ejemplo con seno suave en X y Y:
+                float x = Mathf.Sin(moveTimer * movementSpeed) * (movementRadius * 0.5f);
+                float y = Mathf.Sin(moveTimer * movementSpeed * 2f) * (movementRadius * 0.5f);
+                offset = new Vector3(x, y, 0f);
                 break;
         }
 
-        transform.position = initialPosition + offset;
+                transform.position = initialPosition + offset;
+    }
+
+    private MovementPattern ChooseRandomPatternExcept(MovementPattern except)
+    {
+        // Obtiene todos los valores del enum
+        var values = System.Enum.GetValues(typeof(MovementPattern));
+        // Convierte a lista de MovementPattern
+        List<MovementPattern> list = new List<MovementPattern>();
+        foreach (MovementPattern mp in values)
+        {
+            if (mp != except)
+                list.Add(mp);
+        }
+        if (list.Count == 0)
+            return except; // si hubiera solo un elemento (raro), retorna el mismo
+                           // Selecciona uno al azar
+        int idx = Random.Range(0, list.Count);
+        return list[idx];
     }
     protected override void Die()
     {
