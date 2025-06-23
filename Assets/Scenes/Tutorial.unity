@@ -676,7 +676,7 @@ MonoBehaviour:
   brawler: {fileID: 259426990888837599, guid: 07e17a626778589438b261d729e51853, type: 3}
   laser: {fileID: 4686128174978994593, guid: 2a5d4491be38d6a49924cb6bb2489a2b, type: 3}
   sniper: {fileID: 1338575095303387300, guid: 1dd31d72e8d384f4da3d977cd02d59fc, type: 3}
-  ambusher: {fileID: 4065145752247707276, guid: 404d44848937407409a83cda1098f7c4, type: 3}
+  ambusher: {fileID: 5983413888037806392, guid: 7ef661dfd6d76a747ba6c711dcee191e, type: 3}
   granade: {fileID: 6992660775850227077, guid: a8f224486d3e6574981e189d8cabbc2b, type: 3}
 --- !u!1 &525878683
 GameObject:
