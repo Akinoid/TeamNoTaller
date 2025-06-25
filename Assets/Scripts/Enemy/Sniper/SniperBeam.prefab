@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2850030280015885618}
   - component: {fileID: 6504022151723493245}
-  - component: {fileID: 3319334840069164657}
+  - component: {fileID: 6172700095905930722}
   m_Layer: 0
   m_Name: SniperBeam
   m_TagString: Untagged
@@ -57,7 +57,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc28f716aef0b544e93474b914a7f665, type: 2}
+  - {fileID: 2100000, guid: 7efcd93c0f6bed9488e05009dccba9d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,7 +140,7 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &3319334840069164657
+--- !u!114 &6172700095905930722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
