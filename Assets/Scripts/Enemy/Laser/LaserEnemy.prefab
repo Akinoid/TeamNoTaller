@@ -298,8 +298,8 @@ Transform:
   m_GameObject: {fileID: 543612238446826506}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4889004, y: -0.5188601, z: 0.5091221, w: 0.48224}
-  m_LocalPosition: {x: 0.01, y: -0.21, z: 3.45}
-  m_LocalScale: {x: -100.48653, y: -4.560757, z: -12.30091}
+  m_LocalPosition: {x: -0.143, y: 0.012, z: 4.346}
+  m_LocalScale: {x: -134.41652, y: -4.560757, z: -11.680821}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3428835439791166220}
@@ -683,8 +683,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.13978332
-        value: 0.13983339
+        time: 0.18131012
+        value: 0.6720943
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2600,7 +2600,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 16.818678, y: 6.3962574, z: 1.5850062, w: 1}
+      - m_Value: {x: 16.818678, y: 1.5850062, z: 1.5850062, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
