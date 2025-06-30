@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3362409916769109064}
   - component: {fileID: 7976808190377231619}
   m_Layer: 0
-  m_Name: ImpCircle
+  m_Name: ImpGranade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,8 +307,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0, g: 0.9487772, b: 1, a: 1}
-      maxColor: {r: 0.16078429, g: 0.25126484, b: 0.7921569, a: 1}
+      minColor: {r: 1, g: 0, b: 0.527462, a: 1}
+      maxColor: {r: 0.7921569, g: 0.16078429, b: 0.22587116, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10250,7 +10250,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0, g: 0.9487772, b: 1, a: 0.99215686}
+      minColor: {r: 0.51812935, g: 0, b: 1, a: 0.99215686}
       maxColor: {r: 0.53631115, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
