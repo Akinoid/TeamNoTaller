@@ -165,12 +165,18 @@ public abstract class EnemyBase : MonoBehaviour
         {
             TakeDamage(currentHealth);
         }
-        if (other.CompareTag("Explosion"))
+        if (other.gameObject.CompareTag("Explosion"))
         {
-            TakeDamage(playerActions.missileExplosionDmg);
+            TakeDamage(currentHealth);
         }
     }
-
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Explosion"))
+        {
+            TakeDamage(currentHealth);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player") && playerActions.playerLife.haveBubble && Bubble.haveElectricBuff)

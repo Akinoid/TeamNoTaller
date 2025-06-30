@@ -153,10 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyFound: {fileID: 0}
   obstacleFound: {fileID: 0}
-  explosion: {fileID: 7000288099146683835, guid: 03ac05e8d079e334d8d545cb8de66501, type: 3}
+  explosion: {fileID: 3671073318385280424, guid: cf59edd8d0ae39c47bbd4824e9076e99, type: 3}
   target: {fileID: 0}
   rb: {fileID: 0}
-  timeExplosion: 0
   speed: 8
-  timer: 0
-  maxTimer: 2
+  direction: {x: 0, y: 0, z: 0}

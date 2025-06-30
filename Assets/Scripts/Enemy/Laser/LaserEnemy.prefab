@@ -57,6 +57,7 @@ MonoBehaviour:
   explosionRadius: 5
   explosionDamage: 50
   activeTimer: 0
+  particle: {fileID: 6335225545031954905, guid: cf59edd8d0ae39c47bbd4824e9076e99, type: 3}
   laserRenderer: {fileID: 8092275105002562360}
   laserEffect: {fileID: 543612238446826506}
   gunPoint: {fileID: 201748362741356162}
