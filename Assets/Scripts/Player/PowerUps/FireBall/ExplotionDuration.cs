@@ -3,7 +3,7 @@ using UnityEngine;
 public class ExplotionDuration : MonoBehaviour
 {
     [SerializeField] private bool timeOfExplosion;
-    [SerializeField] private float timer, maxTimer;
+    [SerializeField] private float timer, maxTimer, timerExplotion;
     [SerializeField] private GameObject colli;
 
     void Start()
@@ -27,7 +27,7 @@ public class ExplotionDuration : MonoBehaviour
     private void TimeExplosion()
     {
         timer += Time.deltaTime;
-        if(timer >= 1.5f)
+        if(timer >= timerExplotion)
         {
             colli.SetActive(true);
         }
