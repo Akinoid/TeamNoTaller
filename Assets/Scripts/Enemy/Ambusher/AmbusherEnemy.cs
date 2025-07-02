@@ -47,7 +47,7 @@ public class AmbusherEnemy : EnemyBase
         {
            
             Vector3 dangerPos = playerTransform.position - playerTransform.forward * chargeDistanceBehind;
-            dangerSymbolInstance = Instantiate(dangerSymbolPrefab, dangerPos, Quaternion.identity);
+            dangerSymbolInstance = Instantiate(dangerSymbolPrefab, dangerPos, dangerSymbolPrefab.transform.rotation);
             StartCoroutine(EntryChargeRoutine(dangerPos));
             RegisterAssociatedObject(dangerSymbolInstance);
         }
@@ -61,11 +61,12 @@ public class AmbusherEnemy : EnemyBase
         Renderer symbolRenderer = dangerSymbolInstance.GetComponentInChildren<Renderer>();
         while (timer < warningDuration)
         {
-            if (symbolRenderer != null)
-                symbolRenderer.enabled = !symbolRenderer.enabled;
+            /*if (symbolRenderer != null)
+                symbolRenderer.enabled = !symbolRenderer.enabled;*/
             yield return new WaitForSeconds(0.2f);
             timer += 0.2f;
         }
+        
 
         Vector3 start = transform.position;
         transform.position = start - Vector3.forward * chargeDistanceBehind; // start behind

@@ -1208,6 +1208,7 @@ MonoBehaviour:
   entryZTarget: 15
   activeLifetime: 1000000
   exitSpeed: 5
+  entryType: 1
   health: 100
   currentHealth: 0
   explosionRadius: 5
@@ -1216,7 +1217,7 @@ MonoBehaviour:
   followSpeed: 2
   attackRange: 1
   attackDelay: 1
-  dangerZonePrefab: {fileID: 1027311699457903532, guid: 0814f2d19a19f95488b96f703a239b3a, type: 3}
+  dangerZonePrefab: {fileID: 7136046195775962701, guid: 7e0aafd6b87b3b7499270bcf57770e98, type: 3}
   attackRadius: 3
   playerTransform: {fileID: 0}
   ataque: {fileID: 4132473279997462082}

@@ -10,22 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79d2e472ea66ba4e89bcd79a376d1ad, type: 3}
-  m_Name: AdvancePattern_1
+  m_Name: Pattern_10
   m_EditorClassIdentifier: 
   spawnZones:
   - {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+  - {fileID: 1109673160532119356, guid: 1c1a34c96e192c84f91525fe7e86e245, type: 3}
+  - {fileID: 5624668901151785691, guid: 371d572c3d6317d4a9a46de23ee72bdb, type: 3}
+  - {fileID: 438223823636100698, guid: f16a3fa608a5fbc408a699e922e8eaee, type: 3}
   spawnSequence:
-  - enemyPrefab: {fileID: 5256404237355458017, guid: 757d031cff4f2454faf05e8baf513710, type: 3}
+  - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 0
     delayAfterPrevious: 0
   - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 0
     delayAfterPrevious: 0
   - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 1
     delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 1518841466097805326, guid: b3032a65337bc5242990869cfbf2f36e, type: 3}
+  - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 1
     delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 1518841466097805326, guid: b3032a65337bc5242990869cfbf2f36e, type: 3}
+  - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 2
     delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 5983413888037806392, guid: 7ef661dfd6d76a747ba6c711dcee191e, type: 3}
-    delayAfterPrevious: 0
-  - enemyPrefab: {fileID: 5983413888037806392, guid: 7ef661dfd6d76a747ba6c711dcee191e, type: 3}
+  - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 2
     delayAfterPrevious: 0

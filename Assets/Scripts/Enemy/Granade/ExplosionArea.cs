@@ -9,6 +9,7 @@ public class ExplosionArea : MonoBehaviour
     private void Start()
     {
         Destroy(gameObject, duration); // Se autodestruye luego del tiempo
+        
     }
 
     private void OnTriggerEnter(Collider other)

@@ -90,7 +90,7 @@ public class BrawlerEnemy : EnemyBase
                 0f
             );
 
-            GameObject dzGO = Instantiate(dangerZonePrefab, dzPos, Quaternion.identity);
+            GameObject dzGO = Instantiate(dangerZonePrefab, dzPos, dangerZonePrefab.transform.rotation);
             DangerZone dz = dzGO.GetComponent<DangerZone>();
             RegisterAssociatedObject(dzGO);
             if (dz == null)
@@ -103,13 +103,21 @@ public class BrawlerEnemy : EnemyBase
             dz.StartCharging(attackDelay, () =>
             {
                 Debug.Log("BrawlerEnemy: Attack triggered!");
-                Collider[] hits = Physics.OverlapBox(dzGO.transform.position, dzGO.transform.localScale / 2);
-                foreach (var h in hits)
+
+                BoxCollider box = dzGO.GetComponent<BoxCollider>();
+                if (box != null)
                 {
-                    if (h.CompareTag("Player"))
+                    Vector3 center = box.transform.TransformPoint(box.center);
+                    Vector3 halfExtents = Vector3.Scale(box.size, box.transform.lossyScale) / 2f;
+
+                    Collider[] hits = Physics.OverlapBox(center, halfExtents, box.transform.rotation);
+                    foreach (var h in hits)
                     {
-                        Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
-                        DamagePlayer(h.gameObject);
+                        if (h.CompareTag("Player"))
+                        {
+                            Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
+                            DamagePlayer(h.gameObject);
+                        }
                     }
                 }
 

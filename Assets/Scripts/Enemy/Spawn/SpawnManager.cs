@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -36,51 +37,36 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator RunPatterns()
+    private IEnumerator RunPatterns()
     {
         foreach (var sequence in patternSequences)
         {
-            
-            for (int i = 0; i < sequence.repetitions; i++)
+            for (int rep = 0; rep < sequence.repetitions; rep++)
             {
-                
-                
-                foreach (var zone in sequence.pattern.spawnZones)
+                foreach (var entry in sequence.pattern.spawnSequence)
                 {
-                    
-                    if (zone != null)
+                    int zi = entry.zoneIndex;
+                    // Validar índice
+                    if (zi >= 0 && zi < sequence.pattern.spawnZones.Length)
                     {
-                        foreach (var e in sequence.pattern.spawnSequence)
+                        var zone = sequence.pattern.spawnZones[zi];
+                        if (zone != null && entry.enemyPrefab != null)
                         {
-                           
-
-                            GameObject enemy = e.enemyPrefab;
-                            if (enemy != null)
-                            {
-                                GameObject spawned = zone.SpawnEnemy(enemy);
-                                if (spawned != null)
-                                {
-                                    spawnedEnemies.Add(spawned);
-                                }
-                                
-                            }
-                            else
-                            {
-                                Debug.Log("enemy = null");
-                            }
-                            
-                        }                       
-                        
+                            GameObject spawned = zone.SpawnEnemy(entry.enemyPrefab);
+                            spawnedEnemies.Add(spawned);
+                        }
                     }
                     else
                     {
-                        Debug.Log("zone = null");
+                        Debug.LogWarning($"SpawnManager: zoneIndex {zi} fuera de rango para patrón {sequence.pattern.name}");
                     }
+                    yield return new WaitForSeconds(entry.delayAfterPrevious);
                 }
-
                 yield return new WaitForSeconds(sequence.delayBetweenRepetitions);
             }
         }
+
+        // Terminamos de spawnear todas las olas
         waitingForEnemiesToDie = true;
     }
 }

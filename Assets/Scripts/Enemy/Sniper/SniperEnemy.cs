@@ -71,7 +71,7 @@ public class SniperEnemy : EnemyBase
         if(markerInstance != null)
             Destroy(markerInstance); 
 
-        markerInstance = Instantiate(markerPrefab, Vector3.zero, Quaternion.identity);
+        markerInstance = Instantiate(markerPrefab, Vector3.zero, markerPrefab.transform.rotation);
 
         RegisterAssociatedObject(markerInstance);
         float timer = 0f;
@@ -98,8 +98,7 @@ public class SniperEnemy : EnemyBase
             yield return new WaitForSeconds(holdTime);
 
         // Destruir marcador antes de disparar
-        if (markerInstance != null)
-            Destroy(markerInstance);
+       
 
         // Iniciar láser animado y daño diferido
         Vector3 targetPos = lastPlayerPosition;
@@ -198,25 +197,29 @@ public class SniperEnemy : EnemyBase
 
         // Después de que el láser “llega”, aplicamos daño con un raycast corto o chequeo de proximidad
         RaycastHit hit;
-        if (Physics.Raycast(start, dir, out hit, distance + 0.1f))
+
+        BoxCollider box = markerInstance.GetComponentInChildren<BoxCollider>();
+        if (box != null)
         {
-            // Asegurarse de apuntar al root que tenga PlayerLife
-            var pl = hit.collider.GetComponentInParent<PlayerLife>();
-            if (pl != null)
+            Vector3 center = box.transform.TransformPoint(box.center);
+            Vector3 halfExtents = Vector3.Scale(box.size, box.transform.lossyScale) / 2f;
+
+            Collider[] hits = Physics.OverlapBox(center, halfExtents, box.transform.rotation);
+            foreach (var h in hits)
             {
-                GameObject playerGO = pl.gameObject;
-                // Aplicar daño
-                Shield shield = playerGO.GetComponent<Shield>();
-                if (shield != null && shield.haveShield)
-                    shield.GetDamage((int)damage, true);
-                else if (pl.canGetHit)
+                if (h.CompareTag("Player"))
                 {
-                    pl.getHit = true;
                     Debug.Log("SniperEnemy: Player HIT by laser at arrival");
+                    DamagePlayer(h.gameObject);
                 }
             }
+            
+            
+            
         }
 
+        if (markerInstance != null)
+            Destroy(markerInstance);
         // Opcional: puedes esperar un poco más antes de continuar
         yield break;
     }

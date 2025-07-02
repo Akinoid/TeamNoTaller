@@ -44,7 +44,7 @@ public class GranadeEnemy : EnemyBase
             animator.SetBool("Golpe", true);
             Vector3 areaPos = new Vector3(playerTransform.position.x, playerTransform.position.y, 0);
 
-            GameObject warning = Instantiate(warningAreaPrefab, areaPos, Quaternion.identity);
+            GameObject warning = Instantiate(warningAreaPrefab, areaPos, warningAreaPrefab.transform.rotation);
             WarningArea area = warning.GetComponent<WarningArea>();
             if (area != null)
             {
@@ -53,8 +53,8 @@ public class GranadeEnemy : EnemyBase
 
             Instantiate(explosionPrefab, areaPos, Quaternion.identity);
             animator.SetBool("Golpe", false);
-            RegisterAssociatedObject(explosionPrefab);
-            RegisterAssociatedObject(warning);
+            
+            
             yield return new WaitForSeconds(timeBetweenAttacks);
             
         }

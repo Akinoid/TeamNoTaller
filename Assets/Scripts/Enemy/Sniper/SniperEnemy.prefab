@@ -657,7 +657,7 @@ MonoBehaviour:
   explosionRadius: 5
   explosionDamage: 50
   activeTimer: 0
-  markerPrefab: {fileID: 7496782539541728113, guid: deb384c77e5c5fa489d062558eaa58a9, type: 3}
+  markerPrefab: {fileID: 3957440064718494479, guid: 464500ae869050a499e9f9b4402ff1ee, type: 3}
   beamPrefab: {fileID: 7888827816995400695, guid: 9ec434881e267324ea12298f837bf0d9, type: 3}
   markerOffsetZ: 0
   damage: 40

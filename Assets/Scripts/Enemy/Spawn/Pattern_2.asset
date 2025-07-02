@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPattern
   spawnZones:
   - {fileID: 2770978893828549091, guid: bd226bdedad89bd49abb83e846c62668, type: 3}
+  - {fileID: 1109673160532119356, guid: 1c1a34c96e192c84f91525fe7e86e245, type: 3}
+  - {fileID: 5624668901151785691, guid: 371d572c3d6317d4a9a46de23ee72bdb, type: 3}
+  - {fileID: 438223823636100698, guid: f16a3fa608a5fbc408a699e922e8eaee, type: 3}
   spawnSequence:
   - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 0
     delayAfterPrevious: 0
   - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 1
     delayAfterPrevious: 0
   - enemyPrefab: {fileID: 3804714600529578734, guid: 01c1535e59a4d804899da235b14f4c00, type: 3}
+    zoneIndex: 2
     delayAfterPrevious: 0

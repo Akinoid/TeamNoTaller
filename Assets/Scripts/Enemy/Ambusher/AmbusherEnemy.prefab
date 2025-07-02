@@ -1383,7 +1383,7 @@ MonoBehaviour:
   activeTimer: 10
   chargeSpeed: 20
   warningDuration: 2
-  dangerSymbolPrefab: {fileID: 8676825446193495824, guid: a42f0b0a2f68afc48ae999a4fed792d6, type: 3}
+  dangerSymbolPrefab: {fileID: 717411610656714817, guid: 8029c280e4e821646bbc9da32779fe9a, type: 3}
   exitFlashDuration: 0
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   chargeDistanceBehind: 0
