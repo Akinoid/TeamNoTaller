@@ -1016,12 +1016,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.6664753, y: 5.1746387, z: 2.4872055}
-  m_Center: {x: 0.10732746, y: -0.6197767, z: 0.74360275}
+  m_Size: {x: 4.6664753, y: 5.1746387, z: 15.286121}
+  m_Center: {x: 0.10732746, y: -0.6197767, z: -5.655855}
 --- !u!114 &8709514307581789412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1588,7 @@ GameObject:
   - component: {fileID: 8473493604866715510}
   - component: {fileID: 7050423638607035160}
   - component: {fileID: 414732219007813456}
+  - component: {fileID: 4061767334420072978}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -1656,6 +1657,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd879a74e24518c47b7a0b03d2149119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4061767334420072978
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889542378310077265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40.703312, y: 40.517605, z: 14.890343}
+  m_Center: {x: -0.9199238, y: -0.90016747, z: 5.518276}
 --- !u!1 &2893115990025650813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2676,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8045589318265503328}
   - component: {fileID: 2521406935133429126}
-  - component: {fileID: 5496146311809420133}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2700,7 +2721,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 1deca14e9583a4140a424e4b3fda5639, type: 3}
+  - {fileID: 2100000, guid: ec27dc530c427c846b48af31b31e074e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2780,27 +2801,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -15.586382, y: -2.4802341, z: 1.1221819}
     m_Extent: {x: 23.43231, y: 12.40131, z: 30.404995}
   m_DirtyAABB: 0
---- !u!65 &5496146311809420133
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187541671931880365}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 63.58617, y: 50.52797, z: 24.80262}
-  m_Center: {x: -19.586384, y: 18.275509, z: 2.2272358}
 --- !u!1 &5263761739453792487
 GameObject:
   m_ObjectHideFlags: 0
