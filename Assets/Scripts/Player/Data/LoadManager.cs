@@ -5,9 +5,10 @@ public class LoadManager : MonoBehaviour
     [SerializeField] private Money money;
     [SerializeField] private Shop shop;
     int firstSave;
-    public static bool reset;
+    public bool reset;
     private void Awake()
     {
+        Time.timeScale = 1;
         if (reset)
         {
            PlayerPrefs.SetInt("FirstSave", 0);

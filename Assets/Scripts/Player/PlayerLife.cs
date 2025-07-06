@@ -17,6 +17,7 @@ public class PlayerLife : MonoBehaviour
     public GameObject dialogues1, dialogues2;
     [SerializeField] private LifeDialogueTutorial lifeDialogue;
     [SerializeField] private DialoguesTutorial dialogues;
+    [SerializeField] private GameObject defeatPanel;
     public enum State
     {
         Base,
@@ -24,6 +25,7 @@ public class PlayerLife : MonoBehaviour
     }
     void Start()
     {
+        defeatPanel.SetActive(false);
         state = State.Base;
         getHit = false;
         meshRenderer = gameObject.GetComponent<Renderer>();
@@ -100,12 +102,8 @@ public class PlayerLife : MonoBehaviour
                 {
                     if(StartMenuManager.tutorial == 1)
                     {
-                        money.money += Money.score;
-                        Money.score = 0;
-                        load.Save();
-                        Money.combo.Clear();
-                        SceneManager.LoadScene("StartMenu");
-                        Debug.Log("Game Over");
+                        defeatPanel.SetActive(true);
+                        
                         getHit = false;
                     }
                     else if(StartMenuManager.tutorial == 0 && !tutorialDead && lifeDialogue != null) 
