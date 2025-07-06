@@ -5,16 +5,27 @@ public class LoadManager : MonoBehaviour
     [SerializeField] private Money money;
     [SerializeField] private Shop shop;
     int firstSave;
-    void Start()
+    public bool reset;
+    private void Awake()
     {
-        firstSave = PlayerPrefs.GetInt("FirstSave", 0);
+        if (reset)
+        {
+           PlayerPrefs.SetInt("FirstSave", 0);
+            Debug.Log(firstSave);
 
+        }
+        firstSave = PlayerPrefs.GetInt("FirstSave", 0);
+        Debug.Log(firstSave);
         if (firstSave == 0)
         {
             Save();
         }
         Load();
         Save();
+    }
+    void Start()
+    {
+        
     }
     void Update()
     {
@@ -26,6 +37,7 @@ public class LoadManager : MonoBehaviour
         if(shop != null)
         {
             SaveManager.SavePlayerData(shop);
+            Debug.Log("Saved");
         }
         if(money != null)
         {
@@ -37,12 +49,12 @@ public class LoadManager : MonoBehaviour
     {
         
         PlayerData playerData = SaveManager.LoadPlayerData();
-        Debug.Log("aaaa");
+        Debug.Log("Loaded");
         if (shop != null)
         {
             shop.saveFireballBuyed = playerData.fireballBuyed;
             shop.saveShieldBuyed = playerData.shieldBuyed;
-            shop.saveBubbleBuyed = playerData.blasterBuyed;
+            shop.saveBubbleBuyed = playerData.bubbleBuyed;
             shop.saveSigilBuyed = playerData.sigilBuyed;
             shop.saveBlasterBuyed = playerData.blasterBuyed;
             shop.saveHaveEletricBuff = playerData.HaveEletricBuff;

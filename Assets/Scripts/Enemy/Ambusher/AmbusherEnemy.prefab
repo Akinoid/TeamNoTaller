@@ -1383,6 +1383,7 @@ MonoBehaviour:
   explosionRadius: 5
   explosionDamage: 50
   activeTimer: 10
+  particle: {fileID: 6335225545031954905, guid: cf59edd8d0ae39c47bbd4824e9076e99, type: 3}
   chargeSpeed: 20
   warningDuration: 2
   dangerSymbolPrefab: {fileID: 717411610656714817, guid: 8029c280e4e821646bbc9da32779fe9a, type: 3}

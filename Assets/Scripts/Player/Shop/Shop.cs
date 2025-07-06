@@ -12,32 +12,38 @@ public class Shop : MonoBehaviour
     [SerializeField] private Money money;
     [SerializeField] private LoadManager load;
 
+    private void Awake()
+    {
+        
+    }
     private void Start()
     {
         ChangesBools();
+        Debug.Log(saveFireballBuyed);
+        Debug.Log(fireballBuyed);
         TMPS();
         ChangeBuyButtonTMP();
         money = GameObject.Find("MoneyManager").GetComponent<Money>();
     }
     private void TMPS()
     {
-        fireBallTMP = transform.Find("FireBallTMP").GetComponent<TMP_Text>();
+        fireBallTMP = transform.Find("ShopPanel").Find("FireBallTMP").GetComponent<TMP_Text>();
         fireBallDescriptionTMP = fireBallTMP.transform.Find("FireBallDescriptionTMP").GetComponent<TMP_Text>();
         fireBallBuyTMP = fireBallTMP.transform.Find("FireBallBuyButton").Find("FireBallBuyTMP").GetComponent<TMP_Text>();
 
-        bubbleTMP = transform.Find("BubbleTMP").GetComponent<TMP_Text>();
+        bubbleTMP = transform.Find("ShopPanel").Find("BubbleTMP").GetComponent<TMP_Text>();
         bubbleDescriptionTMP = bubbleTMP.transform.Find("BubbleDescriptionTMP").GetComponent<TMP_Text>();
         bubbleBuyTMP = bubbleTMP.transform.Find("BubbleBuyButton").Find("BubbleBuyTMP").GetComponent<TMP_Text>();
 
-        shieldTMP = transform.Find("ShieldTMP").GetComponent<TMP_Text>();
+        shieldTMP = transform.Find("ShopPanel").Find("ShieldTMP").GetComponent<TMP_Text>();
         shieldDescriptionTMP = shieldTMP.transform.Find("ShieldDescriptionTMP").GetComponent<TMP_Text>();
         shieldBuyTMP = shieldTMP.transform.Find("ShieldBuyButton").Find("ShieldBuyTMP").GetComponent<TMP_Text>();
 
-        sigilTMP = transform.Find("SigilTMP").GetComponent<TMP_Text>();
+        sigilTMP = transform.Find("ShopPanel").Find("SigilTMP").GetComponent<TMP_Text>();
         sigilDescriptionTMP = sigilTMP.transform.Find("SigilDescriptionTMP").GetComponent<TMP_Text>();
         sigilBuyTMP = sigilTMP.transform.Find("SigilBuyButton").Find("SigilBuyTMP").GetComponent<TMP_Text>();
 
-        blasterTMP = transform.Find("BlasterTMP").GetComponent<TMP_Text>();
+        blasterTMP = transform.Find("ShopPanel").Find("BlasterTMP").GetComponent<TMP_Text>();
         blasterDescriptionTMP = blasterTMP.transform.Find("BlasterDescriptionTMP").GetComponent<TMP_Text>();
         blasterBuyTMP = blasterTMP.transform.Find("BlasterBuyButton").Find("BlasterBuyTMP").GetComponent<TMP_Text>();
     }
@@ -60,6 +66,12 @@ public class Shop : MonoBehaviour
         if (shieldBuyed)
         {
             shieldBuyTMP.text = $"Already buyed";
+        }
+        if (bubbleBuyed)
+        {
+            bubbleTMP.text = $"Electric Bubble";
+            bubbleBuyTMP.text = $"Buy $20000";
+            bubbleDescriptionTMP.text = $"When you catch a Electric Bubble, block all the incoming damage and if you collision with an enemy, him receive 50 points of damage. Last 15 seconds after you receive a hit.";
         }
         if (Bubble.haveElectricBuff)
         {
@@ -106,10 +118,11 @@ public class Shop : MonoBehaviour
     {
         if (!bubbleBuyed && money.money >= 10000)
         {
-            money.money -= 10000;
             saveBubbleBuyed = true;
-            load.Save();
             ChangesBools();
+            money.money -= 10000;
+            load.Save();
+            Debug.Log(saveBubbleBuyed + "bubble");
         }
         if (saveBubbleBuyed)
         {

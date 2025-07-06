@@ -6,6 +6,7 @@ public class LaserEnemy : EnemyBase
 {
     [Header("Laser Settings")]
     public LineRenderer laserRenderer;
+    public GameObject laserEffect;
     public Transform gunPoint;          // empty donde sale el láser
     public float laserOnDuration = 10f;
     public float laserOffDuration = 10f;
@@ -36,6 +37,7 @@ public class LaserEnemy : EnemyBase
         {
             laserRenderer.enabled = false;
             laserRenderer.useWorldSpace = true;
+            laserEffect.SetActive(false);
         }
     }
 
@@ -76,7 +78,10 @@ public class LaserEnemy : EnemyBase
     {
         laserActive = active;
         if (laserRenderer != null)
+        {
             laserRenderer.enabled = active;
+            laserEffect.SetActive(active);
+        }
     }
 
     protected override void Update()

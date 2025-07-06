@@ -1637,6 +1637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: {fileID: 1237547734}
   shop: {fileID: 0}
+  reset: 0
 --- !u!4 &1153048308
 Transform:
   m_ObjectHideFlags: 0
@@ -2606,6 +2607,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 464173276702313131, guid: 097e2b96b1f6ba843b52d8b99fd71f19, type: 3}
+      propertyPath: missiles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 464173276702313131, guid: 097e2b96b1f6ba843b52d8b99fd71f19, type: 3}
+      propertyPath: maxMissiles
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1706609980663327263, guid: 097e2b96b1f6ba843b52d8b99fd71f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2723,7 +2732,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1c1a34c96e192c84f91525fe7e86e245, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 2f055b323f9ac46459b8ff5237376954, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
