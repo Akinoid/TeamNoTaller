@@ -236,7 +236,7 @@ public class SniperEnemy : EnemyBase
         {
             shield.GetDamage(50, true);
         }
-        else if (life != null && life.canGetHit && !shield.haveShield)
+        else if (life != null && life.canGetHit)
         {
             life.getHit = true;
             Debug.Log("Hit = True");

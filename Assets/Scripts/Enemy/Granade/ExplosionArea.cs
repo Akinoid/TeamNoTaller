@@ -28,7 +28,7 @@ public class ExplosionArea : MonoBehaviour
             {
                 shield.GetDamage(30, true);
             }
-            else if (life != null && life.canGetHit && !shield.haveShield)
+            else if (life != null && life.canGetHit)
             {
                 life.getHit = true;
                 Debug.Log("Player got Hit");

@@ -146,7 +146,7 @@ public class BrawlerEnemy : EnemyBase
         {
             shield.GetDamage(20, true);
         }
-        else if (life != null && life.canGetHit && !shield.haveShield)
+        else if (life != null && life.canGetHit)
         {
             life.getHit = true;
             Debug.Log("Player got Hit");
