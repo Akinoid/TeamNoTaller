@@ -80,5 +80,6 @@ public class LoadManager : MonoBehaviour
         shop.saveHaveEletricBuff = false;
         shop.ChangesBools();
         shop.ChangeBuyButtonTMP();
+        Save();
     }
 }

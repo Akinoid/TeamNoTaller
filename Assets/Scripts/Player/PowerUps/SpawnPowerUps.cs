@@ -77,8 +77,8 @@ public class SpawnPowerUps : MonoBehaviour
         coroutine = StartCoroutine(IESpawnPowerUps(PUpsAmount, timeBetweenSpawn));
         spawnTransform = gameObject.transform;
         index = Random.Range(0, powerUps.Count);
-        posX = Random.Range(-20, 21);
-        posY = Random.Range(-20, 21);
+        changePosition = true;
+        ChoosePositionToSpawn();
         canSpawn = 2;
     }
 

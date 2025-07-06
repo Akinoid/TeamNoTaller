@@ -65,4 +65,9 @@ public class StartMenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void ResetTutorialButton()
+    {
+        tutorial = 0;
+        PlayerPrefs.SetInt("Tutorial", 0);
+    }
 }
