@@ -15,7 +15,7 @@ public class FistBarrage : MonoBehaviour,IBossAttack
     {
         Debug.Log("Fist Barrage iniciado");
 
-        Animator animator = boss.GetComponent<Animator>();
+        Animator animator = boss.GetComponentInChildren<Animator>();
         if (animator != null)
         {
             animator.SetBool("Golpe", true); 
@@ -31,32 +31,50 @@ public class FistBarrage : MonoBehaviour,IBossAttack
 
         for (int i = 0; i < numberOfPunches; i++)
         {
-            
+
             Vector2 offset = Random.insideUnitCircle.normalized * Random.Range(1f, attackRadius);
             Vector3 targetPos = new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, 0);
 
-            
-            GameObject warning = Instantiate(warningPrefab, targetPos, Quaternion.identity);
+
+            GameObject warning = Instantiate(warningPrefab, targetPos, warningPrefab.transform.rotation);
             Destroy(warning, destroyDelay);
 
-            
+
             yield return new WaitForSeconds(warningDuration);
+            GameObject fist = Instantiate(fistImpactPrefab, targetPos, Quaternion.identity);
 
-           
-            GameObject fist=Instantiate(fistImpactPrefab, targetPos, Quaternion.identity);
-            Collider[] hits = Physics.OverlapBox(warning.transform.position, warning.transform.localScale / 2);
-            foreach (var h in hits)
-                if (h.CompareTag("Player"))
+
+            var bc = warning.GetComponent<BoxCollider>();
+            if (bc != null)
+            {
+                // Calcula el tamaño en mundo:
+                Vector3 worldSize = Vector3.Scale(bc.size, warning.transform.lossyScale);
+                Vector3 halfExtents = worldSize * 0.5f;
+                // Calcula el centro en mundo (ten en cuenta bc.center si no está en (0,0,0)):
+                Vector3 worldCenter = warning.transform.position + warning.transform.rotation * Vector3.Scale(bc.center, warning.transform.lossyScale);
+
+                // Ahora sí:
+                Collider[] hits = Physics.OverlapBox(
+                    worldCenter,
+                    halfExtents,
+                    warning.transform.rotation
+                );
+                foreach (var h in hits)
                 {
-                    Debug.Log("BrawlerEnemy: Player HIT by DangerZone!");
-                    life.getHit = true;
+                    if (h.CompareTag("Player"))
+                    {
+                        Debug.Log("Player HIT by DangerZone!");
+                        life.getHit = true;
+                    }
                 }
-            Destroy(warning, destroyDelay);
-            Destroy(fist, destroyDelay);
-           
-            yield return new WaitForSeconds(delayBetweenPunches);
+                Destroy(warning, destroyDelay);
+                Destroy(fist, destroyDelay);
 
-            
+                yield return new WaitForSeconds(delayBetweenPunches);
+
+
+
+            }
         }
 
         Debug.Log("Fist Barrage terminado");

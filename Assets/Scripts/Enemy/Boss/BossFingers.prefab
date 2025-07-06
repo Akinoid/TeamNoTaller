@@ -123,5 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeSpeed: 20
   attackHitRadius: 0
-  dangerSymbolPrefab: {fileID: 8676825446193495824, guid: a42f0b0a2f68afc48ae999a4fed792d6, type: 3}
+  dangerSymbolPrefab: {fileID: 717411610656714817, guid: 8029c280e4e821646bbc9da32779fe9a, type: 3}
   warningDuration: 1.5

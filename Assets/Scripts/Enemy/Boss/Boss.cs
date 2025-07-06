@@ -26,6 +26,7 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        healthBar = GameObject.Find("Boss Life").GetComponent<Slider>();
         currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.value = currentHealth;

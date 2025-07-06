@@ -16,7 +16,7 @@ public class GrenadeBarrage : MonoBehaviour, IBossAttack
     {
         Debug.Log("Grenade Barrage iniciado");
 
-        Animator animator = boss.GetComponent<Animator>();
+        Animator animator = boss.GetComponentInChildren<Animator>();
         if (animator != null)
         {
             animator.SetBool("Explosion", true);
@@ -36,7 +36,7 @@ public class GrenadeBarrage : MonoBehaviour, IBossAttack
             Vector3 areaPos = new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, 0f);
 
             
-            GameObject warning = Instantiate(warningAreaPrefab, areaPos, Quaternion.identity);
+            GameObject warning = Instantiate(warningAreaPrefab, areaPos, warningAreaPrefab.transform.rotation);
             WarningArea area = warning.GetComponent<WarningArea>();
             if (area != null)
             {

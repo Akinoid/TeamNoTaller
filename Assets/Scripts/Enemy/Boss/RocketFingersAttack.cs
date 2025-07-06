@@ -15,7 +15,7 @@ public class RocketFingersAttack : MonoBehaviour, IBossAttack
     {
         Debug.Log("RocketFingersAttack iniciado");
 
-        Animator animator = boss.GetComponent<Animator>();
+        Animator animator = boss.GetComponentInChildren<Animator>();
         if (animator != null)
         {
             animator.SetBool("Finger", true);

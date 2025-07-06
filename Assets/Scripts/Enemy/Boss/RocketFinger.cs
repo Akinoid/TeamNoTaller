@@ -28,7 +28,7 @@ public class RocketFinger : MonoBehaviour
         // Mostrar advertencia solo si es la fase de regreso
         if (isReturning && dangerSymbolPrefab != null && warningPos.HasValue)
         {
-            GameObject warning = Instantiate(dangerSymbolPrefab, warningPos.Value, Quaternion.identity);
+            GameObject warning = Instantiate(dangerSymbolPrefab, warningPos.Value, dangerSymbolPrefab.transform.rotation);
             Renderer rend = warning.GetComponentInChildren<Renderer>();
 
             float t = 0f;

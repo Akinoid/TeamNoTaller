@@ -20,36 +20,39 @@ public class SpawnManager : MonoBehaviour
     [Header("Siguiente Escena")]
     public string nextSceneName;
 
+    public GameObject bosslife;
+
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private Money money;
 
     private void Start()
     {
+        bosslife.SetActive(false);
         money = GameObject.Find("MoneyManager").GetComponent<Money>();
         StartCoroutine(RunPatterns());
     }
 
     private IEnumerator RunPatterns()
     {
-        // 1) Oleadas Normales
+        
         for (int i = 0; i < normalWaveCount; i++)
         {
             var seq = normalSequences[Random.Range(0, normalSequences.Length)];
             yield return StartCoroutine(RunSinglePattern(seq));
-            // NOTA: tras cada patrón, podrías limpiar o dar un pequeño delay extra si quieres
+            
         }
 
-        // 2) Oleadas Avanzadas
+       
         for (int i = 0; i < advancedWaveCount; i++)
         {
             var seq = advancedSequences[Random.Range(0, advancedSequences.Length)];
             yield return StartCoroutine(RunSinglePattern(seq));
         }
 
-        // 3) ESPERA A QUE DESAPAREZCAN TODOS LOS ENEMIGOS DE LAS OLEADAS
+        
         yield return StartCoroutine(WaitForClear());
 
-        // 4) ¡AHORA, Y SOLO AHORA!, SPAWNEAMOS AL JEFE
+        bosslife.SetActive(true);
         if (bossPrefab != null && bossSpawnZone != null)
         {
             Debug.Log("SpawnManager: Spawn del Boss");
@@ -57,10 +60,9 @@ public class SpawnManager : MonoBehaviour
             spawnedEnemies.Add(bossGO);
         }
 
-        // 5) Y ESPERAMOS A QUE MUERA EL JEFE
+        
         yield return StartCoroutine(WaitForClear());
 
-        // 6) RECOMPENSA Y CAMBIO DE ESCENA
         money.money += Money.score;
         Money.score = 0;
         if (StartMenuManager.tutorial == 1)

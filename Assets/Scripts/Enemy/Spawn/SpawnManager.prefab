@@ -105,9 +105,10 @@ MonoBehaviour:
     pattern: {fileID: 11400000, guid: c7ca8d77493a80b4cbf75f1a84f6dfcb, type: 2}
     repetitions: 1
     delayBetweenRepetitions: 15
-  normalWaveCount: 6
+  normalWaveCount: 15
   advancedSequences: []
   advancedWaveCount: 0
-  bossPrefab: {fileID: 1499491746675078257, guid: a8a70724613c0874b82c59c69b242fa1, type: 3}
+  bossPrefab: {fileID: 2889542378310077265, guid: 4c27c7b04d5c00b44a0db3a488948d31, type: 3}
   bossSpawnZone: {fileID: 0}
   nextSceneName: StartMenu
+  bosslife: {fileID: 0}
