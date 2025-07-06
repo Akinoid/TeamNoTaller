@@ -15,6 +15,14 @@ public abstract class EnemyBase : MonoBehaviour
     public float exitSpeed = 5f;
     [SerializeField] protected EntryType entryType = EntryType.Spiral;
 
+    [Header("Entry Area (X×Y)")]
+    [Tooltip("Centro del área de convergencia (solo X/Y)")]
+    public Vector2 entryAreaCenter = Vector2.zero;
+    [Tooltip("Tamaño del área de convergencia en X e Y")]
+    public Vector2 entryAreaSize = new Vector2(20f, 20f);
+
+    protected Vector2 entryCenter;
+
     [Header("Health & Explosion")]
     public float health = 100f;
     public float currentHealth;
@@ -36,21 +44,30 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         currentHealth = health;
-        // Spawn fuera de cámara en Z
+        playerActions = GameObject.Find("Player").GetComponent<PlayerActions>();
+
+        // 1) Coloca al spawn point en Z de entrada
         spawnpoint = transform.position;
         spawnpoint.z = entryZStart;
         transform.position = spawnpoint;
 
-        // Destino de entrada
-        entryTargetPos = new Vector3(transform.position.x, transform.position.y, entryZTarget);
+        // 2) Elige el centro DEL ÁREA de entrada (X/Y)
+        float halfX = entryAreaSize.x * 0.5f;
+        float halfY = entryAreaSize.y * 0.5f;
+        entryCenter = new Vector2(
+            UnityEngine.Random.Range(entryAreaCenter.x - halfX, entryAreaCenter.x + halfX),
+            UnityEngine.Random.Range(entryAreaCenter.y - halfY, entryAreaCenter.y + halfY)
+        );
 
+        // 3) Ahora que ya conoces entryCenter, arma el destino 3D completo
+        entryTargetPos = new Vector3(entryCenter.x, entryCenter.y, entryZTarget);
+
+        // 4) Resto de inicialización
         activeTimer = activeLifetime;
-        Debug.Log($"{name} START – state=Entering at {transform.position} → {entryTargetPos}");
+        entryTime = 0f;
+        entryType = (EntryType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(EntryType)).Length);
 
-        playerActions = GameObject.Find("Player").GetComponent<PlayerActions>();
-
-        entryType = (EntryType)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(EntryType)).Length);
-
+        Debug.Log($"{name} START at {transform.position}, going to {entryTargetPos} via {entryType}");
     }
 
     protected virtual void Update()
@@ -88,47 +105,64 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void HandleEntering()
     {
         entryTime += Time.deltaTime;
-
         Vector3 newPos = transform.position;
 
         switch (entryType)
         {
             case EntryType.Straight:
-                newPos = Vector3.MoveTowards(transform.position, entryTargetPos, entrySpeed * Time.deltaTime);
+                // Muévete directamente al Vector3 completo
+                newPos = Vector3.MoveTowards(
+                    transform.position,
+                    entryTargetPos,
+                    entrySpeed * Time.deltaTime
+                );
                 break;
 
             case EntryType.Spiral:
-                float duration = Vector3.Distance(spawnpoint, entryTargetPos) / entrySpeed;
-                float t = Mathf.Clamp01(entryTime / duration); // Normaliza entre 0 y 1
+                {
+                    float totalDist = Vector3.Distance(spawnpoint, entryTargetPos);
+                    float duration = totalDist / entrySpeed;
+                    float t = Mathf.Clamp01(entryTime / duration);
 
-                
-                float z = Mathf.Lerp(spawnpoint.z, entryTargetPos.z, t);
+                    // Z lineal
+                    float z = Mathf.Lerp(spawnpoint.z, entryZTarget, t);
 
-               
-                float radius = Mathf.Lerp(6f, 0f, t); 
-                float angle = t * Mathf.PI * 4f; 
+                    // Radio dinámico alrededor de entryCenter.xy
+                    float initialRadius = Vector2.Distance(
+                        new Vector2(spawnpoint.x, spawnpoint.y),
+                        entryCenter
+                    );
+                    float radius = Mathf.Lerp(initialRadius, 0f, t);
 
-                
-                float x = spawnpoint.x + Mathf.Cos(angle) * radius;
-                float y = spawnpoint.y + Mathf.Sin(angle) * radius * 0.5f;
+                    float angle = t * Mathf.PI * 3f;
+                    float x = entryCenter.x + Mathf.Cos(angle) * radius;
+                    float y = entryCenter.y + Mathf.Sin(angle) * radius;
 
-                newPos = new Vector3(x, y, z);
-                break;
+                    newPos = new Vector3(x, y, z);
+                    break;
+                }
 
             case EntryType.TopDown:
-                float frequency = 0.5f; 
-                float amplitude = 2f;   
+                {
+                    // Converge en XY hacia entryCenter
+                    Vector3 midXY = Vector3.MoveTowards(
+                        transform.position,
+                        new Vector3(entryCenter.x, entryCenter.y, transform.position.z),
+                        entrySpeed * Time.deltaTime
+                    );
+                    // Y oscila
+                    float yOffset = Mathf.Sin(entryTime * Mathf.PI * 1f - Mathf.PI / 2f) * 2f;
+                    // Z avanza
+                    float z = Mathf.MoveTowards(transform.position.z, entryZTarget, entrySpeed * Time.deltaTime);
 
-                float yOffset = Mathf.Sin(entryTime * Mathf.PI * 2f * frequency - Mathf.PI / 2f) * amplitude;
-
-                Vector3 forwardMove = Vector3.MoveTowards(transform.position, entryTargetPos, entrySpeed * Time.deltaTime);
-                newPos = new Vector3(forwardMove.x, spawnpoint.y + yOffset, forwardMove.z);
-                break;
+                    newPos = new Vector3(midXY.x, entryCenter.y + yOffset, z);
+                    break;
+                }
         }
 
         transform.position = newPos;
 
-        // condición de llegada (ajustada según el tipo)
+        // ■ CHEQUEO DE LLEGADA: compara contra entryTargetPos (X/Y/Z)
         if (Vector3.Distance(transform.position, entryTargetPos) < 0.2f)
         {
             currentState = State.Active;

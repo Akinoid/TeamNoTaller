@@ -41,6 +41,7 @@ public class LaserEnemy : EnemyBase
 
     protected override void OnEnterComplete()
     {
+        Debug.Log("pattern");
         initialPosition = transform.position;
         currentPattern = (MovementPattern)Random.Range(0, System.Enum.GetValues(typeof(MovementPattern)).Length);
         Debug.Log("LaserEnemy: Patrón seleccionado -> " + currentPattern);

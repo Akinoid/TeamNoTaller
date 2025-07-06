@@ -44,29 +44,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0a750ac26be93438a1f735969e03a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternSequences:
-  - label: Spawn 1
+  normalSequences:
+  - label: Pattern 1
     pattern: {fileID: 11400000, guid: 766ae11e71b8e464e8b04aaabe382737, type: 2}
-    repetitions: 2
-    delayBetweenRepetitions: 10
-  - label: Spawn 2
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 2
     pattern: {fileID: 11400000, guid: 0aaebb313bdf75f4c9c9c86714fe1a24, type: 2}
-    repetitions: 2
-    delayBetweenRepetitions: 10
-  - label: Spawn 3
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 3
+    pattern: {fileID: 11400000, guid: ebec1a7d494f8d54493130a4503ffcc9, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 4
     pattern: {fileID: 11400000, guid: cb03cd53026474c469143443e356c509, type: 2}
-    repetitions: 2
-    delayBetweenRepetitions: 10
-  - label: Spawn 3
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 5
+    pattern: {fileID: 11400000, guid: 7ef01832c3adff942a157a7de102f1f1, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 6
     pattern: {fileID: 11400000, guid: f2aa8427217d51b4f9bd0c64aea61c4c, type: 2}
     repetitions: 1
-    delayBetweenRepetitions: 10
-  - label: Spawn 3
+    delayBetweenRepetitions: 15
+  - label: Pattern 7
     pattern: {fileID: 11400000, guid: a6cc19a600097324f9e3ef4d21b15125, type: 2}
     repetitions: 1
-    delayBetweenRepetitions: 10
-  - label: Spawn 3
-    pattern: {fileID: 11400000, guid: 05b9bbb65bf16b5438a24e2392cf3530, type: 2}
-    repetitions: 2
-    delayBetweenRepetitions: 10
+    delayBetweenRepetitions: 15
+  - label: Pattern 8
+    pattern: {fileID: 11400000, guid: cb9ee59eddbe0e7439cdc2138b2a0abc, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 9
+    pattern: {fileID: 11400000, guid: 3fd3aeba6971a13438bccfd9da03f50b, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 10
+    pattern: {fileID: 11400000, guid: 0ac2f599c60ba9c4dae6878a52eea528, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 11
+    pattern: {fileID: 11400000, guid: 200e3cdffd3983b4aa2b518dea84f596, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 12
+    pattern: {fileID: 11400000, guid: 44ed63c16bf191f4f8075233774cda8e, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 13
+    pattern: {fileID: 11400000, guid: 9286d759413a7ec43ba7ab5bc07e537a, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 14
+    pattern: {fileID: 11400000, guid: 30a8ceedad1e87c4da53a48c4db530a6, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  - label: Pattern 15
+    pattern: {fileID: 11400000, guid: c7ca8d77493a80b4cbf75f1a84f6dfcb, type: 2}
+    repetitions: 1
+    delayBetweenRepetitions: 15
+  normalWaveCount: 6
+  advancedSequences: []
+  advancedWaveCount: 0
+  bossPrefab: {fileID: 1499491746675078257, guid: a8a70724613c0874b82c59c69b242fa1, type: 3}
+  bossSpawnZone: {fileID: 0}
   nextSceneName: StartMenu

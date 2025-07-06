@@ -52,6 +52,8 @@ MonoBehaviour:
   entryZTarget: 15
   activeLifetime: 1000000
   exitSpeed: 5
+  entryType: 1
+  entryCenter: {x: 32, y: 32}
   health: 100
   currentHealth: 0
   explosionRadius: 5
