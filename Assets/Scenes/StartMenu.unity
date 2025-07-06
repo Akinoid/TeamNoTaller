@@ -913,7 +913,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 404900539}
+      - m_Target: {fileID: 1336910259}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: BubbleBuyButton
         m_Mode: 1
@@ -993,7 +993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 2128831970}
-  shop: {fileID: 404900539}
+  shop: {fileID: 1336910259}
+  reset: 0
 --- !u!4 &170068621
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,7 +1708,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 404900539}
+      - m_Target: {fileID: 1336910259}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: FireballBuyButton
         m_Mode: 1
@@ -2541,7 +2542,6 @@ GameObject:
   - component: {fileID: 404900538}
   - component: {fileID: 404900537}
   - component: {fileID: 404900536}
-  - component: {fileID: 404900539}
   m_Layer: 5
   m_Name: ShopPanel
   m_TagString: Untagged
@@ -2614,41 +2614,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &404900539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404900535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c742e5270fec6043b82b01130501e6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveFireballBuyed: 0
-  saveShieldBuyed: 0
-  saveBubbleBuyed: 0
-  saveSigilBuyed: 0
-  saveBlasterBuyed: 0
-  saveHaveEletricBuff: 0
-  bubbleTMP: {fileID: 0}
-  bubbleDescriptionTMP: {fileID: 0}
-  bubbleBuyTMP: {fileID: 0}
-  fireBallTMP: {fileID: 0}
-  fireBallDescriptionTMP: {fileID: 0}
-  fireBallBuyTMP: {fileID: 0}
-  shieldTMP: {fileID: 0}
-  shieldDescriptionTMP: {fileID: 0}
-  shieldBuyTMP: {fileID: 0}
-  sigilTMP: {fileID: 0}
-  sigilDescriptionTMP: {fileID: 0}
-  sigilBuyTMP: {fileID: 0}
-  blasterTMP: {fileID: 0}
-  blasterDescriptionTMP: {fileID: 0}
-  blasterBuyTMP: {fileID: 0}
-  money: {fileID: 0}
-  load: {fileID: 170068620}
 --- !u!1 &414911519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,7 +2697,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 404900539}
+      - m_Target: {fileID: 1336910259}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: SigilBuyButton
         m_Mode: 1
@@ -5678,6 +5643,7 @@ GameObject:
   - component: {fileID: 1336910256}
   - component: {fileID: 1336910255}
   - component: {fileID: 1336910254}
+  - component: {fileID: 1336910259}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5787,6 +5753,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1336910259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336910253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c742e5270fec6043b82b01130501e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFireballBuyed: 0
+  saveShieldBuyed: 0
+  saveBubbleBuyed: 0
+  saveSigilBuyed: 0
+  saveBlasterBuyed: 0
+  saveHaveEletricBuff: 0
+  bubbleTMP: {fileID: 0}
+  bubbleDescriptionTMP: {fileID: 0}
+  bubbleBuyTMP: {fileID: 0}
+  fireBallTMP: {fileID: 0}
+  fireBallDescriptionTMP: {fileID: 0}
+  fireBallBuyTMP: {fileID: 0}
+  shieldTMP: {fileID: 0}
+  shieldDescriptionTMP: {fileID: 0}
+  shieldBuyTMP: {fileID: 0}
+  sigilTMP: {fileID: 0}
+  sigilDescriptionTMP: {fileID: 0}
+  sigilBuyTMP: {fileID: 0}
+  blasterTMP: {fileID: 0}
+  blasterDescriptionTMP: {fileID: 0}
+  blasterBuyTMP: {fileID: 0}
+  money: {fileID: 0}
+  load: {fileID: 170068620}
 --- !u!1 &1350389088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,7 +6604,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 404900539}
+      - m_Target: {fileID: 1336910259}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: ShieldBuyButton
         m_Mode: 1
@@ -7444,7 +7445,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 404900539}
+      - m_Target: {fileID: 1336910259}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: BlasterBuyButton
         m_Mode: 1
