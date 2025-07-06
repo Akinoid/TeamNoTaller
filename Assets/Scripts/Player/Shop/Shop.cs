@@ -47,7 +47,7 @@ public class Shop : MonoBehaviour
         blasterDescriptionTMP = blasterTMP.transform.Find("BlasterDescriptionTMP").GetComponent<TMP_Text>();
         blasterBuyTMP = blasterTMP.transform.Find("BlasterBuyButton").Find("BlasterBuyTMP").GetComponent<TMP_Text>();
     }
-    private void ChangesBools()
+    public void ChangesBools()
     {
         fireballBuyed = saveFireballBuyed;
         shieldBuyed = saveShieldBuyed;
@@ -57,21 +57,35 @@ public class Shop : MonoBehaviour
         Bubble.haveElectricBuff = saveHaveEletricBuff;
 
     }
-    private void ChangeBuyButtonTMP()
+    public void ChangeBuyButtonTMP()
     {
         if (fireballBuyed)
         {
             fireBallBuyTMP.text = $"Already buyed";
         }
+        else
+        {
+            fireBallBuyTMP.text = "Buy $200";
+        }
         if (shieldBuyed)
         {
             shieldBuyTMP.text = $"Already buyed";
+        }
+        else
+        {
+            shieldBuyTMP.text = "Buy $1000";
         }
         if (bubbleBuyed)
         {
             bubbleTMP.text = $"Electric Bubble";
             bubbleBuyTMP.text = $"Buy $20000";
             bubbleDescriptionTMP.text = $"When you catch a Electric Bubble, block all the incoming damage and if you collision with an enemy, him receive 50 points of damage. Last 15 seconds after you receive a hit.";
+        }
+        else
+        {
+            bubbleTMP.text = "Bubble: ";
+            bubbleBuyTMP.text = "Buy $10000";
+            bubbleDescriptionTMP.text = "When you catch a Bubble, block all incoming damage. Last 10 seconds after you receive a hit and shorter if you receive more hits.";
         }
         if (Bubble.haveElectricBuff)
         {
@@ -81,9 +95,17 @@ public class Shop : MonoBehaviour
         {
             sigilBuyTMP.text = $"Already buyed";
         }
+        else
+        {
+            sigilBuyTMP.text = "Buy $10000";
+        }
         if (blasterBuyed)
         {
             blasterBuyTMP.text = $"Already buyed";
+        }
+        else
+        {
+            blasterBuyTMP.text = "Buy $25000";
         }
     }
     public void FireballBuyButton()

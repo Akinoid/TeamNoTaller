@@ -5,7 +5,7 @@ public class LoadManager : MonoBehaviour
     [SerializeField] private Money money;
     [SerializeField] private Shop shop;
     int firstSave;
-    public bool reset;
+    public static bool reset;
     private void Awake()
     {
         if (reset)
@@ -67,5 +67,17 @@ public class LoadManager : MonoBehaviour
         MoneyData moneyData = SaveManager.LoadMoneyData();
 
         money.money = moneyData.money;
+    }
+
+    public void ResetButton()
+    {
+        shop.saveFireballBuyed = false;
+        shop.saveShieldBuyed = false;
+        shop.saveBubbleBuyed = false;
+        shop.saveSigilBuyed = false;
+        shop.saveBlasterBuyed = false;
+        shop.saveHaveEletricBuff = false;
+        shop.ChangesBools();
+        shop.ChangeBuyButtonTMP();
     }
 }
