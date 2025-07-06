@@ -994,6 +994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: {fileID: 2128831970}
   shop: {fileID: 1336910259}
+  reset: 1
 --- !u!4 &170068621
 Transform:
   m_ObjectHideFlags: 0

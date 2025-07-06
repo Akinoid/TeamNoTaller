@@ -123,15 +123,20 @@ public class LaserEnemy : EnemyBase
 
         PlayerLife life = player.GetComponent<PlayerLife>();
         Shield shield = player.GetComponent<Shield>();
+        Bubble bubble = player.GetComponent<Bubble>();
 
         if (shield != null && shield.haveShield)
         {
             shield.GetDamage(50, true);
         }
-        else if (life != null && life.canGetHit)
+        else if (life != null && life.canGetHit && !shield.haveShield)
         {
             life.getHit = true;
             Debug.Log("Hit = True");
+        }
+        else if (life != null && life.canGetHit && life.haveBubble)
+        {
+            bubble.getHitBubble = true;
         }
         else
         {

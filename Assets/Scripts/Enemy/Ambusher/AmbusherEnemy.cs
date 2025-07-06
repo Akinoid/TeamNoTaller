@@ -148,15 +148,22 @@ public class AmbusherEnemy : EnemyBase
     {
         PlayerLife life = player.GetComponent<PlayerLife>();
 
-        Shield shield = playerGO.GetComponent<Shield>();
+        Shield shield = player.GetComponent<Shield>();
+
+        Bubble bubble = player.GetComponent<Bubble>();
+
         if (shield.haveShield)
         {
-            shield.GetDamage(30,true);
+            shield.GetDamage(30, true);
         }
-        else  if (life != null && life.canGetHit&& !shield.haveShield)
+        else if (life != null && life.canGetHit && !shield.haveShield)
         {
             life.getHit = true;
             Debug.Log("Player got Hit");
+        }
+        else if (life != null && life.canGetHit && life.haveBubble)
+        {
+            bubble.getHitBubble = true;
         }
        
     }
