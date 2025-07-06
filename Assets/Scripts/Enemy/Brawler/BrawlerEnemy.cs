@@ -138,7 +138,10 @@ public class BrawlerEnemy : EnemyBase
     {
         PlayerLife life = player.GetComponent<PlayerLife>();
 
-        Shield shield = playerGO.GetComponent<Shield>();
+        Shield shield = player.GetComponent<Shield>();
+
+        Bubble bubble = player.GetComponent<Bubble>();
+
         if (shield.haveShield)
         {
             shield.GetDamage(20, true);
@@ -147,6 +150,10 @@ public class BrawlerEnemy : EnemyBase
         {
             life.getHit = true;
             Debug.Log("Player got Hit");
+        }
+        else if (life != null && life.canGetHit && life.haveBubble)
+        {
+            bubble.getHitBubble = true;
         }
     }
     protected override void Die()

@@ -22,6 +22,8 @@ public class ExplosionArea : MonoBehaviour
 
             Shield shield = other.GetComponent<Shield>();
 
+            Bubble bubble = other.GetComponent<Bubble>();
+
             if (shield.haveShield)
             {
                 shield.GetDamage(30, true);
@@ -30,6 +32,10 @@ public class ExplosionArea : MonoBehaviour
             {
                 life.getHit = true;
                 Debug.Log("Player got Hit");
+            }
+            else if (life != null && life.canGetHit && life.haveBubble)
+            {
+                bubble.getHitBubble = true;
             }
 
         }
