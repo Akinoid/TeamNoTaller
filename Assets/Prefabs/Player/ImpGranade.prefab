@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4530526432600396125}
   - component: {fileID: 8026855060470546264}
   - component: {fileID: 8906276115616120015}
+  - component: {fileID: 3097301853640431746}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Explosion
@@ -81,6 +82,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3097301853640431746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917303500487583996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a62d4721470b7c49af79d34571d4d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 40
+  duration: 0.2
 --- !u!1 &3671073318385280424
 GameObject:
   m_ObjectHideFlags: 0

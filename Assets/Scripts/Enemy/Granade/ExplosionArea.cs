@@ -3,12 +3,12 @@ using UnityEngine;
 public class ExplosionArea : MonoBehaviour
 {
     public float damage = 40f;
-    public float duration = 0.2f;
+    public float duration = 4f;
     private bool alreadyHit = false;
 
     private void Start()
     {
-        Destroy(gameObject, duration); // Se autodestruye luego del tiempo
+        
         
     }
 

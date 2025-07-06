@@ -942,7 +942,7 @@ MonoBehaviour:
   explosionDamage: 50
   activeTimer: 0
   warningAreaPrefab: {fileID: 3137378026375988326, guid: 7110aa0d26e2c1e4aacf1f8a4520293b, type: 3}
-  explosionPrefab: {fileID: 3256980919810269584, guid: f647a1bd831f587458d5ba0f1114d5ba, type: 3}
+  explosionPrefab: {fileID: 3671073318385280424, guid: 00a1af9cdf197f540a340526100f21f3, type: 3}
   warningDuration: 2
   explosionDelay: 0.2
   attackRepeats: 5
