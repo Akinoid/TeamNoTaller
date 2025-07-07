@@ -4018,14 +4018,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 464173276702313131, guid: 097e2b96b1f6ba843b52d8b99fd71f19, type: 3}
-      propertyPath: missiles
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 464173276702313131, guid: 097e2b96b1f6ba843b52d8b99fd71f19, type: 3}
-      propertyPath: maxMissiles
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1706609980663327263, guid: 097e2b96b1f6ba843b52d8b99fd71f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

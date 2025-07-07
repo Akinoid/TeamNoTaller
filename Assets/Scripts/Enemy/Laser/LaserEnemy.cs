@@ -129,6 +129,7 @@ public class LaserEnemy : EnemyBase
         if (shield != null && shield.haveShield)
         {
             shield.GetDamage(50, true);
+            Debug.Log("Escudo Funciona Lets go");
         }
         else if (life != null && life.canGetHit && !shield.haveShield)
         {

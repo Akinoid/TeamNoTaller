@@ -155,6 +155,7 @@ public class AmbusherEnemy : EnemyBase
         if (shield.haveShield)
         {
             shield.GetDamage(30, true);
+            Debug.Log("Escudo Funciona Lets go");
         }
         else if (life != null && life.canGetHit && !shield.haveShield)
         {

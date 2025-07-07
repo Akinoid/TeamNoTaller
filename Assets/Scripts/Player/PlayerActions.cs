@@ -577,7 +577,7 @@ public class PlayerActions : MonoBehaviour
         }
         if (other.CompareTag("FireBall"))
         {
-            missiles += 1;
+            missiles += 2;
             missilesTMP.text = $"Missiles: {+missiles} / 3";
             Money.score += 150 * Money.multiplier;
             //Destroy(other.gameObject);

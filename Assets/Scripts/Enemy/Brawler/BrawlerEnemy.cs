@@ -145,6 +145,7 @@ public class BrawlerEnemy : EnemyBase
         if (shield.haveShield)
         {
             shield.GetDamage(20, true);
+            Debug.Log("Escudo Funciona Lets go");
         }
         else if (life != null && life.canGetHit && !shield.haveShield)
         {

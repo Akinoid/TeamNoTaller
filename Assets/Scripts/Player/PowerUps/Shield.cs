@@ -61,6 +61,7 @@ public class Shield : MonoBehaviour
         {
             timer = 0;
             shield -= damage;
+            Debug.Log("Ganamos Shield sufrio daño");
             Money.startRest = true;
             shieldBar.fillAmount = shield / shieldMax;
             shieldTMP.text = $"Shield = {+shield}";

@@ -1817,8 +1817,8 @@ MonoBehaviour:
   gunType: 0
   anim: {fileID: 564609312341860288}
   fireBallAttack: {fileID: 3726341444971272813, guid: 481e768411fe35948bb42ce642223b18, type: 3}
-  missiles: 3
-  maxMissiles: 3
+  missiles: 5
+  maxMissiles: 5
   baseShootDmg: 20
   blasterShootDmg: 40
   missileExplosionDmg: 50

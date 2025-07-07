@@ -18,16 +18,19 @@ public class PauseMenu : MonoBehaviour
     }
     void StartPause()
     {
+        AudioSettingsManager.Instance.SetMute(true);
         arrowController.wantToUnlock = true;
         pausePanel.SetActive(true);
         Time.timeScale = 0;
     }
     public void BackToMenu()
     {
+        AudioSettingsManager.Instance.SetMute(false);
         SceneManager.LoadScene("StartMenu");
     }
     public void Resume()
     {
+        AudioSettingsManager.Instance.SetMute(false);
         arrowController.wantToUnlock = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
