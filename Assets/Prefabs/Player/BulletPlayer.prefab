@@ -149,5 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7825855bb35f74fa38f35970868b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBullet: 18
+  speedBullet: 20
   timerBullet: 0
