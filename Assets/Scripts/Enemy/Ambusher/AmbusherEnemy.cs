@@ -164,6 +164,7 @@ public class AmbusherEnemy : EnemyBase
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Player")==true)
         DamagePlayer(playerTransform.gameObject);
 
 

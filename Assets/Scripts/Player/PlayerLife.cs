@@ -70,9 +70,14 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
-                AudioManager.Instance.Play("Player Hit");
-                //despues de unos segundos
-                AudioManager.Instance.Play("Player Life");
+
+                if(Time.timeScale==1)
+                {
+                    AudioManager.Instance.Play("Player Hit");
+                    //despues de unos segundos
+                    AudioManager.Instance.Play("Player Life");
+                }
+               
                 tutorialLife2 = true;
                 if(StartMenuManager.tutorial == 0 && !tutorialLife&&lifeDialogue!=null)
                 {
