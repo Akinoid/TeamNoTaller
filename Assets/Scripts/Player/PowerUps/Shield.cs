@@ -12,6 +12,8 @@ public class Shield : MonoBehaviour
     [SerializeField] private Image shieldBar;
     [SerializeField] private TMP_Text shieldTMP;
     [SerializeField] private float shield, shieldMax, timer;
+    [SerializeField] private Sprite HUD100;
+    [SerializeField] private Sprite HUD30;
     private PlayerLife playerLife;
     private PlayerActions playerActions;
     private GameObject canvas, shieldBarGameObject;
@@ -19,8 +21,8 @@ public class Shield : MonoBehaviour
     {
         canGetDamage = true;
         canvas = GameObject.Find("Canvas");
-        shieldHUD = canvas.transform.Find("ShieldBorder").gameObject;
-        shieldBar = shieldHUD.transform.Find("ShieldBar").GetComponent<Image>();
+        //shieldHUD = canvas.transform.Find("ShieldBorder").gameObject;
+        shieldBar = canvas.transform.Find("ShieldBar").GetComponent<Image>();
         shieldBarGameObject = shieldHUD.transform.Find("ShieldBar").gameObject;
         shieldTMP = shieldBarGameObject.transform.Find("ShieldTMP").GetComponent<TMP_Text>();
         playerLife = gameObject.GetComponent<PlayerLife>();
@@ -29,6 +31,7 @@ public class Shield : MonoBehaviour
 
     void Update()
     {
+       
         if (haveShield)
         {
             ActivateShield();
@@ -37,6 +40,8 @@ public class Shield : MonoBehaviour
         }
         else
         {
+            shieldBar.fillAmount = shield / shieldMax;
+            shieldTMP.text = $"Shield: {+shield}";
             DeactiveShield();
         }
         
@@ -45,7 +50,7 @@ public class Shield : MonoBehaviour
     private void ShieldValue()
     {
         shieldBar.fillAmount = shield / shieldMax;
-        shieldTMP.text = $"Shield = {+shield}";
+        shieldTMP.text = $"Shield: {+shield}";
         if (shield <= 0)
         {
             haveShield = false;
@@ -53,6 +58,11 @@ public class Shield : MonoBehaviour
         if(shield >= shieldMax)
         {
             shield = shieldMax;
+            shieldBar.sprite = HUD100;
+        }
+        if(shield <= shieldMax / 3)
+        {
+            shieldBar.sprite = HUD30;
         }
     }
     public void GetDamage(float damage, bool getDamage)
@@ -98,12 +108,12 @@ public class Shield : MonoBehaviour
     }
     private void ActivateShield()
     {
-        shieldHUD.SetActive(true);
+        //shieldHUD.SetActive(true);
         playerLife.canGetHit = false;
     }
     private void DeactiveShield()
     {
-        shieldHUD.SetActive(false);
+        //shieldHUD.SetActive(false);
         playerLife.canGetHit = true;
     }
     private void OnTriggerEnter(Collider other)
