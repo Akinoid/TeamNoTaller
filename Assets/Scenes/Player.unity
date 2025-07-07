@@ -2356,7 +2356,7 @@ GameObject:
   - component: {fileID: 1443611955}
   - component: {fileID: 1443611954}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ShieldHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

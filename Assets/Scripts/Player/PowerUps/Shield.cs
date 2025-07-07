@@ -23,7 +23,7 @@ public class Shield : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         //shieldHUD = canvas.transform.Find("ShieldBorder").gameObject;
         shieldBar = canvas.transform.Find("ShieldBar").GetComponent<Image>();
-        shieldBarGameObject = shieldHUD.transform.Find("ShieldBar").gameObject;
+        shieldBarGameObject = canvas.transform.Find("ShieldHUD").gameObject;
         shieldTMP = shieldBarGameObject.transform.Find("ShieldTMP").GetComponent<TMP_Text>();
         playerLife = gameObject.GetComponent<PlayerLife>();
         playerActions = gameObject.GetComponent<PlayerActions>();
