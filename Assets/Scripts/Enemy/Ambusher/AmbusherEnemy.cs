@@ -48,7 +48,7 @@ public class AmbusherEnemy : EnemyBase
            
             Vector3 dangerPos = playerTransform.position - playerTransform.forward * chargeDistanceBehind;
             dangerSymbolInstance = Instantiate(dangerSymbolPrefab, dangerPos, dangerSymbolPrefab.transform.rotation);
-            StartCoroutine(EntryChargeRoutine(dangerPos));
+            StartCoroutine(EntryChargeRoutine(dangerSymbolInstance.transform.position));
             RegisterAssociatedObject(dangerSymbolInstance);
         }
     }
@@ -70,22 +70,21 @@ public class AmbusherEnemy : EnemyBase
 
         Vector3 start = transform.position;
         transform.position = start - Vector3.forward * chargeDistanceBehind; // start behind
-        transform.LookAt(dangerPos);
+        transform.LookAt(dangerSymbolInstance.transform.position);
 
         while (Vector3.Distance(transform.position, new Vector3(dangerPos.x, dangerPos.y, positionInFrontOfPlayer)) > 0.1f)
         {
             animator.SetBool("Golpe", true);
             AudioManager.Instance.Play("Ambusher Attack");
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dangerPos.x,dangerPos.y, positionInFrontOfPlayer), chargeSpeed * Time.deltaTime);
+            
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dangerPos.x,dangerPos.y, -25), chargeSpeed * Time.deltaTime);
+
+            
+
             yield return null;
         }
 
-        // Check hit
-        if (Vector3.Distance(playerTransform.position, dangerPos) < attackHitRadius)
-        {
-            Debug.Log("AmbusherEnemy: Player HIT during entry charge!");
-            DamagePlayer(playerTransform.gameObject);
-        }
+       
 
         Destroy(dangerSymbolInstance);
         // Move in front of player
@@ -127,17 +126,7 @@ public class AmbusherEnemy : EnemyBase
             yield return null;
         }
 
-        // Hit check
-        Vector3 playerPos = playerTransform.position;
-        Vector3 direction = (target - transform.position).normalized;
-        Vector3 closestPoint = transform.position + direction * Vector3.Distance(transform.position, playerPos);
-        if (Vector3.Distance(playerPos, closestPoint) < attackHitRadius)
-        {
-            Debug.Log("AmbusherEnemy: Player HIT during exit charge!");
-            DamagePlayer(playerTransform.gameObject);
-            
-            
-        }
+       
         animator.SetBool("Golpe", false);
         currentState = State.Entering;
         isExiting = false;
@@ -168,11 +157,21 @@ public class AmbusherEnemy : EnemyBase
         }
        
     }
-   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        DamagePlayer(playerTransform.gameObject);
+
+
+    }
+
+
+
 
     protected override void OnEnterComplete() { /* Entry is handled with coroutine */ }
     protected override void Die()
     {
+        AudioManager.Instance.Play("Enemy Die");
         Money.score += 200 * Money.multiplier;
         if(StartMenuManager.tutorial == 0)
         {

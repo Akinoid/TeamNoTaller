@@ -55,6 +55,10 @@ public class SpawnManager : MonoBehaviour
         bosslife.SetActive(true);
         if (bossPrefab != null && bossSpawnZone != null)
         {
+            AudioManager.Instance.Stop("Space Music");
+
+            AudioManager.Instance.Play("Boss Music");
+            
             Debug.Log("SpawnManager: Spawn del Boss");
             var bossGO = bossSpawnZone.SpawnEnemy(bossPrefab);
             spawnedEnemies.Add(bossGO);
@@ -63,10 +67,7 @@ public class SpawnManager : MonoBehaviour
         
         yield return StartCoroutine(WaitForClear());
 
-        money.money += Money.score;
-        Money.score = 0;
-        if (StartMenuManager.tutorial == 1)
-            SceneManager.LoadScene(nextSceneName);
+        StartCoroutine(RunPatterns());
     }
 
 

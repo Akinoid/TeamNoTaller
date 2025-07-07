@@ -112,9 +112,9 @@ MonoBehaviour:
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Laser Attack
-    clip: {fileID: 8300000, guid: eaf564963ba98574182d1893a769fdf9, type: 3}
+    clip: {fileID: 8300000, guid: d1139a18742ac0e48b5bed19599f3f0f, type: 3}
     volume: 1
-    loop: 0
+    loop: 1
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Sniper Attack
     clip: {fileID: 8300000, guid: 20fc6a3ffe95da3499d474fa7272a7cb, type: 3}
@@ -123,6 +123,11 @@ MonoBehaviour:
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: UI Button
     clip: {fileID: 8300000, guid: 35c1667ce8274344a8b4ea2017747226, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Laser Start
+    clip: {fileID: 8300000, guid: daaa0f0a25c6c4149842e8e69fd79496, type: 3}
     volume: 1
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}

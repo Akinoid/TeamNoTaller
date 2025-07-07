@@ -43,6 +43,7 @@ public class LaserEnemy : EnemyBase
 
     protected override void OnEnterComplete()
     {
+        AudioManager.Instance.Play("Laser Start");
         Debug.Log("pattern");
         initialPosition = transform.position;
         currentPattern = (MovementPattern)Random.Range(0, System.Enum.GetValues(typeof(MovementPattern)).Length);
@@ -72,6 +73,7 @@ public class LaserEnemy : EnemyBase
             currentPattern = ChooseRandomPatternExcept(currentPattern);
             Debug.Log("LaserEnemy: Patrón cambiado tras ciclo completo  " + currentPattern);
         }
+        AudioManager.Instance.Stop("Laser Attack");
         ActivateLaser(false);
     }
 
@@ -200,6 +202,9 @@ public class LaserEnemy : EnemyBase
     }
     protected override void Die()
     {
+        AudioManager.Instance.Stop("Laser Attack");
+        
+        AudioManager.Instance.Play("Enemy Die");
         Money.score += 150 * Money.multiplier;
         if (StartMenuManager.tutorial == 0)
         {

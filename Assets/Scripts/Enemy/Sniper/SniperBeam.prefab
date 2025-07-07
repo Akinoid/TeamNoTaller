@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lingerDuration: 0.1
-  speed: 50
+  speed: 100
