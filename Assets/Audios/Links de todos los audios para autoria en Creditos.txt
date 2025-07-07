@@ -1,0 +1,26 @@
+Disparo del Player = https://pixabay.com/es/sound-effects/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883/
+
+explosion: https://pixabay.com/es/sound-effects/explosion-312361/
+
+enemigo morir https://uppbeat.io/sfx/arcade-game-retro-8-bit-big-shot-1/912/1601
+
+Estado critico: https://pixabay.com/es/sound-effects/shield-recharging-107016/
+
+recibir daño https://pixabay.com/es/sound-effects/ouch-116112/
+
+Menu de Inicio / Opciones = https://pixabay.com/music/ambient-space-ambient-351305/
+Tienda / Mejoras = https://pixabay.com/music/ambient-ambient-space-arpeggio-350710/
+Botones = https://pixabay.com/es/sound-effects/ui-button-click-5-327756/
+
+Ataque Sniper = https://pixabay.com/es/sound-effects/laser-312360/
+Ataque Laser = https://pixabay.com/es/sound-effects/laser-weld-103309/
+Ataque Ambusher = https://pixabay.com/es/sound-effects/space-slash-236689/
+
+Movimiento Boss - https://pixabay.com/sound-effects/robot-hand-33312/
+Aparicion de Boss - https://pixabay.com/sound-effects/robot-abstraction-47693/
+Disparo dedos Boss - https://pixabay.com/sound-effects/missile-blast-2-95177/
+
+Musica Espacio Fase = https://pixabay.com/music/video-games-spaceship-arcade-shooter-game-background-soundtrack-318508/
+Musica boss OPCION 1 = https://pixabay.com/music/video-games-digital-dreamscape-193900/
+Musica boss OPCION 2 = https://pixabay.com/music/video-games-glitch-in-the-dark-306765/
+Musica Ciudad Fase = https://pixabay.com/music/video-games-super-eight-chiptune-electronic-retrowave-bitpop-retro-151719/

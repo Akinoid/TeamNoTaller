@@ -52,6 +52,7 @@ public class GranadeEnemy : EnemyBase
             }
 
             Instantiate(explosionPrefab, areaPos, Quaternion.identity);
+            AudioManager.Instance.Play("Explosion");
             animator.SetBool("Golpe", false);
             
             
@@ -61,6 +62,7 @@ public class GranadeEnemy : EnemyBase
     }
     protected override void Die()
     {
+        AudioManager.Instance.Play("Enemy Die");
         Money.score += 250 * Money.multiplier;
         if (StartMenuManager.tutorial == 0)
         {

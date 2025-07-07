@@ -33,6 +33,7 @@ public class FireBall : MonoBehaviour
 
         if(enemyFounds.Length > 0)
         {
+            
             EnemyFound enemyNear = enemyFounds[0];
             float distanceEnemyNear = Vector3.Distance(transform.position, enemyNear.transform.position);
             foreach (EnemyFound enemy in enemyFounds)
@@ -49,6 +50,7 @@ public class FireBall : MonoBehaviour
         }
         else if(obstacleFounds.Length > 0)
         {
+            
             enemyFound = null;
             ObstacleFound obstacleNear = obstacleFounds[0];
             float distanceObstacleNear = Vector3.Distance(transform.position, obstacleNear.transform.position);
@@ -77,6 +79,7 @@ public class FireBall : MonoBehaviour
     {
         if(enemyFound != null || obstacleFound != null)
         {
+            
             direction = target.position - transform.position;
             direction = direction.normalized;
             direction *= speed;

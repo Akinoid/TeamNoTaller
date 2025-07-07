@@ -75,6 +75,7 @@ public class Shield : MonoBehaviour
     {
         if (getDamaged)
         {
+            AudioManager.Instance.Play("Player Hit");
             timer += Time.deltaTime;
         }
         if (timer >= 1 && playerActions.state != PlayerActions.MovementState.dashing)

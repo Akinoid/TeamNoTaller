@@ -61,6 +61,7 @@ public class LaserEnemy : EnemyBase
 
             animator.SetBool("Golpe", true);
             ActivateLaser(true);
+            AudioManager.Instance.Play("Laser Attack");
             yield return new WaitForSeconds(laserOnDuration);
 
             animator.SetBool("Golpe", false);

@@ -18,10 +18,13 @@ public class StartMenuManager : MonoBehaviour
         startMenuPanel.SetActive(true);
         optionsPanel.SetActive(false);
         tutorial = PlayerPrefs.GetInt("Tutorial", 0);
+        AudioManager.Instance.Play("Menu Music");
     }
     public void PlayButton()
     {
-        if(tutorial == 0)
+        AudioManager.Instance.Play("UI Button");
+        AudioManager.Instance.StopAllSounds();
+        if (tutorial == 0)
         {
             SceneManager.LoadScene("Tutorial");
         }
@@ -33,40 +36,53 @@ public class StartMenuManager : MonoBehaviour
 
     public void ShopButton()
     {
+        AudioManager.Instance.Play("UI Button");
+        AudioManager.Instance.Stop("Menu Music");
+        AudioManager.Instance.Play("Store Music");
         startMenuPanel.SetActive(false);
         shopPanel.SetActive(true);
     }
     public void ControlsButton()
     {
+        AudioManager.Instance.Play("UI Button");
         startMenuPanel.SetActive(false);
         controlsPanel.SetActive(true);
     }
     public void OptionsButton()
     {
+        AudioManager.Instance.Play("UI Button");
         startMenuPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
     public void ReturnControlsButton()
     {
+        AudioManager.Instance.Play("UI Button");
         startMenuPanel.SetActive(true);
         controlsPanel.SetActive(false);
     }
     public void ReturnOptionsButton()
     {
+        AudioManager.Instance.Play("UI Button");
         startMenuPanel.SetActive(true);
         optionsPanel.SetActive(false);
     }
     public void ReturnShopButton()
     {
+        AudioManager.Instance.Play("UI Button");
+        
         startMenuPanel.SetActive(true);
         shopPanel.SetActive(false);
+        AudioManager.Instance.Stop("Store Music");
+        AudioManager.Instance.Play("Menu Music");
     }
     public void ExitButton()
     {
+        AudioManager.Instance.Play("UI Button");
         Application.Quit();
     }
     public void ResetTutorialButton()
     {
+        AudioManager.Instance.Play("UI Button");
         tutorial = 0;
         PlayerPrefs.SetInt("Tutorial", 0);
     }

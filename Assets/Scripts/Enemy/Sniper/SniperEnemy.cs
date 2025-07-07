@@ -67,8 +67,8 @@ public class SniperEnemy : EnemyBase
     private IEnumerator AimAndFireRoutine(System.Action onComplete = null)
     {
         animator.SetBool("Golpe", true);
-
-        if(markerInstance != null)
+        AudioManager.Instance.Play("Sniper Attack");
+        if (markerInstance != null)
             Destroy(markerInstance); 
 
         markerInstance = Instantiate(markerPrefab, Vector3.zero, markerPrefab.transform.rotation);

@@ -52,6 +52,7 @@ public class Bubble : MonoBehaviour
                 }
                 break;
             case State.Critic:
+                AudioManager.Instance.Play("Player Hit");
                 if (timerHit >= 0.1f)
                 {
                     unhit = true;

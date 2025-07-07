@@ -93,6 +93,9 @@ public class PlayerActions : MonoBehaviour
     [Header("Tutorial Variables")]
     public bool tutorialStart;
 
+    [SerializeField] private EnemyFound enemyFound;
+    [SerializeField] private ObstacleFound obstacleFound;
+
     public enum MovementState { moving, dashing}
     public enum GunType { baseShoot, blasterShoot}
     void Start()
@@ -295,6 +298,7 @@ public class PlayerActions : MonoBehaviour
 
         if (dashTimer >= 2f/*&& flatVel.magnitude >= 3f*/)
         {
+            AudioManager.Instance.Play("Player Dash");
             dashing = true;
             playerLife.canGetHit = false;
             //rb.AddForce(new Vector3(0, moveYfloat * dashForce, 0), ForceMode.Impulse);
@@ -475,17 +479,69 @@ public class PlayerActions : MonoBehaviour
         
             for(int i = 0; i < 1; i++)
             {
-                SpawnBullet();
+            AudioManager.Instance.Play("Player Shoot");
+            SpawnBullet();
                 yield return new WaitForSeconds(1f);
             }
         
+    }
+    private void FindObjective()
+    {
+        EnemyFound[] enemyFounds = FindObjectsOfType<EnemyFound>();
+        ObstacleFound[] obstacleFounds = FindObjectsOfType<ObstacleFound>();
+
+        if (enemyFounds.Length > 0)
+        {
+
+            EnemyFound enemyNear = enemyFounds[0];
+            float distanceEnemyNear = Vector3.Distance(transform.position, enemyNear.transform.position);
+            foreach (EnemyFound enemy in enemyFounds)
+            {
+                float distanceOfEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distanceEnemyNear > distanceOfEnemy)
+                {
+                    enemyNear = enemy;
+                    distanceEnemyNear = distanceOfEnemy;
+                }
+            }
+            enemyFound = enemyNear;
+            
+        }
+        else if (obstacleFounds.Length > 0)
+        {
+
+            enemyFound = null;
+            ObstacleFound obstacleNear = obstacleFounds[0];
+            float distanceObstacleNear = Vector3.Distance(transform.position, obstacleNear.transform.position);
+            foreach (ObstacleFound obstacle in obstacleFounds)
+            {
+                float distanceOfObstacle = Vector3.Distance(transform.position, obstacle.transform.position);
+                if (distanceObstacleNear > distanceOfObstacle)
+                {
+                    obstacleNear = obstacle;
+                    distanceObstacleNear = distanceOfObstacle;
+                }
+            }
+            obstacleFound = obstacleNear;
+            
+        }
+        else
+        {
+            enemyFound = null;
+            obstacleFound = null;
+            
+            
+        }
     }
 
     private void SpawnFireBall(InputAction.CallbackContext context)
     {
         if(missiles > 0)
         {
+            FindObjective();
             Instantiate(fireBallAttack, shootPoint.transform.position, fireBallAttack.transform.rotation);
+            if (enemyFound != null || obstacleFound != null)
+                AudioManager.Instance.Play("Player FireBall");
             missiles -= 1;
             missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
         }

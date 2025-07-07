@@ -48,6 +48,7 @@ public class PlayerLife : MonoBehaviour
         switch (state)
         {
             case State.Base:
+                AudioManager.Instance.Stop("Player Life");
                 meshRenderer.sharedMaterial = InitialMaterial;
                 timerCritic = 0;
                 timerHit = 0;
@@ -69,6 +70,9 @@ public class PlayerLife : MonoBehaviour
                 }
                 break;
             case State.Critic:
+                AudioManager.Instance.Play("Player Hit");
+                //despues de unos segundos
+                AudioManager.Instance.Play("Player Life");
                 tutorialLife2 = true;
                 if(StartMenuManager.tutorial == 0 && !tutorialLife&&lifeDialogue!=null)
                 {
@@ -102,6 +106,7 @@ public class PlayerLife : MonoBehaviour
                 {
                     if(StartMenuManager.tutorial == 1)
                     {
+                        AudioManager.Instance.Stop("Player Life");
                         defeatPanel.SetActive(true);
                         
                         getHit = false;

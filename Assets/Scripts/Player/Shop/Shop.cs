@@ -112,6 +112,7 @@ public class Shop : MonoBehaviour
     {
         if (!fireballBuyed && money.money >= 200)
         {
+            AudioManager.Instance.Play("UI Button");
             money.money -= 200;
             saveFireballBuyed = true;
             load.Save();
@@ -126,6 +127,7 @@ public class Shop : MonoBehaviour
     {
         if (!shieldBuyed && money.money >= 1000)
         {
+            AudioManager.Instance.Play("UI Button");
             money.money -= 1000;
             saveShieldBuyed = true;
             load.Save();
@@ -140,6 +142,7 @@ public class Shop : MonoBehaviour
     {
         if (!bubbleBuyed && money.money >= 10000)
         {
+            AudioManager.Instance.Play("UI Button");
             saveBubbleBuyed = true;
             ChangesBools();
             money.money -= 10000;
@@ -154,6 +157,7 @@ public class Shop : MonoBehaviour
         }
         if (bubbleBuyed && !Bubble.haveElectricBuff && money.money >= 20000)
         {
+            AudioManager.Instance.Play("UI Button");
             money.money -= 20000;
             saveHaveEletricBuff = true;
             load.Save();
@@ -168,6 +172,7 @@ public class Shop : MonoBehaviour
     {
         if (!sigilBuyed && money.money >= 10000)
         {
+            AudioManager.Instance.Play("UI Button");
             money.money -= 10000;
             saveSigilBuyed = true;
             load.Save();
@@ -182,6 +187,7 @@ public class Shop : MonoBehaviour
     {
         if (!blasterBuyed && money.money >= 25000)
         {
+            AudioManager.Instance.Play("UI Button");
             money.money -= 25000;
             saveBlasterBuyed = true;
             load.Save();

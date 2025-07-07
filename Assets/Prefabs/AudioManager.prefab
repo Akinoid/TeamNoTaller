@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9059375256229875487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5166961249465231516}
+  - component: {fileID: 5040948823092396265}
+  - component: {fileID: 5724559769385698782}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5166961249465231516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059375256229875487}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5040948823092396265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059375256229875487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e94bf11f07dc3c4d8b678f6b565a613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Menu Music
+    clip: {fileID: 8300000, guid: 27ff3d3402baf98428edcae7c2e571ae, type: 3}
+    volume: 1
+    loop: 1
+    outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Store Music
+    clip: {fileID: 8300000, guid: 476c167a810bde644967d731706b8cac, type: 3}
+    volume: 1
+    loop: 1
+    outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Boss Music
+    clip: {fileID: 8300000, guid: c4744f021bdb1874d936bb471f41a1a9, type: 3}
+    volume: 1
+    loop: 1
+    outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: City Music
+    clip: {fileID: 8300000, guid: dc04d57b67a3fde499a7242c2b9f3bc3, type: 3}
+    volume: 1
+    loop: 1
+    outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Space Music
+    clip: {fileID: 8300000, guid: bd045070e9d9de0489edae27265badb9, type: 3}
+    volume: 1
+    loop: 1
+    outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Player Life
+    clip: {fileID: 8300000, guid: 7bb39b215a68fab48a44b8eb92259498, type: 3}
+    volume: 1
+    loop: 1
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Player Dash
+    clip: {fileID: 8300000, guid: 1952126e620847246af96bcd9459cc03, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Player Hit
+    clip: {fileID: 8300000, guid: e531b41794c990c4c9e7b17d98edd377, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Player Shoot
+    clip: {fileID: 8300000, guid: 4281428d28707724784b757d99687404, type: 3}
+    volume: 0.198
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Player FireBall
+    clip: {fileID: 8300000, guid: b511a6332e68c2940b507f6a8be25f42, type: 3}
+    volume: 0.645
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: aca2fcdbeb071e444b4d32193b3b7cf1, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Enemy Die
+    clip: {fileID: 8300000, guid: 1f7fe752c4766d04492213acda6d0fc5, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Ambusher Attack
+    clip: {fileID: 8300000, guid: 195f36d0a6d8f764c83e69c7be394134, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Laser Attack
+    clip: {fileID: 8300000, guid: eaf564963ba98574182d1893a769fdf9, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Sniper Attack
+    clip: {fileID: 8300000, guid: 20fc6a3ffe95da3499d474fa7272a7cb, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: UI Button
+    clip: {fileID: 8300000, guid: 35c1667ce8274344a8b4ea2017747226, type: 3}
+    volume: 1
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  audioSourcePrefab: {fileID: 6231544871049779614, guid: 92368a983dbff6d41bf6938b2a0c1235, type: 3}
+--- !u!114 &5724559769385698782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059375256229875487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19792854db1da3842a2ff31c83f95b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}

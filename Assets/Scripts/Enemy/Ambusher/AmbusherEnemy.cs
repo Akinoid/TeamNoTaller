@@ -75,7 +75,7 @@ public class AmbusherEnemy : EnemyBase
         while (Vector3.Distance(transform.position, new Vector3(dangerPos.x, dangerPos.y, positionInFrontOfPlayer)) > 0.1f)
         {
             animator.SetBool("Golpe", true);
-            
+            AudioManager.Instance.Play("Ambusher Attack");
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(dangerPos.x,dangerPos.y, positionInFrontOfPlayer), chargeSpeed * Time.deltaTime);
             yield return null;
         }
