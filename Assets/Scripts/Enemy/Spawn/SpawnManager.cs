@@ -67,10 +67,7 @@ public class SpawnManager : MonoBehaviour
         
         yield return StartCoroutine(WaitForClear());
 
-        money.money += Money.score;
-        Money.score = 0;
-        if (StartMenuManager.tutorial == 1)
-            SceneManager.LoadScene(nextSceneName);
+        StartCoroutine(RunPatterns());
     }
 
 
