@@ -17,6 +17,7 @@ public class Boss : MonoBehaviour
 
     [Header("Visual")]
     public GameObject weakPoint;
+    public GameObject sphere;
 
     private bool isAttacking = false;
 
@@ -31,6 +32,7 @@ public class Boss : MonoBehaviour
         healthBar.maxValue = maxHealth;
         healthBar.value = currentHealth;
         weakPoint.SetActive(false);
+        sphere.SetActive(true);
 
         UpdatePhase();
         StartCoroutine(BossLoop());
@@ -56,10 +58,12 @@ public class Boss : MonoBehaviour
 
                 
                 weakPoint.SetActive(true);
+                sphere.SetActive(false);
                 yield return new WaitForSeconds(5f);
                 weakPoint.SetActive(false);
+                sphere.SetActive(true);
 
-               
+
                 var attacks = currentPhase.GetAttacks();
                 if (attacks.Count > 0)
                 {

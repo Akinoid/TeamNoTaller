@@ -64,14 +64,21 @@ public class RocketFinger : MonoBehaviour
 
             PlayerLife life = other.GetComponent<PlayerLife>();
             Shield shield = other.GetComponent<Shield>();
+            Bubble bubble = other.GetComponent<Bubble>();
 
-            if (shield != null && shield.haveShield)
+            if (shield.haveShield)
             {
                 shield.GetDamage(30, true);
+                Debug.Log("Escudo Funciona Lets go");
             }
-            else if (life != null && life.canGetHit)
+            else if (life != null && life.canGetHit && !shield.haveShield)
             {
                 life.getHit = true;
+                Debug.Log("Player got Hit");
+            }
+            else if (life != null && life.canGetHit && life.haveBubble)
+            {
+                bubble.getHitBubble = true;
             }
         }
     }

@@ -162,8 +162,9 @@ public class AmbusherEnemy : EnemyBase
        
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
         if(other.CompareTag("Player")==true)
         DamagePlayer(playerTransform.gameObject);
 

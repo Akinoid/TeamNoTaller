@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class FistBarrage : MonoBehaviour,IBossAttack
+public class FistBarrage : MonoBehaviour, IBossAttack
 {
-    public GameObject warningPrefab;     
-    public GameObject fistImpactPrefab;  
+    public GameObject warningPrefab;
+    public GameObject fistImpactPrefab;
     public int numberOfPunches = 5;
     public float delayBetweenPunches = 0.1f;
     public float warningDuration = 1.5f;
     public float destroyDelay = 2f;
-    public float attackRadius = 4f;      
+    public float attackRadius = 4f;
 
     public IEnumerator Execute(Boss boss)
     {
@@ -18,7 +18,7 @@ public class FistBarrage : MonoBehaviour,IBossAttack
         Animator animator = boss.GetComponentInChildren<Animator>();
         if (animator != null)
         {
-            animator.SetBool("Golpe", true); 
+            animator.SetBool("Golpe", true);
         }
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -64,7 +64,7 @@ public class FistBarrage : MonoBehaviour,IBossAttack
                     if (h.CompareTag("Player"))
                     {
                         Debug.Log("Player HIT by DangerZone!");
-                        life.getHit = true;
+                        DamagePlayer(h.gameObject);
                     }
                 }
                 Destroy(warning, destroyDelay);
@@ -75,10 +75,38 @@ public class FistBarrage : MonoBehaviour,IBossAttack
 
 
             }
+
         }
 
         Debug.Log("Fist Barrage terminado");
         animator.SetBool("Golpe", false);
     }
+
+    private void DamagePlayer(GameObject player)
+    {
+        PlayerLife life = player.GetComponent<PlayerLife>();
+
+        Shield shield = player.GetComponent<Shield>();
+
+        Bubble bubble = player.GetComponent<Bubble>();
+
+        if (shield.haveShield)
+        {
+            shield.GetDamage(50, true);
+            
+        }
+        else if (life != null && life.canGetHit && !shield.haveShield)
+        {
+            life.getHit = true;
+            
+        }
+        else if (life != null && life.canGetHit && life.haveBubble)
+        {
+            bubble.getHitBubble = true;
+        }
+    }
+
+
+
 }
 

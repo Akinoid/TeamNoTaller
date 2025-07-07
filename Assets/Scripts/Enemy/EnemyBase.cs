@@ -237,7 +237,7 @@ public abstract class EnemyBase : MonoBehaviour
             Debug.Log("Player got Hit");
         }
     }
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerBullet") && playerActions.gunType == PlayerActions.GunType.baseShoot)
         {
@@ -257,6 +257,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             TakeDamage(currentHealth);
         }
+                    
     }
     private void OnTriggerStay(Collider other)
     {
