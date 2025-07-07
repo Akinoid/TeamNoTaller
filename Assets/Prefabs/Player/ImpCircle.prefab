@@ -5017,9 +5017,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeOfExplosion: 0
   timer: 0
-  maxTimer: 4
+  maxTimer: 2.5
   timerExplotion: 0.5
   colli: {fileID: 1917303500487583996}
+  colliderExplotion: {fileID: 8026855060470546264}
 --- !u!1 &3999874777613865855
 GameObject:
   m_ObjectHideFlags: 0
