@@ -1811,9 +1811,9 @@ MonoBehaviour:
   shootPoint: {fileID: 0}
   attacking: 0
   haveBlaster: 0
-  delayAttack: 0.4
-  baseDelayAttack: 0.4
-  blasterDelayAttack: 0.2
+  delayAttack: 0.3
+  baseDelayAttack: 0.3
+  blasterDelayAttack: 0.15
   gunType: 0
   anim: {fileID: 564609312341860288}
   fireBallAttack: {fileID: 3726341444971272813, guid: 481e768411fe35948bb42ce642223b18, type: 3}
@@ -1847,6 +1847,8 @@ MonoBehaviour:
   shield: 0
   shieldMax: 100
   timer: 0
+  HUD100: {fileID: 0}
+  HUD30: {fileID: 0}
 --- !u!114 &5626854191210792488
 MonoBehaviour:
   m_ObjectHideFlags: 0

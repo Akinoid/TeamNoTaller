@@ -574,14 +574,14 @@ public class PlayerActions : MonoBehaviour
         {
             haveBlaster = true;
             Money.score += 150 * Money.multiplier;
-            //Destroy(other.gameObject);
+            Destroy(other.gameObject);
         }
         if (other.CompareTag("FireBall"))
         {
             missiles += 2;
             ChangeMissilesTMP();
             Money.score += 150 * Money.multiplier;
-            //Destroy(other.gameObject);
+            Destroy(other.gameObject);
         }
     }
     void ChangeMissilesTMP()
