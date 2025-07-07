@@ -3,7 +3,7 @@ using UnityEngine;
 public class ExplosionArea : MonoBehaviour
 {
     public float damage = 40f;
-    public float duration = 4f;
+    public float duration = 0.4f;
     private bool alreadyHit = false;
 
     private void Start()

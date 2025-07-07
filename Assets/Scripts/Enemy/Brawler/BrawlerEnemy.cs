@@ -158,6 +158,7 @@ public class BrawlerEnemy : EnemyBase
     }
     protected override void Die()
     {
+        AudioManager.Instance.Play("Enemy Die");
         Money.score += 100 * Money.multiplier;
         if (StartMenuManager.tutorial == 0)
         {

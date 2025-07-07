@@ -67,7 +67,7 @@ public class SniperEnemy : EnemyBase
     private IEnumerator AimAndFireRoutine(System.Action onComplete = null)
     {
         animator.SetBool("Golpe", true);
-        AudioManager.Instance.Play("Sniper Attack");
+        
         if (markerInstance != null)
             Destroy(markerInstance); 
 
@@ -132,7 +132,7 @@ public class SniperEnemy : EnemyBase
         Vector3 retreatTarget = spawnPoint - new Vector3(0, 0, 10f);
         float speed = 10f;
         bool hasShot = false;
-
+        
         while (Vector3.Distance(transform.position, retreatTarget) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, retreatTarget, speed * Time.deltaTime);
@@ -169,6 +169,7 @@ public class SniperEnemy : EnemyBase
         Beam beamScript = null;
         if (beamPrefab != null)
         {
+            AudioManager.Instance.Play("Sniper Attack");
             beamGO = Instantiate(beamPrefab, Vector3.zero, Quaternion.identity);
             beamScript = beamGO.GetComponent<Beam>();
             if (beamScript != null)
@@ -182,6 +183,7 @@ public class SniperEnemy : EnemyBase
                 Destroy(beamGO);
             }
         }
+        
 
         // Esperar al láser viaje: si Beam.speed está definido, usa eso; si no, asume instantáneo
         float travelTime = 0f;

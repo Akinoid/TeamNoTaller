@@ -24,6 +24,7 @@ public class StartMenuManager : MonoBehaviour
     {
         AudioManager.Instance.Play("UI Button");
         AudioManager.Instance.StopAllSounds();
+        AudioManager.Instance.Play("Space Music");
         if (tutorial == 0)
         {
             SceneManager.LoadScene("Tutorial");

@@ -23,8 +23,7 @@ public class GranadeEnemy : EnemyBase
         {
             playerTransform = playerGO.transform;
             StartCoroutine(AttackRoutine());
-
-            
+                        
         }
         else
         {
@@ -59,6 +58,7 @@ public class GranadeEnemy : EnemyBase
             yield return new WaitForSeconds(timeBetweenAttacks);
             
         }
+        OnExitStart();
     }
     protected override void Die()
     {
