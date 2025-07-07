@@ -54,6 +54,7 @@ public class LaserEnemy : EnemyBase
 
     private IEnumerator LaserCycle()
     {
+        AudioManager.Instance.Play("Laser Attack");
         while (currentState == State.Active)
         {
             // Antes de encender láser, asignamos un patrón nuevo distinto al anterior:
@@ -62,7 +63,7 @@ public class LaserEnemy : EnemyBase
 
             animator.SetBool("Golpe", true);
             ActivateLaser(true);
-            AudioManager.Instance.Play("Laser Attack");
+            
             yield return new WaitForSeconds(laserOnDuration);
 
             animator.SetBool("Golpe", false);

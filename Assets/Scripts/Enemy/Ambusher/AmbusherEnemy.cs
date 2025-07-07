@@ -17,6 +17,7 @@ public class AmbusherEnemy : EnemyBase
     private Transform playerTransform;
     private GameObject dangerSymbolInstance;
     private Vector3 chargeTarget;
+    Vector3 symbolWorldPos;
     private bool isExiting = false;
 
     private GameObject playerGO;
@@ -48,7 +49,8 @@ public class AmbusherEnemy : EnemyBase
            
             Vector3 dangerPos = playerTransform.position - playerTransform.forward * chargeDistanceBehind;
             dangerSymbolInstance = Instantiate(dangerSymbolPrefab, dangerPos, dangerSymbolPrefab.transform.rotation);
-            StartCoroutine(EntryChargeRoutine(dangerSymbolInstance.transform.position));
+            Vector3 symbolWorldPos = dangerSymbolInstance.transform.position;
+            StartCoroutine(EntryChargeRoutine(dangerPos));
             RegisterAssociatedObject(dangerSymbolInstance);
         }
     }
@@ -69,15 +71,17 @@ public class AmbusherEnemy : EnemyBase
         
 
         Vector3 start = transform.position;
-        transform.position = start - Vector3.forward * chargeDistanceBehind; // start behind
-        transform.LookAt(dangerSymbolInstance.transform.position);
+        transform.position = new Vector3(symbolWorldPos.x, symbolWorldPos.y, -25); // start behind
+        transform.LookAt(dangerPos);
 
-        while (Vector3.Distance(transform.position, new Vector3(dangerPos.x, dangerPos.y, positionInFrontOfPlayer)) > 0.1f)
+        AudioManager.Instance.Play("Ambusher Attack");
+
+        while (Vector3.Distance(transform.position, new Vector3(symbolWorldPos.x, symbolWorldPos.y, positionInFrontOfPlayer)) > 0.1f)
         {
             animator.SetBool("Golpe", true);
-            AudioManager.Instance.Play("Ambusher Attack");
             
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dangerPos.x,dangerPos.y, -25), chargeSpeed * Time.deltaTime);
+            
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(symbolWorldPos.x, symbolWorldPos.y, positionInFrontOfPlayer), chargeSpeed * Time.deltaTime);
 
             
 

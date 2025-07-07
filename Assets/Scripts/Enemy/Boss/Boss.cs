@@ -86,6 +86,7 @@ public class Boss : MonoBehaviour
     }
     void Die()
     {
+        AudioManager.Instance.Play("Enemy Die");
         Money.score += 1000 * Money.multiplier;
         Debug.Log("Boss derrotado.");
         OnBossDeath?.Invoke();

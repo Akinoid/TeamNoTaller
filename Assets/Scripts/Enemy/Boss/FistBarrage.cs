@@ -42,7 +42,7 @@ public class FistBarrage : MonoBehaviour,IBossAttack
 
             yield return new WaitForSeconds(warningDuration);
             GameObject fist = Instantiate(fistImpactPrefab, targetPos, Quaternion.identity);
-
+            fist.transform.localScale = new Vector3(200, 200, 200);
 
             var bc = warning.GetComponent<BoxCollider>();
             if (bc != null)

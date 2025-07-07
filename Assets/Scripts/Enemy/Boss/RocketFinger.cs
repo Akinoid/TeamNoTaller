@@ -18,6 +18,7 @@ public class RocketFinger : MonoBehaviour
 
     private IEnumerator AttackRoutine(Vector3 targetPos, Vector3? warningPos)
     {
+
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO == null)
         {
@@ -43,6 +44,7 @@ public class RocketFinger : MonoBehaviour
             Destroy(warning);
         }
 
+        AudioManager.Instance.Play("Boss Shoot");
         // Movimiento hacia el objetivo
         transform.LookAt(targetPos);
         while (Vector3.Distance(transform.position, targetPos) > 0.1f)

@@ -50,7 +50,7 @@ public class GrenadeBarrage : MonoBehaviour, IBossAttack
 
             
             Instantiate(explosionPrefab, areaPos, Quaternion.identity);
-
+            AudioManager.Instance.Play("Explosion");
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
 

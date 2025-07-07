@@ -25,6 +25,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void BackToMenu()
     {
+        AudioManager.Instance.StopAllSounds();
         AudioSettingsManager.Instance.SetMute(false);
         SceneManager.LoadScene("StartMenu");
     }

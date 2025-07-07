@@ -108,7 +108,7 @@ public class PlayerLife : MonoBehaviour
                     {
                         AudioManager.Instance.Stop("Player Life");
                         defeatPanel.SetActive(true);
-                        
+                        AudioManager.Instance.StopAllSounds();
                         getHit = false;
                     }
                     else if(StartMenuManager.tutorial == 0 && !tutorialDead && lifeDialogue != null) 

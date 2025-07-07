@@ -48,42 +48,42 @@ MonoBehaviour:
   sounds:
   - name: Menu Music
     clip: {fileID: 8300000, guid: 27ff3d3402baf98428edcae7c2e571ae, type: 3}
-    volume: 1
+    volume: 0.604
     loop: 1
     outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Store Music
     clip: {fileID: 8300000, guid: 476c167a810bde644967d731706b8cac, type: 3}
-    volume: 1
+    volume: 0.577
     loop: 1
     outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Boss Music
     clip: {fileID: 8300000, guid: c4744f021bdb1874d936bb471f41a1a9, type: 3}
-    volume: 1
+    volume: 0.598
     loop: 1
     outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: City Music
     clip: {fileID: 8300000, guid: dc04d57b67a3fde499a7242c2b9f3bc3, type: 3}
-    volume: 1
+    volume: 0.621
     loop: 1
     outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Space Music
     clip: {fileID: 8300000, guid: bd045070e9d9de0489edae27265badb9, type: 3}
-    volume: 1
+    volume: 0.337
     loop: 1
     outputGroup: {fileID: 5262798662970926798, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Player Life
     clip: {fileID: 8300000, guid: 7bb39b215a68fab48a44b8eb92259498, type: 3}
-    volume: 1
+    volume: 0.657
     loop: 1
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Player Dash
     clip: {fileID: 8300000, guid: 1952126e620847246af96bcd9459cc03, type: 3}
-    volume: 1
+    volume: 0.68
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Player Hit
     clip: {fileID: 8300000, guid: e531b41794c990c4c9e7b17d98edd377, type: 3}
-    volume: 1
+    volume: 0.609
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Player Shoot
@@ -93,42 +93,52 @@ MonoBehaviour:
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Player FireBall
     clip: {fileID: 8300000, guid: b511a6332e68c2940b507f6a8be25f42, type: 3}
-    volume: 0.645
+    volume: 0.438
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Explosion
     clip: {fileID: 8300000, guid: aca2fcdbeb071e444b4d32193b3b7cf1, type: 3}
-    volume: 1
+    volume: 0.447
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Enemy Die
     clip: {fileID: 8300000, guid: 1f7fe752c4766d04492213acda6d0fc5, type: 3}
-    volume: 1
+    volume: 0.536
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Ambusher Attack
     clip: {fileID: 8300000, guid: 195f36d0a6d8f764c83e69c7be394134, type: 3}
-    volume: 1
+    volume: 0.521
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Laser Attack
     clip: {fileID: 8300000, guid: d1139a18742ac0e48b5bed19599f3f0f, type: 3}
-    volume: 1
+    volume: 0.459
     loop: 1
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Sniper Attack
     clip: {fileID: 8300000, guid: 20fc6a3ffe95da3499d474fa7272a7cb, type: 3}
-    volume: 1
+    volume: 0.541
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: UI Button
     clip: {fileID: 8300000, guid: 35c1667ce8274344a8b4ea2017747226, type: 3}
-    volume: 1
+    volume: 0.556
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   - name: Laser Start
     clip: {fileID: 8300000, guid: daaa0f0a25c6c4149842e8e69fd79496, type: 3}
-    volume: 1
+    volume: 0.574
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Boss Spawn
+    clip: {fileID: 8300000, guid: 73c87e064ad73a64393631bedd9ed6de, type: 3}
+    volume: 0.518
+    loop: 0
+    outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
+  - name: Boss Shoot
+    clip: {fileID: 8300000, guid: 602f8466f9b8ee848a0b5f00470287d4, type: 3}
+    volume: 0.462
     loop: 0
     outputGroup: {fileID: 8448873827000095502, guid: 64bbc00ade24fda499c6c2e9b73156c7, type: 2}
   audioSourcePrefab: {fileID: 6231544871049779614, guid: 92368a983dbff6d41bf6938b2a0c1235, type: 3}

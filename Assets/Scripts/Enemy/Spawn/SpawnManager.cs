@@ -58,7 +58,9 @@ public class SpawnManager : MonoBehaviour
             AudioManager.Instance.Stop("Space Music");
 
             AudioManager.Instance.Play("Boss Music");
-            
+
+            AudioManager.Instance.Play("Boss Spawn");
+
             Debug.Log("SpawnManager: Spawn del Boss");
             var bossGO = bossSpawnZone.SpawnEnemy(bossPrefab);
             spawnedEnemies.Add(bossGO);
