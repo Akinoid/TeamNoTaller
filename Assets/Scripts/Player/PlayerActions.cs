@@ -544,7 +544,7 @@ public class PlayerActions : MonoBehaviour
             if (enemyFound != null || obstacleFound != null)
                 AudioManager.Instance.Play("Player FireBall");
             missiles -= 1;
-            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+            ChangeMissilesTMP();
         }
     }
     
@@ -553,17 +553,17 @@ public class PlayerActions : MonoBehaviour
         if(missiles > maxMissiles)
         {
             missiles = maxMissiles;
-            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+            ChangeMissilesTMP();
         }
         if(missiles < 0)
         {
             missiles = 0;
-            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+            ChangeMissilesTMP();
         }
         if (FireBall.noEnemies)
         {
             missiles += 1;
-            missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
+            ChangeMissilesTMP();
             FireBall.noEnemies = false;
         }
     }
@@ -579,10 +579,14 @@ public class PlayerActions : MonoBehaviour
         if (other.CompareTag("FireBall"))
         {
             missiles += 2;
-            missilesTMP.text = $"Missiles: {+missiles} / 3";
+            ChangeMissilesTMP();
             Money.score += 150 * Money.multiplier;
             //Destroy(other.gameObject);
         }
+    }
+    void ChangeMissilesTMP()
+    {
+        missilesTMP.text = $"Missiles: {+missiles} / {maxMissiles}";
     }
     private void GetInput()
     {

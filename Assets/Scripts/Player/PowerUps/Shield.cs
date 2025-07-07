@@ -54,6 +54,7 @@ public class Shield : MonoBehaviour
         if (shield <= 0)
         {
             haveShield = false;
+            shield = 0;
         }
         if(shield >= shieldMax)
         {
