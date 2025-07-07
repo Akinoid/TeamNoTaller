@@ -201,6 +201,8 @@ public class LaserEnemy : EnemyBase
     }
     protected override void Die()
     {
+        AudioManager.Instance.Stop("Laser Attack");
+        
         AudioManager.Instance.Play("Enemy Die");
         Money.score += 150 * Money.multiplier;
         if (StartMenuManager.tutorial == 0)
