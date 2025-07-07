@@ -133,7 +133,7 @@ public class Money : MonoBehaviour
         }
         if(multiplierTMP != null)
         {
-            multiplierTMP.text = $"Score x{multiplier}";
+            multiplierTMP.text = $"Combo x{multiplier}";
         }
         
     }

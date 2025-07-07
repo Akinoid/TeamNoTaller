@@ -85,5 +85,6 @@ public class StartMenuManager : MonoBehaviour
         AudioManager.Instance.Play("UI Button");
         tutorial = 0;
         PlayerPrefs.SetInt("Tutorial", 0);
+        SceneManager.LoadScene("Tutorial");
     }
 }

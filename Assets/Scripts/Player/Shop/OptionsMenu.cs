@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] private Toggle fullScreenToggle;
-    [SerializeField] private static TMP_Dropdown resolutionDropDown;
+    [SerializeField] private TMP_Dropdown resolutionDropDown;
     private Resolution[] resolutions;
     private List<Resolution> selectedResolutionList = new List<Resolution>();
     int indexResolution;
