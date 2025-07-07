@@ -4,11 +4,11 @@ public class Shop : MonoBehaviour
 {
     public bool saveFireballBuyed, saveShieldBuyed, saveBubbleBuyed, saveSigilBuyed, saveBlasterBuyed, saveHaveEletricBuff;
     public static bool fireballBuyed, shieldBuyed, bubbleBuyed, sigilBuyed, blasterBuyed;
-    [SerializeField] private TMP_Text bubbleTMP, bubbleDescriptionTMP, bubbleBuyTMP;
-    [SerializeField] private TMP_Text fireBallTMP, fireBallDescriptionTMP, fireBallBuyTMP;
-    [SerializeField] private TMP_Text shieldTMP, shieldDescriptionTMP, shieldBuyTMP;
-    [SerializeField] private TMP_Text sigilTMP, sigilDescriptionTMP, sigilBuyTMP;
-    [SerializeField] private TMP_Text blasterTMP, blasterDescriptionTMP, blasterBuyTMP;
+     private TMP_Text bubbleTMP, bubbleDescriptionTMP, bubbleBuyTMP;
+     private TMP_Text fireBallTMP, fireBallDescriptionTMP, fireBallBuyTMP;
+     private TMP_Text shieldTMP, shieldDescriptionTMP, shieldBuyTMP;
+     private TMP_Text sigilTMP, sigilDescriptionTMP, sigilBuyTMP;
+     private TMP_Text blasterTMP, blasterDescriptionTMP, blasterBuyTMP;
     [SerializeField] private Money money;
     [SerializeField] private LoadManager load;
 

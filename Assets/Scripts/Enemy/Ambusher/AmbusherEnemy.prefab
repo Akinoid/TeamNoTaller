@@ -1377,13 +1377,13 @@ MonoBehaviour:
   activeLifetime: 1e+9
   exitSpeed: 5
   entryType: 1
-  entryCenter: {x: 32, y: 32}
+  entryAreaCenter: {x: 0, y: 0}
+  entryAreaSize: {x: 20, y: 20}
   health: 100
   currentHealth: 0
   explosionRadius: 5
   explosionDamage: 50
   activeTimer: 10
-  particle: {fileID: 6335225545031954905, guid: cf59edd8d0ae39c47bbd4824e9076e99, type: 3}
   chargeSpeed: 20
   warningDuration: 2
   dangerSymbolPrefab: {fileID: 717411610656714817, guid: 8029c280e4e821646bbc9da32779fe9a, type: 3}

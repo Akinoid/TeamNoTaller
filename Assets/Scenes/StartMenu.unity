@@ -7418,6 +7418,7 @@ GameObject:
   - component: {fileID: 1336910255}
   - component: {fileID: 1336910254}
   - component: {fileID: 1336910259}
+  - component: {fileID: 1336910260}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7545,23 +7546,22 @@ MonoBehaviour:
   saveSigilBuyed: 0
   saveBlasterBuyed: 0
   saveHaveEletricBuff: 0
-  bubbleTMP: {fileID: 0}
-  bubbleDescriptionTMP: {fileID: 0}
-  bubbleBuyTMP: {fileID: 0}
-  fireBallTMP: {fileID: 0}
-  fireBallDescriptionTMP: {fileID: 0}
-  fireBallBuyTMP: {fileID: 0}
-  shieldTMP: {fileID: 0}
-  shieldDescriptionTMP: {fileID: 0}
-  shieldBuyTMP: {fileID: 0}
-  sigilTMP: {fileID: 0}
-  sigilDescriptionTMP: {fileID: 0}
-  sigilBuyTMP: {fileID: 0}
-  blasterTMP: {fileID: 0}
-  blasterDescriptionTMP: {fileID: 0}
-  blasterBuyTMP: {fileID: 0}
   money: {fileID: 0}
   load: {fileID: 170068620}
+--- !u!114 &1336910260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336910253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a210352be373548479479c340c1b3cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlock: 0
+  wantToUnlock: 1
 --- !u!1 &1350389088
 GameObject:
   m_ObjectHideFlags: 0
