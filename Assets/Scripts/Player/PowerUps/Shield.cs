@@ -33,12 +33,13 @@ public class Shield : MonoBehaviour
         {
             ActivateShield();
             ShieldValue();
+            TimerDamage();
         }
         else
         {
             DeactiveShield();
         }
-        TimerDamage();
+        
     }
 
     private void ShieldValue()
@@ -79,12 +80,19 @@ public class Shield : MonoBehaviour
             AudioManager.Instance.Play("Player Hit");
             timer += Time.deltaTime;
         }
+        if (!canGetDamage)
+        {
+            timer += Time.deltaTime;
+        }
         if (timer >= 1 && playerActions.state != PlayerActions.MovementState.dashing)
         {
+            getDamaged = false;
             canGetDamage = true;
+            timer = 0;
         }
         if(playerActions.state == PlayerActions.MovementState.dashing)
         {
+            timer = 0;
             canGetDamage = false;
         }
     }

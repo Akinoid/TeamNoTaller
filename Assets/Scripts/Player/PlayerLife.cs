@@ -141,13 +141,13 @@ public class PlayerLife : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        /*if (other.CompareTag("Enemy"))
         {
             if (canGetHit)
             {
                 getHit = true;
             }
-        }
+        }*/
         if (other.CompareTag("Bubble"))
         {
             haveBubble = true;

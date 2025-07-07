@@ -6,6 +6,7 @@ public class PowerUpsMovement : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private float speed = 2;
     [SerializeField] private float timer;
+    [SerializeField] private float maxTimer;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -25,7 +26,7 @@ public class PowerUpsMovement : MonoBehaviour
     private void TimerLife()
     {
         timer += Time.deltaTime;
-        if (timer >= 7f)
+        if (timer >= 10f)
         {
             Invoke(nameof(AutoDestroy), 0.05f);
         }

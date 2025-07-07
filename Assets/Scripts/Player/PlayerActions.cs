@@ -93,6 +93,7 @@ public class PlayerActions : MonoBehaviour
     [Header("Tutorial Variables")]
     public bool tutorialStart;
 
+    [Header("Enemies Found")]
     [SerializeField] private EnemyFound enemyFound;
     [SerializeField] private ObstacleFound obstacleFound;
 
