@@ -19,6 +19,7 @@ public class DefeatScreen : MonoBehaviour
 
     void ConversionScore()
     {
+        AudioManager.Instance.StopAllSounds();
         conversionText.text = $"money = score ({Money.score}) + money ({money.money}) = {money.money += Money.score}";
         Money.score = 0;
         load.Save();
